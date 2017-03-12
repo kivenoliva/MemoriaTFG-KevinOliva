@@ -312,19 +312,23 @@ Finalmente se expondrá la bibliografía que se ha consultado para la elaboración 
 \cleardoublepage
 \chapter{Estado del arte}
 
-Descripción de las tecnologías que utilizas en tu trabajo. Con dos o tres párrafos por cada tecnología, vale.
+En esta sección vamos a describir brevemente las tecnologías aplicadas en este proyecto.
 
+\section{App Cliente-Servidor} 
+\label{sec:app-cliente-servidor}
 
-Puedes citar libros, como el de Bonabeau et al. sobre procesos estigmérgicos~\cite{bonabeau:_swarm}. % Nota que el ~ añade un espacio en blanco, pero no deja que exista un salto de línea. Imprescindible ponerlo para las citas.
+La arquitectura cliente-servidor es una de las más extendidas en la actualidad. Dicha estructura es un modelo de aplicación distribuida en el que las tareas se reparten entre los proveedores de recursos o servicios, llamados \textbf{servidores}, y los demandantes, llamados \textbf{clientes}. Un cliente realiza peticiones a otro programa, el servidor, quien le da respuesta: 
 
-También existe la posibilidad de poner notas al pie de página, por ejemplo, 
-una para indicarte que visite la página de 
-LibreSoft\footnote{\url{http://www.libresoft.es}}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.66]{img/esquemaClienteServidor}
+	\caption{Esquema básico de la estructura cliente-servidor}
+	\label{Figura 3.1}
+\end{figure}
 
-\section{Sección 1} 
-\label{sec:seccion1}
+Esta arquitectura presenta una clara separación de las responsabilidades lo que facilita y clarifica el diseño del sistema. Es una arquitectura claramente centralizada, ya que toda la información reside en el servidor, y el cliente es el que realiza peticiones para obtener dicha información. Esto provoca que el servidor posea una lógica más compleja, es capaz de manejar de forma distinta las peticiones dependiendo de quien las realice. Esto también se hace por motivos de seguridad, ya que la parte del cliente es mucho más sensible a ataques.
 
-
+En nuestro proyecto no hemos realizado como tal una app de cliente-servidor, ya que ha ido más enfocado a la investigación y a la obtención de resultado. Sin embargo, el código realizado para obtener dichos resultados se ha dejado organizado en la parte del servidor de una aplicación web, para obtenerlo con distintas peticiones. Por si en un futuro se quiere mejorar este proyecto, y se decide hacer una aplicación web con el contenido investigado aquí, solo sería necesario realizar la parte del cliente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
