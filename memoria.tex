@@ -251,16 +251,56 @@ Creo firmemente que como estudiantes no somos capaces de asimilar la importancia
 \chapter{Objetivos}
 \label{chap:objetivos}
 
-\section{Objetivo general}
-label{sec:objetivo-general}
+\section{Objetivo principal}
+\label{sec:objetivo-principal}
+En consecuencia, este proyecto se plantea la siguiente tarea, dado una serie de repositorios de GitHub, analizar todo el código python que haya en cada uno de ellos. El proyecto analiza este código línea por línea y detecta aquellas que han sufrido el cambio que se explica en el apartado anterior, es decir, detecta las líneas que para forzar a pasar la regla del pep8 de la máxima longitud han sido acortadas cambiando el nombre de una variable por un nombre más corto, y por tanto, menos entendible.
+\label{sec:}
+
+Por una parte se pretende hacer un estudio bastante amplio, con un volumen de repositorios de GitHub grande, para obtener unos resultados lo suficientemente amplios como para poder llegar a una conclusión. Se busca detectar si este mal hábito está muy extendido en los desarrolladores de python.
+\label{sec:}
+
+Por otra parte, también se pretende alcanzar otro objetivo más profundo, el cual consiste en intentar interiorizar una cuestión, sobre todo a nivel de estudiantes. Dicha cuestión es la importancia de saber realmente lo que es un buen código, sobre todo, no caer en el típico error cuando eres estudiante de pensar que un buen código es algo que funciona. \\
+Según está orientado en la actualidad el aprendizaje de la programación a nivel de universidad, es muy difícil darse cuenta que el código que produces no es algo que vas a escribir una vez, vas a probar que funciona, vas a estregar y no vas a volver a ver en tu vida. Este ciclo es lo que suele pasar con el código que generas como estudiante. Esto unido a ciertas circunstancias como agobios y prisas por los plazos de entrega, o que en algunas ocasiones sólo se valore el resultado del progama hace que se creen malos hábitos o malas costumbres a la hora de generar código de calidad por parte de los alumnos.
+\label{sec:}
+
+El proyecto intenta llegar a este objetivo creando un ``debate'' alrededor del caso concreto que se estudia. ¿Es mejor el código que no cumple el pep8 antes de realizar el cambio, pero que tiene un buen nombre de variable?, ¿o es mejor el código después del cambio que cumple el pep8 pero que ha dejado la variable con un nombre sin sentido?. \\
+Quizás la respuesta correcta sea decir que se debe cambiar la línea de código para que cumpla la regla de máxima longitud de línea pero realizando otro cambio, y si no es posible cambiar esa sola línea, darle una vuelta al código para refactorizarlo y hacer que todas las líneas cumplan de esta forma las reglas de calidad.
+\label{sec:}
+
+Lo que se intenta decir con esto es que cuando un estudiante ya ha adquirido ciertos conocimientos técnicos sobre la programación y sobre la generación de código de calidad, debe darse cuenta que tenemos en nuestra mano una serie de reglas de calidad como el pep8 o similares, las cuales se deben utilizar, pero no de cualquier forma, es decir, hay que pararse a pensar un minuto y ser coherente e inteligente a la hora de aplicarlas en nuestro desarrollo, y no dejar un código peor que el que teníamos antes por intentar forzar a que pasen estas reglas de cualquier manera.
 
 
-\section{Objetivos específicos}
-label{sec:objetivos-especificos}
+\section{Objetivos secundarios}
+\label{sec:objetivos-secundarios}
+Aparte de objetivo explicado anteriormente, a la hora de realizar este proyecto, se han tenido en cuenta los siguientes objetivos secundarios:
+\begin{itemize}
+	\item \textbf{Metodología de trabajo:} Se ha intentado llevar una metodología de trabajo lo más parecida posible a lo que nos encontraremos en un futuro entorno profesional. Para ello se ha intentado mantener un uso constante de Git y GitFlow.
+\end{itemize}
 
+\begin{itemize}
+	\item \textbf{Aplicación de tecnologías e ideas de trabajo no vistas en la universidad: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no controlo en profundidad, ya que no se han enseñado o se ha pasado de refilón sobre ellas en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos sobre este mundo y aprovechar esto para conseguir nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
+	\begin{enumerate}
+		\item En cuanto a la aplicación de tecnologías he usado para hacer la parte del servidor javascript, utilizando para ello node.js con express (entraremos más en detalle en siguientes capítulos), mi elección se debe a que en la universidad se ha enseñado a montar servidores con java, y sobre todo con python y django. De esta forma quería dominar otros casos para tener más donde comparar.
+		Para la base de datos he utilizado MongoDB, en lugar de SQL por el mismo motivo, en la universidad hemos utilizado bases de datos relacionales, y quería utilizar una no relacional, para entender mejor los pros y contras de cada una de ellas, y tener más conocimientos sobre cual elegir en mis futuros desarrollos. 
+		\item Enfocar una idea de trabajo más orientada a la investigación. Normalmente en nuestra vida como estudiante partimos siempre de un enunciado redactado al empezar a desarrollar, en el proyecto tenemos la oportunidad de investigar sobre una idea para realizar luego nuestro desarrollo.
+	\end{enumerate}
+\end{itemize}
+	
 
-\section{Planificación temporal}
-label{sec:planificacion-temporal}
+\section{Estructura de la memoria}
+\label{sec:estructura-de-la-memoria}
+Creemos conveniente explicar muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
+
+\begin{enumerate}
+	\item \textbf{Introducción: }En esta punto de intenta explicar el contexto que envuelve este proyecto, así como las razones por las que se elige el tema a tratar.
+	\item \textbf{Objetivos: }En esta sección se detalla cada uno de los objetivos que se han planteado desde el inicio del proyecto.
+	\item \textbf{Estado del arte: }Aquí presentamos las tecnologías con las que se ha implementado el proyecto, además de algún concepto para entender mejor la estructura del mismo.
+	\item \textbf{Diseño e implementación: }Este punto profundiza e intenta explicar en detalle el desarrollo del proyecto.
+	\item \textbf{Resultados: }Aquí se presenta , a modo de resumen, como ha quedado finalmente el proyecto.
+	\item \textbf{Conclusiones: }Es el capítulo final, en él se intenta evaluar de forma general el proyecto, haciendo hincapié en los conceptos aprendidos en su elaboración.
+\end{enumerate}
+
+Finalmente se expondrá la bibliografía que se ha consultado para la elaboración de la memoria.
 
 
 
