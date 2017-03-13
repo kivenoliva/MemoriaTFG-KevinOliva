@@ -330,6 +330,81 @@ Esta arquitectura presenta una clara separación de las responsabilidades lo que 
 
 En nuestro proyecto no hemos realizado como tal una app de cliente-servidor, ya que ha ido más enfocado a la investigación y a la obtención de resultado. Sin embargo, el código realizado para obtener dichos resultados se ha dejado organizado en la parte del servidor de una aplicación web, para obtenerlo con distintas peticiones. Por si en un futuro se quiere mejorar este proyecto, y se decide hacer una aplicación web con el contenido investigado aquí, solo sería necesario realizar la parte del cliente.
 
+\section{Node JS} 
+\label{sec:node-js}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{img/nodejs}
+	\caption{Node.js}
+	\label{Figura 3.2}
+\end{figure}
+
+Node.js es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8.\\
+Node ejecuta javascript utilizando el motor V8, desarrollado por Google. Este motor permite a Node proporciona un entorno de ejecución del lado del servidor que compila y ejecuta javascript a velocidades increíbles. El aumento de velocidad es importante debido a que V8 compila Javascript en código de máquina nativo, en lugar de interpretarlo o ejecutarlo como bytecode. Node es de código abierto, y se ejecuta en Mac OS X, Windows y Linux.\\
+
+\label{sec:}
+
+Aunque Javascript tradicionalmente ha sido relegado a realizar tareas menores en el navegador, es actualmente un lenguaje de programación totalmente, tan capaz como cualquier otro lenguaje tradicional como C++, Ruby o Java. Ademas Javascript tiene la ventaja de poseer un excelente modelo de eventos, ideal para la programación asíncrona.\\
+
+¿Cuál es la razón por la que decidimos adentrarnos en elaborar un servidor en Javascript con node.js?\\
+
+¿Cuál es el problema con los programas de servidor actuales? A medida que crece su base de clientes, si quieres que tu aplicación soporte más usuarios, necesitarás agregar más y más servidores. Esto hace que el cuello de botella en toda la arquitectura de aplicación Web era el número máximo de conexiones concurrentes que podía manejar un servidor.\\
+Node resuelve este problema cambiando la forma en que se realiza una conexión con el servidor. En lugar de generar un nuevo hilo de OS para cada conexión (y de asignarle la memoria acompañante), cada conexión dispara una ejecución de evento dentro del proceso del motor de Node. Node también afirma que nunca se quedará en punto muerto, porque no se permiten bloqueos.\\
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{img/appNodeMongoAngular}
+	\caption{Estructura de aplicación MEAN: Mongo + Express + Angular + Node}
+	\label{Figura 3.3}
+\end{figure}
+
+
+
+
+\section{Express} 
+\label{sec:express}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.88]{img/express}
+	\caption{Express.js}
+	\label{Figura 3.4}
+\end{figure}
+
+
+
+Express es sin duda el framework más conocido de node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc.\\
+Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.\\
+
+El verdadero éxito de Express se encuentra en lo sencillo que es de usar. Tienes la capacidad de crear de forma rápida y sencilla una API sólida. Además, express abarca un sin número de aspectos que muchos desconocen pero son necesarios.\\
+
+De entre las tantas cosas que tiene este framework podemos destacar:
+
+\begin{itemize}
+	\item Session Handler.
+\end{itemize}
+
+\begin{itemize}
+	\item 11 middleware poderosos asi como de terceros.
+\end{itemize}
+
+\begin{itemize}
+	\item cookieParser, bodyParser \ldots
+\end{itemize}
+
+\begin{itemize}
+	\item vhost
+\end{itemize}
+
+\begin{itemize}
+	\item router
+\end{itemize}
+
+
+\section{MongoDB} 
+\label{sec:mongodb}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DISEÑO E IMPLEMENTACIÓN %
