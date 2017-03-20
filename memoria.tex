@@ -30,6 +30,7 @@
 \usepackage{float}  %% H para posicionar figuras
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de índice
 \usepackage{latexsym}  %% Logo LaTeX
+\usepackage{subfig}
 
 \title{Memoria del Proyecto}
 \author{Nombre del autor}
@@ -458,13 +459,79 @@ Git no modela ni almacena sus datos de este modo. En cambio, Git modela sus dato
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{img/git2}
-	\caption{Esquema de como organiza la información}
+	\caption{Esquema de como git organiza la información}
 	\label{Figura 3.8}
 \end{figure}
 
 
 \section{GITFLOW} 
 \label{sec:gitflow}
+
+GitFlow es un modelo de flujo de trabajo para Git que da muchísima importancia a las ramas y que de hecho las crea de varios tipos, de forma temática, tal que cada tipo de rama es creada con un objetivo en concreto.
+
+\begin{enumerate}
+	\item \textbf{Master: }La rama master es la única rama existente que nos proporciona Git al crear un repositorio nuevo. Esta rama  tiene como objetivo ser el contenido del servidor de producción. Es decir, el HEAD de esta rama ha de apuntar en todo momento a la última versión de nuestro proyecto.\\
+	No se va a desarrollar desde esta rama en ningún momento.
+	
+	\item \textbf{Develop: }Esta rama funciona paralelamente a la master. Si la anterior contenía las versiones desplegadas en producción, esta (que también estará sincronizada con origin/develop) contendrá el último estado de nuestro proyecto. Es decir, esta rama contiene todo el desarrollo del proyecto hasta el último commit realizado.\\
+	Cuando esta rama adquiera estabilidad y los desarrolladores quieran lanzar una nueva versión, bastará con hacer un merge a la rama master. Esto será lo que cree una nueva versión de nuestro proyecto.
+	
+	\item \textbf{Features: }Que varias personas trabajen sobre la misma rama es bastante caótico ya que se aumenta el número de conflictos que se dan. A pesar de que los repositorios distribuidos faciliten esta tarea al guardar los commits solo localmente, tiene mucho más sentido usar la potencia de las ramas de Git.\\
+	Cada vez que necesitemos programar una nueva característica en nuestro proyecto crearemos una nueva rama para la tarea.\\
+	Ya que develop contiene la última foto de nuestro proyecto, crearemos la nueva rama a partir de aquí. Una vez finalizada la tarea, solo tendremos que integrar la rama creada dentro de develop. Una vez integrada la rama en develop, podremos eliminarla y actualizar origin.	
+	
+	\item \textbf{Release: }Cuando hemos decidido que el código desarrollado hasta ahora pertenece a una versión de nuestro proyecto, y tenemos actualizado la rama develop con dicho código, crearemos una rama release.
+		
+	\item \textbf{HotFix: }Cuando detectamos algún error en producción(rama Master), creamos una rama HotFix, en la cual se arregla rápidamente el error(sin hacer ningún desarrollo más). Cuando tenemos el arreglo preparado integramos esta rama con la rama Master y la Develop para que todos los desarrolladores tengan el error solventado.
+\end{enumerate}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/gitflow}
+	\caption{Diagrama GITFLOW}
+	\label{Figura 3.9}
+\end{figure}
+
+
+En el caso de este proyecto, es difícil usar todo el esquema explicado aquí de GITFLOW, debido a que es un proyecto pequeño, es decir, sin distintos entornos de desarrollo(desarrollo, preproducción, producción, etc). Además sólo lo ha desarrollado una persona a la vez. Sin embargo, he visto muy útil la utilización de la rama \textit{feature}, para tener siempre la última versión estable guardada en develop, y aislar el desarrollo de nuevas funcionalidades en éstas ramas. Una vez terminada y probada la nueva funcionalidad, integraba la rama feature con la develop y borraba la feature. Este ha sido el uso que he dado en mi caso a GIITFLOW.\\
+
+
+Para llevar esto a cabo, he econtrado \textit{Source Tree} es una interfaz visual para utilizar Git. Es especialmente útil cuando queremos utilizar GITFLOW, ya que es un poco lioso de entender con tantas ramas, sobre todo cuando se mantiene todo de forma manual. Con Source Tree podremos ver todo el esquema de ramas que forme nuestro proyecto de forma visual y crear las distintas ramas de forma mucho más fácil.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=150mm]{img/SourceTree2}
+	\caption{Vemos como podemos iniciar el método GITFLOW en nuestro proyecto de manera sencilla.}
+	\label{Figura 3.10}
+\end{figure}
+
+
+%%\begin{figure}[H]
+%%	\centering
+%%	\includegraphics[width=80mm]{img/SourceTree1}
+%%	\caption{Ejemplo de como visualizamos las ramas cuando creamos una feature.}
+%%	\label{Figura 3.11}
+%%\end{figure}
+
+%%\begin{figure}[H]
+%%	\centering
+%%	\includegraphics[width=80mm]{img/SourceTree3}
+%%	\caption{Dentro de GITFLOW creamos las ramas de manera sencilla.}
+%%	\label{Figura 3.12}
+%%\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[]{
+		\includegraphics[width=0.3\textwidth]{img/SourceTree1}}
+	\subfloat[]{
+		\includegraphics[width=0.3\textwidth]{img/SourceTree3}}
+	\caption{Imágenes de ejemplo de uso de Source Tree}
+	\label{Figura 3.11}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
