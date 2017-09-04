@@ -541,17 +541,346 @@ Para llevar esto a cabo, he econtrado \textit{Source Tree} es una interfaz visua
 \cleardoublepage
 \chapter{Diseño e implementación}
 
-\section{Arquitectura general} 
-\label{sec:arquitectura}
+\section{Instalaciones necesarias} 
+\label{sec:instalaciones-necesarias}
 
-figura~\ref{fig:arquitectura}.
+Todo lo instalado se ha hecho sobre Windows 10.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/arquitectura}
-  \caption{Estructura del parser básico}
-  \label{fig:arquitectura}
+\subsection{NodeJS} 
+\label{sec:nodejs}
+
+Lo primero que necesitamos instalar en este caso es Node en nuestro ordenador. Al igual que muchas aplicaciones, Node tiene su propio MSI(Microsoft Installer), el cual podemos descargar desde la página principal de Node e instalar fácilmente en nuestro ordenador siguiendo todos los pasos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45]{img/installerNode}
+	\caption{Descarga de NodeJS}
+	\label{Figura 4.1}
 \end{figure}
+
+
+\subsection{NPM} 
+\label{sec:npm}
+
+Node Package Manager es un gestor de paquetes que nos ayuda a gestionar las dependencias de nuestro proyecto.\\
+Entre otras cosas nos permite instalar librerías o programas de terceros, eliminarlas o mantenerlas actualizadas.\\
+Generalmente se instala conjuntamente con Node.js de forma automática. \\
+
+NPM se apoya en un fichero llamado package.json para guardar el estado de las librerías. 
+Lanzamos el siguiente comando para realizar la creación del package.json e iniciar su configuración.
+
+\begin{verbatim}
+npm init 
+\end{verbatim}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/npm-1}
+	\caption{Formato del package.json después de lanzar el comando npm init}
+	\label{Figura 4.2}
+\end{figure}
+
+Una vez tenemos el package.json, cada vez que queramos incluir una librería nueva a nuestro proyecto, debemos lanzar el siguiente comando:\\
+Por ejemplo, en este caso, si queremos incluir la librería de Express, explicada en el apartado 3, lanzaríamos el siguiente comando.
+
+\begin{verbatim}
+npm install express --save 
+\end{verbatim}
+
+A medida que vayamos necesitando incluir más librerías a nuestro proyecto, iremos ejecutando este comando con cada una de ellas.\\
+
+Cuando tengamos todas las librerías añadidas a nuestro proyecto, nuestro package.json tendrá un formato parecido a este:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/package}
+	\caption{Formato nuestro package.json}
+	\label{Figura 4.3}
+\end{figure}
+
+
+\section{Nuevo proyecto} 
+\label{sec:nuevo-proyecto}
+
+Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express, el framework de node.js con el que vamos a realizar nuestr proyecto.\\
+Dentro de Express vamos a utilizar la librería de Express Generator, la cual nos crea una estructura base para una aplicación.\\
+Para ello ejecutamos en el directorio en el que queramos crear nuestro proyecto los siguientes comandos:\\\\
+
+Primero instalamos express-generator de forma global, añadiéndole el -g
+\begin{verbatim}
+npm install express-generator -g
+\end{verbatim}
+
+Seguidamente lanzamos:
+
+\begin{verbatim}
+express <nombreApp> [--ejs]
+\end{verbatim}
+
+\begin{verbatim}
+cd <nombreApp>
+\end{verbatim}
+
+\begin{verbatim}
+npm install
+\end{verbatim}
+
+
+
+Con esto se nos creará un proyecto con la siguiente forma:\\ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.1]{img/estructura-proyecto}
+	\caption{Estructura básica de un proyecto}
+	\label{Figura 4.4}
+\end{figure}
+
+Dentro de la carpeta routes meteremos el código javascript que ejecutaremos en la parte del servidor, y que tendrá toda la lógica de nuestro proceso.\\
+
+\section{Análisis del estudio realizado} 
+\label{sec:esquema-del-funcionamiento-del-estudio}
+
+En el siguiente diagrama de flujo explicamos el funcionamiento de nuestro estudio sobre el problema que estamos tratando en este proyecto:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45]{img/diagramaFlujo}
+	\caption{Diagrama de flujo del funcionamiento del estudio}
+	\label{Figura 4.5}
+\end{figure}
+
+\subsection{Análisis de los repositorios} 
+\label{sec:analisis-de-los-repositorios}
+
+Lo primero que hacemos es analizar la serie de repositorios que tenemos preparados para realizar el estudio. Cuando nos encontremos con un fichero Python y analicemos sus líneas, las dividiremos en tres grupos, dependiendo de la longitud que poseen en la actualidad:\\
+
+\begin{itemize}
+	\item Grupo 1: ``Zona verde``, la línea posee menos de 70 caracteres de longitud.
+\end{itemize}
+
+\begin{itemize}
+	\item Grupo 2: ``Zona naranja``, la línea posee entre 70 y 79 caracteres de longitud. Este grupo de líneas es el que nos va a interesar, ya que tienen la posibilidad de haber estado en la ?Zona roja? (veremos en el siguiente grupo) en algún momento de su historia, y en la actualidad estar en la zona naranja, por un cambio de una variable..
+\end{itemize}
+
+\begin{itemize}
+	\item Grupo 3: ``Zona roja``, la línea posee más de 80 caracteres de longitud. Este grupo de líneas directamente no cumpliría con las reglas de estilo del pep8.\\
+\end{itemize}
+
+Cuando nos encontramos una línea que pertenece a la zona naranja, lo que haremos es crear un nuevo objeto en nuestra base de datos en nuestro esquema Linea, el objeto que guardaremos tiene el siguiente aspecto:\\\\
+
+\begin{verbatim}
+var lineaSchema = mongoose.Schema({
+
+linea: String,
+fichero: String,
+numLinea: String,
+longitudLinea: String,
+pasadoRojo: Boolean
+historia: []
+
+}); 
+\end{verbatim}
+
+\ \\  % asi se hacen 1 saltos de linea
+Donde:
+
+\begin{itemize}
+	\item \textbf{línea: }será la línea en sí, su contenido.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{fichero: }será la ruta donde encontraremos el fichero dentro del repositorio que estemos analizando.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{numLínea: }será el número que tiene esa línea dentro del fichero.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{longitudLinea: }será la longitud de la línea.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{pasadoRojo: }En este punto, siempre setearemos a false este parámetro, ya que todavía no hemos comprobado el pasado de la línea. Lo haremos más adelante.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{historia: }En este punto, siempre setearemos un array vacío en este parámetro. Al igual que el anterior, realizaremos esta comprobación más adelante. Cuando lo hagamos, lo que guardaremos aquí será las distintas versiones de la línea en su pasado, en las que su longitud era mayor de 80 caracteres. Más adelante veremos con más detalle las diferentes comprobaciones que hacemos para actualizar este parámetro.\\
+\end{itemize}
+
+Además de esto, llevaremos la cuenta del total de líneas que nos hemos ido encontrando de cada grupo, en el análisis conjunto de todo todos los repositorios, para al final mostrar los datos analizados organizados, y poder sacar una buena conclusión sobre el estudio. De esta forma, al terminar de analizar todos los repositorios crearemos un nuevo objeto en nuestra DB, con el siguiente formato:\\
+
+\begin{verbatim}
+var repositorioSchema = mongoose.Schema({
+
+	nombreRepo: Array,
+	lineasVerdes: String,
+	lineasRojas: String,
+	lineasNaranjas: String
+	
+});
+\end{verbatim}
+
+Donde:
+
+\begin{itemize}
+	\item \textbf{nombreRepo: }Será un array que posea el nombre de todos los repositorios que hemos analizado.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{lineasVerdes: }Será el número total de líneas pertenecientes a este grupo que hemos encontrado en nuestro análisis.
+\end{itemize}
+\begin{itemize}
+	\item \textbf{lineasRojas: }Será el número total de líneas pertenecientes a este grupo que hemos encontrado en nuestro análisis
+\end{itemize}
+\begin{itemize}
+	\item \textbf{lineasNaranjas: }Será el número total de líneas pertenecientes a este grupo que hemos encontrado en nuestro análisis.
+\end{itemize}
+
+\ \\  % asi se hacen 1 saltos de linea
+
+\subsection{Analizar el grupo de líneas seleccionadas para nuestro estudio} 
+\label{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}
+
+Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en la DB. Como hemos visto anteriormente, en este punto tendremos sólo las líneas que pertenecen al grupo de la ``zona naranja``, por tanto, nos recorremos todas las líneas, para analizaras.
+
+La primera comprobación que haremos es mirar si la línea es un comentario, por tanto, no estamos ante una línea de código real. Si nos encontramos ante un comentario descartaremos la línea. En el caso contrario, lo que haremos es ejecutar el comando ``git log`` a dicha línea para estudiar su pasado.
+
+
+\subsection{Ejecución del comando GIT LOG} 
+\label{sec:ejecucion-del-comando-git-log}
+
+\ \\  % asi se hacen 1 saltos de linea
+En primer lugar, vamos a poner un poco en contexto:
+
+\ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
+
+En este punto, nosotros lo que buscamos es saber todo el historial de cambios que ha sufrido una línea en concreta dentro de un fichero. Para así poder analizar todas las líneas que tenemos guardadas previamente como posibles líneas conflictivas.\\
+
+Para llevar a cabo esto, y repasando la funcionalidad que git nos ofrece, pensamos en utilizar el comando ``git blame``, blame se suele utilizar en git para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el commit que modificó por última vez cada una de las líneas.
+Sin embargo, esto se nos quedaba un poco escaso para nuestro propósito final, por lo que, terminando de revisar otras funcionalidades de git, y también revisando las distintas librerías javascripts que nos permitieran implementar esto mediante código en nuestro servidor, tomamos la decisión de explotar el comando git log.\\
+
+En segundo lugar,vamos a ver en que consiste el comando git log, y viendo justo las opciones que nosotros hemos utilizado.
+Si ejecutamos el comando git log, sin ningún parámetro, por defecto lo que nos devuelve es una lista de todos los commits realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los commits más recientes. Como podemos ver en la siguiente imagen, el formato en que git log nos devuelve su respuesta es el siguiente:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.70]{img/salidaGitLog}
+	\caption{Salida por defecto del comando git log}
+	\label{Figura 4.6}
+\end{figure}
+
+
+Lo que nos muestra cómo podemos ver es cada commit con su suma de comprobación SHA-1, el nombre y correo del autor, la fecha el mensaje que el autor ha escrito para ese commit.\\
+
+El comando git log posee múltiples opciones para ajustar la búsqueda que realmente buscamos, la opción que nosotros utilizamos fue la siguiente:
+
+
+\begin{verbatim}
+git log -L numeroLinea,numeroLinea:nombreFichero
+\end{verbatim}
+
+De esta forma obtendremos la lista de todos los cambios que ha sufrido la línea que indiquemos desde su creación en el fichero hasta la actualidad.\\
+
+Podemos ver en el siguiente ejemplo, a salida del comando que estamos tratando en nuestro código:
+
+
+\begin{verbatim}
+git log -L 155,155:git-web--browse.sh
+\end{verbatim}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/salidaGitLogOpciones}
+	\caption{Salida del comando git log con opciones}
+	\label{Figura 4.7}
+\end{figure}
+
+Analizando esta salida podemos ver que la línea 155 del fichero git-web--browse.sh ha sufrido los siguientes cambios.
+
+\begin{enumerate}
+	\item Cuando la línea se incluyó dentro del fichero por primera vez en un commit fue como:
+	
+	\begin{verbatim}
+	    firefox|iceweasel)
+	\end{verbatim}
+	
+	\item El primer cambio que sufrió fue borrar las tabulaciones del principio:
+	
+	\begin{verbatim}
+	firefox|iceweasel)
+	\end{verbatim}
+	
+	\item Y por último se le añadió texto:
+	
+	\begin{verbatim}
+	firefox|iceweasel|seamonkey|iceape)
+	\end{verbatim}
+\end{enumerate}
+
+Para poder llevar todo esto a cabo en nuestro código hemos utilizado la librería de javascript ``simple-git``\footnote{\url{https://www.npmjs.com/package/simple-git}}.\\
+
+Siguiendo ahora con el análisis de nuestro proceso, recordamos que tenemos guardadas en nuestra BD las líneas que hemos detectado como posibles conflictivas, y que queremos analizar, guardadas con el siguiente formato:
+
+\begin{verbatim}
+var lineaSchema = mongoose.Schema({
+
+linea: String,
+fichero: String,
+numLinea: String,
+longitudLinea: String,
+pasadoRojo: Boolean
+historia: []
+
+}); 
+\end{verbatim}
+
+Lo que hacemos en este punto es ejecutar el comando git log (con las opciones que acabamos de explicar), y en el caso de que nuestra línea haya tenido en algún momento de su historia una longitud mayor a 80, modificaremos su registro en la base de datos cambiando el valor del parámetro ``pasadoRojo`` a true y también nos guardaremos todo el pasado de la línea para analizarlo.
+
+\ \\ % asi se hacen 1 saltos de linea
+\subsection{Análisis del pasado de una línea} 
+\label{sec:analisis-del-pasado-de-una-linea}
+\ \\ % asi se hacen 1 saltos de linea
+Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando exactamente en este punto, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).\\
+
+Esta iteración se puede dar muchas veces y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea para comprobar que en ese cambio, la línea actual y la línea en el pasado son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
+
+Como decimos, en este punto todavía no podemos saber si la línea ha sufrido ese cambio por nuestro motivo, sin embargo, lo que si que podemos filtrar es que la línea es suficientemente parecida a su pasado como para que pueda darse, y para ello vamos a utilizar la distancia de levenshtein (meter un índice abajo donde lo explique, buscarlo y añadirlo a bibliografia).\\
+
+Teníamos guardadas todo el pasado de la línea, lo que haremos es comparar cada estado de la línea en su pasado, con el estado actual, y basándonos en la respuesta que nos devuelva la distancia de levenshtein tomar una decisión.
+Si la respuesta está dentro de nuestro umbral, nos quedaremos con ?ese pasado de la línea?, en caso contrario, lo desecharemos.\\
+
+Al terminar este proceso tendremos un array con todos los estados de la línea en su pasado que han sido mayores de 80 y que se parecen lo suficiente a la línea actual como para ser nuestro caso. (En este array normalmente sólo tendremos un registro, que será el paso anterior a cómo era la línea justo antes de cómo es en la actualidad. En caso de que más estados de la línea en su pasado entren en estos criterios y se cuelen aquí, solo interesaría el último caso en que la línea ha estado en la zona roja antes de pasar a la naranja, por tanto, más adelante los filtraremos).\\
+
+En este punto volvemos a actualizar el objeto que tenemos para dicha línea guardado en nuestra DB, en este caso modificaremos el parámetro ``historia:[]``. Dándole como valor el array que comentamos en el párrafo anterior.\\
+
+Una vez hecho todo esto, limpiaremos nuestra DB, de forma que borraremos todos los registros de las líneas que no hayan cumplido alguna de estas comprobaciones.
+
+\ \\ % asi se hacen 1 saltos de linea
+\subsection{Clasificación de líneas conflictivas} 
+\label{sec:clasificacion-de-lineas-conflictivas}
+\ \\ % asi se hacen 1 saltos de linea
+En este punto, tenemos en nuestra DB únicamente las líneas que consideramos conflictivas para nuestro caso de estudio, después de pasar por todas nuestras comprobaciones. Ahora lo que necesitamos es clasificar estas líneas según creamos cual es la razón por la que esa línea se ha acortado y ha pasado de nuestra zona roja a nuestra zona naranja.\\
+
+Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos, (recordamos que siempre comparando la iteracción en la que la línea pasa de tener más de 80 caracteres a tener entre 70 y 79): 
+\ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
+
+\begin{enumerate}
+	\item La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta (caso que buscamos).
+	
+	\item La línea se diferencia por que se han eliminado 4 espacios (tabulaciones).
+	
+	\item La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, la cual se ha acortado (posible caso buscado).
+	
+	\item Resto de palabras.
+	
+\end{enumerate}
+
+Hemos elegido estos 4 casos porque son los más comunes, por ejemplo, el caso de las tabulaciones, y los casos que afectan directamente a nuestro estudio, como es el 1 principalmente, y como puede ser el 3.
+De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
+
+
+
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
