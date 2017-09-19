@@ -225,7 +225,7 @@ just before submitting.
 \pagenumbering{arabic} % para empezar la numeración de página con números
 
 \section{Motivación}
-\label{sec:}
+\label{sec:motivacion}
 
 Cuando terminas de estudiar y por fin empiezas a dedicarte  profesionalmente al desarrollo de software, rápidamente te das  cuenta de una cosa, 
 la cual nunca, o casi nunca, habías pensado en tu vida de estudiante. En tu trabajo pasas más tiempo leyendo código de otra persona que tu 
@@ -243,6 +243,22 @@ Pero siendo sincero, el motivo por el cual decidí realizar el proyecto sobre est
 \label{sec:}
 
 Creo firmemente que como estudiantes no somos capaces de asimilar la importancia de escribir un código de calidad, y de las horas y horas que ahorraremos a nuestros compañeros de trabajo, o a nosotros mismo cuando retomemos nuestro propio código de hace tiempo. Son cosas simples, pero es importante que desde el principio de nuestra formación se cojan estas buenas costumbres.
+
+\section{Estructura de la memoria}
+\label{sec:estructura-de-la-memoria}
+Creemos conveniente explicar muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
+
+\begin{enumerate}
+	\item \textbf{Introducción: }En esta punto de intenta explicar el contexto que envuelve este proyecto, así como las razones por las que se elige el tema a tratar.
+	\item \textbf{Objetivos: }En esta sección se detalla cada uno de los objetivos que se han planteado desde el inicio del proyecto.
+	\item \textbf{Estado del arte: }Aquí presentamos las tecnologías con las que se ha implementado el proyecto, además de algún concepto para entender mejor la estructura del mismo.
+	\item \textbf{Diseño e implementación: }Este punto profundiza e intenta explicar en detalle el desarrollo del proyecto.
+	\item \textbf{Resultados: }Aquí se presenta , a modo de resumen, como ha quedado finalmente el proyecto.
+	\item \textbf{Conclusiones: }Es el capítulo final, en él se intenta evaluar de forma general el proyecto, haciendo hincapié en los conceptos aprendidos en su elaboración.
+\end{enumerate}
+
+Finalmente se expondrá la bibliografía que se ha consultado para la elaboración de la memoria.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OBJETIVOS %
@@ -254,7 +270,10 @@ Creo firmemente que como estudiantes no somos capaces de asimilar la importancia
 
 \section{Objetivo principal}
 \label{sec:objetivo-principal}
-En consecuencia, este proyecto se plantea la siguiente tarea, dado una serie de repositorios de GitHub, analizar todo el código python que haya en cada uno de ellos. El proyecto analiza este código línea por línea y detecta aquellas que han sufrido el cambio que se explica en el apartado anterior, es decir, detecta las líneas que para forzar a pasar la regla del pep8 de la máxima longitud han sido acortadas cambiando el nombre de una variable por un nombre más corto, y por tanto, menos entendible.
+
+En consecuencia, este proyecto se plantea la siguiente tarea, ``Analizar una serie de repositorios reales de GitHub con bastante código python, para obtener unos resultados y en función de ellos, decidir si el hábito explicado en el apartado anterior es un problema real en los desarrolladores de python''.
+
+El proyecto analiza este código línea por línea y detecta aquellas que han sufrido el cambio que se explica en el apartado anterior, es decir, detecta las líneas que para forzar a pasar la regla del pep8 de la máxima longitud han sido acortadas cambiando el nombre de una variable por un nombre más corto, y por tanto, menos entendible.
 \label{sec:}
 
 Por una parte se pretende hacer un estudio bastante amplio, con un volumen de repositorios de GitHub grande, para obtener unos resultados lo suficientemente amplios como para poder llegar a una conclusión. Se busca detectar si este mal hábito está muy extendido en los desarrolladores de python.
@@ -273,36 +292,19 @@ Lo que se intenta decir con esto es que cuando un estudiante ya ha adquirido cie
 
 \section{Objetivos secundarios}
 \label{sec:objetivos-secundarios}
-Aparte de objetivo explicado anteriormente, a la hora de realizar este proyecto, se han tenido en cuenta los siguientes objetivos secundarios:
+Aparte del objetivo explicado anteriormente, a la hora de realizar este proyecto, se han tenido en cuenta los siguientes objetivos secundarios:
 \begin{itemize}
-	\item \textbf{Metodología de trabajo:} Se ha intentado llevar una metodología de trabajo lo más parecida posible a lo que nos encontraremos en un futuro entorno profesional. Para ello se ha intentado mantener un uso constante de Git y GitFlow.
+	\item \textbf{Trabajar de una forma orientada al mundo profesional:} Se ha intentado llevar una metodología de trabajo lo más parecida posible a lo que nos encontraremos en un futuro entorno profesional. Para ello se ha intentado mantener un uso constante de Git y GitFlow.
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{Aplicación de tecnologías e ideas de trabajo no vistas en la universidad: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no controlo en profundidad, ya que no se han enseñado o se ha pasado de refilón sobre ellas en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos sobre este mundo y aprovechar esto para conseguir nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
+	\item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no controlo en profundidad, ya que no se han enseñado o se ha pasado de refilón sobre ellas en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos sobre este mundo y aprovechar esto para conseguir nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
 	\begin{enumerate}
 		\item En cuanto a la aplicación de tecnologías he usado para hacer la parte del servidor javascript, utilizando para ello node.js con express (entraremos más en detalle en siguientes capítulos), mi elección se debe a que en la universidad se ha enseñado a montar servidores con java, y sobre todo con python y django. De esta forma quería dominar otros casos para tener más donde comparar.
 		Para la base de datos he utilizado MongoDB, en lugar de SQL por el mismo motivo, en la universidad hemos utilizado bases de datos relacionales, y quería utilizar una no relacional, para entender mejor los pros y contras de cada una de ellas, y tener más conocimientos sobre cual elegir en mis futuros desarrollos. 
 		\item Enfocar una idea de trabajo más orientada a la investigación. Normalmente en nuestra vida como estudiante partimos siempre de un enunciado redactado al empezar a desarrollar, en el proyecto tenemos la oportunidad de investigar sobre una idea para realizar luego nuestro desarrollo.
 	\end{enumerate}
 \end{itemize}
-	
-
-\section{Estructura de la memoria}
-\label{sec:estructura-de-la-memoria}
-Creemos conveniente explicar muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
-
-\begin{enumerate}
-	\item \textbf{Introducción: }En esta punto de intenta explicar el contexto que envuelve este proyecto, así como las razones por las que se elige el tema a tratar.
-	\item \textbf{Objetivos: }En esta sección se detalla cada uno de los objetivos que se han planteado desde el inicio del proyecto.
-	\item \textbf{Estado del arte: }Aquí presentamos las tecnologías con las que se ha implementado el proyecto, además de algún concepto para entender mejor la estructura del mismo.
-	\item \textbf{Diseño e implementación: }Este punto profundiza e intenta explicar en detalle el desarrollo del proyecto.
-	\item \textbf{Resultados: }Aquí se presenta , a modo de resumen, como ha quedado finalmente el proyecto.
-	\item \textbf{Conclusiones: }Es el capítulo final, en él se intenta evaluar de forma general el proyecto, haciendo hincapié en los conceptos aprendidos en su elaboración.
-\end{enumerate}
-
-Finalmente se expondrá la bibliografía que se ha consultado para la elaboración de la memoria.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -330,6 +332,56 @@ La arquitectura cliente-servidor es una de las más extendidas en la actualidad. 
 Esta arquitectura presenta una clara separación de las responsabilidades lo que facilita y clarifica el diseño del sistema. Es una arquitectura claramente centralizada, ya que toda la información reside en el servidor, y el cliente es el que realiza peticiones para obtener dicha información. Esto provoca que el servidor posea una lógica más compleja, es capaz de manejar de forma distinta las peticiones dependiendo de quien las realice. Esto también se hace por motivos de seguridad, ya que la parte del cliente es mucho más sensible a ataques.
 
 En nuestro proyecto no hemos realizado como tal una app de cliente-servidor, ya que ha ido más enfocado a la investigación y a la obtención de resultado. Sin embargo, el código realizado para obtener dichos resultados se ha dejado organizado en la parte del servidor de una aplicación web, para obtenerlo con distintas peticiones. Por si en un futuro se quiere mejorar este proyecto, y se decide hacer una aplicación web con el contenido investigado aquí, solo sería necesario realizar la parte del cliente.
+
+\section{Python} 
+\label{sec:python}
+
+Python es un lenguaje de programación de muy alto nivel, multiplataforma y multiparadigma, el cual, fue creado a finales de los años 80 por el holandés  Guido van Rossum, Python fue creado como sucesor del lenguaje de programación ABC.\\
+¿Qué quiere decir que es un lenguaje multiplataforma?, quiere decir que es un lenguaje interpretado, y por tanto no necesita compilación. Esto tiene como ventaja, por ejemplo, que da igual el sistema operativo donde se ejecute, o que aporta mayor rapidez al desarrollarlo.
+¿Qué quiere decir que es multiparadigma?, esto quiere decir que no obliga al desarrollador a adaptarse a un estilo de programación concreto, Python soporta programación funcional, programación imperativa y programación orientada a objetos.\\
+Python se caracteriza por tener una sintaxis limpia y ordenada, haciendo mucho hincapié en la legibilidad del código, a pesar de ello, tiene funcionalidades muy avanzadas, propias de lenguajes como C o C++.\\
+Python es un lenguaje que ha adquirido gran popularidad en los últimos años, algunas de las razones por las que esto ha sucedido son las siguientes:
+
+\ \\  % asi se hacen 1 saltos de linea
+\begin{itemize}
+	\item Sencillez y velocidad a la hora de crear desarrollos completos, normalmente un programa en Pyton tendrá muchas menos líneas que sus equivalente en otros lenguajes (java, C, etc).
+\end{itemize}
+
+\begin{itemize}
+	\item Ofrece una gran cantidad de librerías, con funciones incorporadas, funcionalidades o tipos de datos, que favorecen la realización de muchas tareas sin necesidad de empezar completamente de 0.
+\end{itemize}
+
+\begin{itemize}
+	\item Se puede obtener de forma gratuita y utilizarse con fines comerciales.
+\end{itemize}
+
+
+\section{PEP8} 
+\label{sec:pep8}
+
+Desde que empezamos a escribir código y conforme progresamos, adquirimos ciertas pautas que definen la manera en que expresamos nuestras ideas en el lenguaje que manejemos, ya sea javascript, python, html u otro. Esto define nuestro estilo, y toma en cuenta la manera en la que indentamos, definimos nombres de variables y funciones, el proceso de realizar o no comentarios de código entre otros.
+
+¿Por qué es tan importante seguir un estilo cuando estamos programando?
+Por muchos motivos, pero el principal y más importante es porque el código debe ser mantenido, ya sea por nosotros mismos o por otras personas. En mi opinión, a lo largo de nuestra vida como desarrolladores, pasamos muchas más horas leyendo código que escribiéndolo, por tanto, esto adquiere una importancia abismal.
+
+La comunidad de usuarios de Python ha adoptado una guía de estilo que facilita la lectura del código y la consistencia entre programas de distintos usuarios. Esta guía no es de seguimiento obligatorio, pero es altamente recomendable, hablamos del PEP8.
+
+Una de las ideas clave de Guido (creador del lenguaje Python) es que el código se suele leer mucho más de lo que se escribe. Las guías de estilo que proporciona este documento están dirigidas a mejorar la legibilidad del código y hacerlo consistente a lo largo del amplio espectro del código Python.
+
+La  guía de estilo nos ayuda a lograr consistencia, pero hay un detalle muy importante, y que tiene mucho que ver con este proyecto, hay que saber cuando ser inconsistente, algunas veces la guía de estilo simplemente no es aplicable. 
+Cuando tengas dudas, usa tu juicio. Mira ejemplos y decide qué te parece mejor.
+
+
+\section{JavaScript} 
+\label{sec:JavaScript}
+
+Javascript es un lenguaje orientado a objetos y basado en prototipos. Una de sus características más importantes es que se define como un lenguaje asíncrono, por lo que es muy útil para reaccionar a eventos por parte del usuario. Es un lenguaje interpretado, por lo que no es necesario compilar los programas para ejecutarlos. En otras palabras, los programas escritos con JavaScript se pueden probar directamente en cualquier navegador sin necesidad de procesos intermedios.
+
+Se utiliza principalmente en su forma del lado del cliente (client-side), implementado como parte de un navegador web permitiendo mejoras en la interfaz de usuario y páginas web dinámicas, una página web dinámica es aquella que incorpora efectos como texto que aparece y desaparece, animaciones, acciones que se activan al pulsar botones y ventanas con mensajes de aviso al usuario.
+
+Sin embargo, existe una forma de JavaScript del lado del servidor(Server-side JavaScript o SSJS), como veremos más adelante en esta memoria cuando profundicemos en Node.js.
+
+
 
 \section{Node JS} 
 \label{sec:node-js}
@@ -541,103 +593,6 @@ Para llevar esto a cabo, he econtrado \textit{Source Tree} es una interfaz visua
 \cleardoublepage
 \chapter{Diseño e implementación}
 
-\section{Instalaciones necesarias} 
-\label{sec:instalaciones-necesarias}
-
-Todo lo instalado se ha hecho sobre Windows 10.
-
-\subsection{NodeJS} 
-\label{sec:nodejs}
-
-Lo primero que necesitamos instalar en este caso es Node en nuestro ordenador. Al igual que muchas aplicaciones, Node tiene su propio MSI(Microsoft Installer), el cual podemos descargar desde la página principal de Node e instalar fácilmente en nuestro ordenador siguiendo todos los pasos.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.45]{img/installerNode}
-	\caption{Descarga de NodeJS}
-	\label{Figura 4.1}
-\end{figure}
-
-
-\subsection{NPM} 
-\label{sec:npm}
-
-Node Package Manager es un gestor de paquetes que nos ayuda a gestionar las dependencias de nuestro proyecto.\\
-Entre otras cosas nos permite instalar librerías o programas de terceros, eliminarlas o mantenerlas actualizadas.\\
-Generalmente se instala conjuntamente con Node.js de forma automática. \\
-
-NPM se apoya en un fichero llamado package.json para guardar el estado de las librerías. 
-Lanzamos el siguiente comando para realizar la creación del package.json e iniciar su configuración.
-
-\begin{verbatim}
-npm init 
-\end{verbatim}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.8]{img/npm-1}
-	\caption{Formato del package.json después de lanzar el comando npm init}
-	\label{Figura 4.2}
-\end{figure}
-
-Una vez tenemos el package.json, cada vez que queramos incluir una librería nueva a nuestro proyecto, debemos lanzar el siguiente comando:\\
-Por ejemplo, en este caso, si queremos incluir la librería de Express, explicada en el apartado 3, lanzaríamos el siguiente comando.
-
-\begin{verbatim}
-npm install express --save 
-\end{verbatim}
-
-A medida que vayamos necesitando incluir más librerías a nuestro proyecto, iremos ejecutando este comando con cada una de ellas.\\
-
-Cuando tengamos todas las librerías añadidas a nuestro proyecto, nuestro package.json tendrá un formato parecido a este:
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.8]{img/package}
-	\caption{Formato nuestro package.json}
-	\label{Figura 4.3}
-\end{figure}
-
-
-\section{Nuevo proyecto} 
-\label{sec:nuevo-proyecto}
-
-Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express, el framework de node.js con el que vamos a realizar nuestr proyecto.\\
-Dentro de Express vamos a utilizar la librería de Express Generator, la cual nos crea una estructura base para una aplicación.\\
-Para ello ejecutamos en el directorio en el que queramos crear nuestro proyecto los siguientes comandos:\\\\
-
-Primero instalamos express-generator de forma global, añadiéndole el -g
-\begin{verbatim}
-npm install express-generator -g
-\end{verbatim}
-
-Seguidamente lanzamos:
-
-\begin{verbatim}
-express <nombreApp> [--ejs]
-\end{verbatim}
-
-\begin{verbatim}
-cd <nombreApp>
-\end{verbatim}
-
-\begin{verbatim}
-npm install
-\end{verbatim}
-
-
-
-Con esto se nos creará un proyecto con la siguiente forma:\\ 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=1.1]{img/estructura-proyecto}
-	\caption{Estructura básica de un proyecto}
-	\label{Figura 4.4}
-\end{figure}
-
-Dentro de la carpeta routes meteremos el código javascript que ejecutaremos en la parte del servidor, y que tendrá toda la lógica de nuestro proceso.\\
-
 \section{Análisis del estudio realizado} 
 \label{sec:esquema-del-funcionamiento-del-estudio}
 
@@ -660,7 +615,7 @@ Lo primero que hacemos es analizar la serie de repositorios que tenemos preparad
 \end{itemize}
 
 \begin{itemize}
-	\item Grupo 2: ``Zona naranja``, la línea posee entre 70 y 79 caracteres de longitud. Este grupo de líneas es el que nos va a interesar, ya que tienen la posibilidad de haber estado en la ?Zona roja? (veremos en el siguiente grupo) en algún momento de su historia, y en la actualidad estar en la zona naranja, por un cambio de una variable..
+	\item Grupo 2: ``Zona naranja``, la línea posee entre 70 y 79 caracteres de longitud. Este grupo de líneas es el que nos va a interesar, ya que tienen la posibilidad de haber estado en la ?Zona roja? (veremos en el siguiente grupo) en algún momento de su historia, y en la actualidad estar en la zona naranja, por un cambio de una variable.
 \end{itemize}
 
 \begin{itemize}
@@ -964,8 +919,102 @@ las tecnologías utilizadas y demás.
 
 \cleardoublepage
 \appendix
-\chapter{Manual de usuario}
-\label{app:manual}
+\chapter{Instalaciones necesarias}
+\label{app:instalaciones-necesarias}
+
+Todo lo instalado se ha hecho sobre Windows 10.
+
+\subsection{NodeJS} 
+\label{sec:nodejs}
+
+Lo primero que necesitamos instalar en este caso es Node en nuestro ordenador. Al igual que muchas aplicaciones, Node tiene su propio MSI(Microsoft Installer), el cual podemos descargar desde la página principal de Node e instalar fácilmente en nuestro ordenador siguiendo todos los pasos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45]{img/installerNode}
+	\caption{Descarga de NodeJS}
+	\label{Figura 4.1}
+\end{figure}
+
+
+\subsection{NPM} 
+\label{sec:npm}
+
+Node Package Manager es un gestor de paquetes que nos ayuda a gestionar las dependencias de nuestro proyecto.\\
+Entre otras cosas nos permite instalar librerías o programas de terceros, eliminarlas o mantenerlas actualizadas.\\
+Generalmente se instala conjuntamente con Node.js de forma automática. \\
+
+NPM se apoya en un fichero llamado package.json para guardar el estado de las librerías. 
+Lanzamos el siguiente comando para realizar la creación del package.json e iniciar su configuración.
+
+\begin{verbatim}
+npm init 
+\end{verbatim}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/npm-1}
+	\caption{Formato del package.json después de lanzar el comando npm init}
+	\label{Figura 4.2}
+\end{figure}
+
+Una vez tenemos el package.json, cada vez que queramos incluir una librería nueva a nuestro proyecto, debemos lanzar el siguiente comando:\\
+Por ejemplo, en este caso, si queremos incluir la librería de Express, explicada en el apartado 3, lanzaríamos el siguiente comando.
+
+\begin{verbatim}
+npm install express --save 
+\end{verbatim}
+
+A medida que vayamos necesitando incluir más librerías a nuestro proyecto, iremos ejecutando este comando con cada una de ellas.\\
+
+Cuando tengamos todas las librerías añadidas a nuestro proyecto, nuestro package.json tendrá un formato parecido a este:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/package}
+	\caption{Formato nuestro package.json}
+	\label{Figura 4.3}
+\end{figure}
+
+
+\section{Nuevo proyecto} 
+\label{sec:nuevo-proyecto}
+
+Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express, el framework de node.js con el que vamos a realizar nuestr proyecto.\\
+Dentro de Express vamos a utilizar la librería de Express Generator, la cual nos crea una estructura base para una aplicación.\\
+Para ello ejecutamos en el directorio en el que queramos crear nuestro proyecto los siguientes comandos:\\\\
+
+Primero instalamos express-generator de forma global, añadiéndole el -g
+\begin{verbatim}
+npm install express-generator -g
+\end{verbatim}
+
+Seguidamente lanzamos:
+
+\begin{verbatim}
+express <nombreApp> [--ejs]
+\end{verbatim}
+
+\begin{verbatim}
+cd <nombreApp>
+\end{verbatim}
+
+\begin{verbatim}
+npm install
+\end{verbatim}
+
+
+
+Con esto se nos creará un proyecto con la siguiente forma:\\ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.1]{img/estructura-proyecto}
+	\caption{Estructura básica de un proyecto}
+	\label{Figura 4.4}
+\end{figure}
+
+Dentro de la carpeta routes meteremos el código javascript que ejecutaremos en la parte del servidor, y que tendrá toda la lógica de nuestro proceso.\\
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
