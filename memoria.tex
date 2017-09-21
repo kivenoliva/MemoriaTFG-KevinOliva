@@ -846,9 +846,56 @@ De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 \cleardoublepage
 \chapter{Resultados}
 
+Una vez terminado nuestro proyecto, tenemos ante nosotros la posibilidad de analizar un gran volumen de líneas de código en lenaguaje python.
 
+No tenemos ante nosotros una aplicación que permite ayudar al desarrollador al mismo tiempo que realiza su código, o que le permite revisarlo una vez terminado, o del estilo. Como podrían ser otros proyectos presentados aquí sobre el análisis de la calidad del código.
+Más bien, lo que tenemos aquí es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
 
+\ \\ % asi se hacen 1 saltos de linea.
+Cabe destacar que para realizar nuestro estudio hemos intentado recoger datos lo más cercanos posible al código que hay en el ``mundo real'' y que nos permitan sacar conclusiones reales. 
 
+Los datos que hemos utilizado para analizar son repositorios reales que hay en GitHub. Hemos buscado los repositorios más famosos y grandes de python en dicho portal para formar nuestra base de análisis.
+
+Pensando en la variedad, para obtener datos de un mayor número de desarrolladores o más bien, mayor número de ``tipo de desarrolladores'', hemos querido coger el mayor número de repositorios posibles, en vez de un solo repositorio muy grande, pensando que quizás en un mismo proyecto se puede trabajar bajo unas mismas pautas marcadas de ante mano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos trabajarían bajo las mismas normas nuestro estudio quedaría reducido a ese único proyecto.
+
+\ \\ \ \\ % asi se hacen 1 saltos de linea.
+La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiera, al saber que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
+
+\ \\ % asi se hacen 1 saltos de linea.
+El estudio más amplio que hemos realizado hasta el momento tiene los siguientes datos:
+
+\begin{itemize}
+	\item \textbf{Número total de líneas analizadas: }332.340
+\end{itemize}
+
+De estas líneas, y con la nomenclatura explicada en el apartado 4, hemos encontrado:
+
+\begin{itemize}
+	\item \textbf{Número de líneas verdes: }284.767
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{Número de líneas naranjas: }27.667
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{Número de líneas rojas: }19.906
+\end{itemize}
+
+Lo primero que nos llama la atención de estos datos es la cantidad de líneas que han salido de cada tipo, es decir, en un principio mi idea era que todo el código que hemos analizado, o casi todo, seguiría el PEP8, por tanto apenas encontraríamos ``línea rojas''.
+
+Analizando este dato, vemos que aunque el número de líneas (19.906) nos puede parecer grande en un principio, hay que pensar que tan sólo es el 5.98\%, el cual es un porcentaje bastante bajo. 
+Al no ser este el grupo de líneas que nos interesa no entramos en más profundidad en cuanto a datos, pero si pudimos ver en una rápida comprobación que la gran mayoría de líneas que se encuentran aquí son comentarios del propio desarrolador o tipo de líneas similares, que no deberíamos tomar como líneas de código real a la hora de sacar conclusiones.
+
+\ \\ % asi se hacen 1 saltos de linea.
+Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver que la inmensa mayoría están en las llamadas ``línea verdes'' un 85,68\%. 
+Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 8.32\%, lo cual es un porcentaje bajo respecto al total.
+
+Hasta ahora llegamos a sacar las siguientes conclusiones: La gran mayoría de las líneas están por debajo de, incluso, 70 caracteres, es decir, 10 menos del límite que marca el PEP8.
+Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo el PEP8, sin embargo, no las valoramos al ser en su inmensa mayoría comentarios.
+Por último tenemos otro pequeño porcentaje de líneas las cuales están en nuestro rango conflictivo, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
+
+DIVIDIR ESTO EN DOS SECCIONES, ANALISIS GENERAL Y ANALISIS DEL GRUPO CONFLICTIVO.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONCLUSIONES %
