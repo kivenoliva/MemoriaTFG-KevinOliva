@@ -822,7 +822,7 @@ Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos, 
 	
 	\item La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, la cual se ha acortado (posible caso buscado).
 	
-	\item Resto de palabras.
+	\item Resto de líneas.
 	
 \end{enumerate}
 
@@ -845,6 +845,9 @@ De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 
 \cleardoublepage
 \chapter{Resultados}
+
+\section{Resultados análisis general} 
+\label{sec:resultados-analisis-general}
 
 Una vez terminado nuestro proyecto, tenemos ante nosotros la posibilidad de analizar un gran volumen de líneas de código en lenaguaje python.
 
@@ -891,11 +894,77 @@ Al no ser este el grupo de líneas que nos interesa no entramos en más profundida
 Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver que la inmensa mayoría están en las llamadas ``línea verdes'' un 85,68\%. 
 Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 8.32\%, lo cual es un porcentaje bajo respecto al total.
 
-Hasta ahora llegamos a sacar las siguientes conclusiones: La gran mayoría de las líneas están por debajo de, incluso, 70 caracteres, es decir, 10 menos del límite que marca el PEP8.
+La gran mayoría de las líneas están por debajo de, incluso, 70 caracteres, es decir, 10 menos del límite que marca el PEP8.
 Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo el PEP8, sin embargo, no las valoramos al ser en su inmensa mayoría comentarios.
 Por último tenemos otro pequeño porcentaje de líneas las cuales están en nuestro rango conflictivo, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
-DIVIDIR ESTO EN DOS SECCIONES, ANALISIS GENERAL Y ANALISIS DEL GRUPO CONFLICTIVO.
+
+\section{Resultados análisis grupo conflictivo} 
+\label{sec:resultados-analisis-grupo-conflictivo}
+
+Como decimos, para poder llegar a una conclusión, debemos analizar con detalle el grupo que hemos considerado conflictivo.
+Después de pasar nuestro primer filtro, el cual explicamos en el punto 4, las primeras líneas que podemos considerar conflictivas según nuestros parámetros, son las siguientes:
+
+\begin{itemize}
+	\item \textbf{Número de líneas conflictivas: }523
+\end{itemize}
+
+Esto supone:
+
+\begin{itemize}
+	\item 0.15\% del total de líneas analizadas (332.340)
+\end{itemize}
+
+\begin{itemize}
+	\item 1.89\% del total de líneas en zona naranja (27.667)
+\end{itemize}
+
+Como podemos ver estos datos son unos porcentajes bajísimos, prácticamente ninguna línea se presta a que le pueda ocurrir el problema planteado.
+
+De hecho, todavía queda analizar esas 523 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo:
+
+
+\begin{itemize}
+	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }3
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas corta: }109
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }26
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{Resto de líneas: }385
+\end{itemize}
+
+
+Como ya vimos, tenemos dos grupos que pueden entrar dentro de nuestro estudio, que son: ``La línea se acorta exclusivamente por que una palabra pasa a ser mas corta'' y ``La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta''. Si agrupamos esos dos grupos y hablamos de porcentajes en función de las 523 líneas que ya hemos filtrado como conflictivas, obtenemos:
+
+
+\begin{itemize}
+	\item \textbf{Grupo conflictivo: }25.81\%
+\end{itemize}
+
+
+\begin{itemize}
+	\item \textbf{Grupo NO conflictivo: }74.19\%
+\end{itemize}
+
+Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menos en porcentaje en todos los puntos.
+
+Si comparamos este último filtrado con los datos iniciales, tenemos que \textbf{135 líneas de 332.340} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.040\%}.
+
+\ \\  % asi se hacen 1 saltos de linea
+Este dato es un porcentaje ínfimo y despreciable en cualquier caso.
+
+\ \\  % asi se hacen 1 saltos de linea
+Por último, cabe destacar que las 135 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONCLUSIONES %
@@ -909,53 +978,83 @@ DIVIDIR ESTO EN DOS SECCIONES, ANALISIS GENERAL Y ANALISIS DEL GRUPO CONFLICTIVO
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-Esta sección es la sección espejo de las dos primeras del capítulo de objetivos,
-donde se planteaba el objetivo general y se elaboraban los específicos.
+En el punto 2 de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, los cuales, después de desarrollar los apartados 3,4 y 5, podemos decidir y exponer si se han cumplido o no.
 
-Es aquí donde hay que debatir qué se ha conseguido y qué no. Cuando algo no
-se ha conseguido, se ha de justificar, en términos de qué problemas se han
-encontrado y qué medidas se han tomado para mitigar esos problemas.
+En primer lugar se planteaba como gran objetivo principal, el ser capaces de realizar un amplio estudio sobre código python para poder llegar a una conclusión sobre si los desarrolladores estaban realizando en líneas generales una determinada práctica.
+
+Para ello necesitábamos que nuestro estudio fuese lo suficientemente amplio como para que los parámetros utilizados fueran reales para poder dar una conclusión a nivel global, también necesitábamos que nuestros código tuviese los filtros suficientes, y la capacidad de acotar lo suficiente nuestro problema como para dar como resultado justo los datos que necesitamos.
+
+Creo que este objetivo se ha cumplido completamente, ya que si bien es cierto que el estudio podría ser más amplio, o que en los resultados se podría haber acotado incluso más, los datos obtenidos después de analizar los puntos 4 y 5 de la memoria son suficientes para llegar a una conclusión sobre el estudio propuesto. Dicha conclusión es que los desarrolladores de código python no están realizando la práctica que aquí se debate, ya que los resultados son claramente negativos.
+
+\ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
+En este punto también se plantea otro objetivo, quizás más secundario, pero sobre todo más abstracto. Planteamos la idea, sobre todo a nivel de estudiante, de plantearse que es realmente un código de calidad, y la correcta utilización de algunas reglas o libros de estilo como el PEP8 o similares.
+
+No se si se puede decir que esto sea un objetivo en sí, y si lo es, que se haya cumplido como tal. Creo que este proyecto en sí no se ha centrado en expandir esta idea, quizás si algún alumno lee esta memoria si que pueda obtenerla. Sin embargo puedo decir que este objetivo se ha cumplido con creces en mi persona. Antes de realizar este proyecto no me había planteado tanto la diferencia entre un código que funciona y un código que es bueno.
+
+En cuanto a los objetivos secundarios que comentamos también en el punto 2:
+
+
+
+\begin{itemize}
+	\item \textbf{Trabajar de una forma orientada al mundo profesional: } Este objetivo se ha cumplido con el uso de Github, centrándonos para el desarrollo de código GitFlow. También lo he notado en que es un trabajo en el que estás mucho más solo que en el resto de tu vida universitaria, esto te permite enfrentarte sólo de los problemas, organizarte y dividir tu proyecto de la forma que creas necesaria.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } Creo que este objetivo también se ha cumplido. En este proyecto he buscado en todo momento utilizar tecnologías que no he visto en mi vida universitaria o aplicarlas de distinta forma. Por eso en el caso de hacer un desarrollo en la parte del servidor en una posible futura aplicación cliente-servidor he utilizado node.js y javascript como lenguaje. En la universidad hemos visto javascript, pero únicamente en la parte del cliente, que es lo más común. En la universidad sólo habíamos trabajado en servidor con java y python con django.
+Para el tema de las bases de datos solo hemos visto SQL, trabajando sólo con bases de datos relaciones, por ese motivo decidí utilizar Mongo, para trabajar con una base de datos no relacional y poder captar las diferencias entre una y otra a la hora de utilizar realmente las dos.
+
+Otra cosa que me gustaría destacar aquí es la elección de la estructura final del proyecto, ojeando proyectos anteriores como hacemos todos antes de realizar el nuestro he visto que casi todos se plantean como una aplicación cliente-servidor con python en el servidor, javascript en el front, y sql como base de datos. He querido enfocar este proyecto como algo un poco distinto, y en mi caso, aunque es cierto que he querido crear una estructura cliente-servidor, para aprender más sobre el tema y utilizar frameworks nuevos como Express, el desarrollo se ha centrado más en un estudio en el que queremos obtener unos resultados. El proyecto no ha tenido parte front como tal.
+\end{itemize}
 
 
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
 
-Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado
-en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y
-comentar en un párrafo los conocimientos y habilidades puestos en práctica.
+Durante la realización de mi grado en la universidad Rey Juan Carlos me he formado en diferentes áreas y campos, muchos de ellos me han facilitado la realización de este proyecto. Algunas de ellas han sido:
+
+
 
 \begin{enumerate}
-  \item a
-  \item b
+  \item La programación: La base de este proyecto es la programación, y antes de entrar en la universidad, practicamente yo no sabía lo que era eso (cabe destacar que ahora que he terminado, me dedico y quiero dedicarme toda la vida a ello). Algunas asignaturas como Fundamentos de la programación, Programación de Sistemas de Telecomunicación o Sistemas Operativos me han enseñado lo que es la programación a bajo nivel.
+  \item Una vez que sabemos (o algo parecido) lo que es el paradigma de la programación a bajo nivel, hablando a más alto nivel, he aprendido todo lo relacionado con la programación en la parte del servidor en asignaturas como Servicios y Aplicaciones Telemáticas o Ingeniería de Sistemas de Telecomunicaciones.
+  \item El aprendizaje de GitHub ha sido para mi muy importante para este proyecto, (además puedo decir que sé a ciencia cierta que será algo que utilice constantemente en mi vida laboral) es otra de las cosas que puedo decir que no sabía antes de empezar la carrera, ni GitHub ni cualquier control de versiones, esto es algo que me enseñó la asignatura Ingeniería de Sistemas de la Información .
+  \item Por último, y para nada menos importante, esta el concepto general de ser capaz de afrontar cualquier problema sin miedo y ser capaz de resolverlo, en este caso concreto el enfrentarme a nuevas tecnologías que nunca he utilizado y no tener miedo a utilizarlas.
+  Esto es algo que no se aprende en ninguna asignatura en concreto pero que sin duda es algo con lo que salimos de nuestra vida estudiantil. 
 \end{enumerate}
 
 
 \section{Lecciones aprendidas}
 \label{sec:lecciones_aprendidas}
 
-Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
+Como ya he comentado en alguna parte de la memoria, uno de mis objetivos era buscar tecnologías y formas de trabajar que no hubiera visto en la universidad, esto al principio fue bastante costoso, sin embargo creo que en el futuro puede tener bastantes beneficios, algunas de las cosas para las que esto me ha servido han sido:
 
 \begin{enumerate}
-  \item a
-  \item b
+  \item Montar un servidor con NodeJS implementado en javascript utilizando un framework desconocido para mi como Express.
+  \item Utilización de una base de datos desconocida para mi como es MongoDB, y su conexión con el servidor.
+  \item Enfocar un proyecto de grandes dimensiones desde el principio, y planificarlo de forma correcta uno mismo, tanto temporal como estructuralmente.
+  \item El uso de Latex. Una tecnología con la que he escrito esta memoria, y que aunque al principio parece muy farragosa, enseguida ves la facilidad que te aporta para redactar documentos de este tipo.
 \end{enumerate}
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
+Todo software implementado tiene margen de mejora, en este proyecto tenemos varios puntos que merece la pena destacar.
 
-Ningún software se termina, así que aquí vienen ideas y funcionalidades
-que estaría bien tener implementadas en el futuro.
+\begin{enumerate}
+	\item En primer lugar, y como ya hemos comentado también en algún punto una mejora muy clara es montar la parte front y hacer de este estudio una aplicación en la que quizás se puedan mostrar los resultados de forma más atractiva al usuario, y quizás añadir alguna funcionalidad o añadir algún otro estudio para dar más contenido a la aplicación.
+	\item Mejorar la rapidez de la aplicación para poder analizar un mayor volumen de código. La base del análisis esta programada con varios hilos en paralelo para cada repositorio, esto hace que si el repositorio es demasiado grande y la capacidad del ordenador no es demasiado buena, se creen muchos hilos y pueda dar problemas de rendimiento.
+	\item Mejorar el filtrado para quedarnos con las líneas determinadas. En este proyecto creo que hemos conseguido afinar al bastante, pero aun así, siempre se cuela la llamada basura, y en los resultados finales hemos tenido que dejar un apartado de ``Resto de líneas''.
+	\item Mejorar el análisis de este mismo problema pensando otras opciones. Por ejemplo, hemos tenido en cuenta que el desarrollador cambia para ello una sola variable, o una sola variable y tabulaciones, pero ¿y si acorta dos variables en una misma línea?. Ese caso no lo tenemos contemplado.
+\end{enumerate}
 
-Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
 
 
 \section{Valoración personal}
 \label{sec:valoracion}
 
-Finalmente (y de manera opcional), hay gente que se anima a dar su punto de
-vista sobre el proyecto, lo que ha aprendido, lo que le gustaría haber aprendido,
-las tecnologías utilizadas y demás.
+Creo que en este punto es hora de echar la vista atrás y reflexionar. Echar la vista atrás al principio de este proyecto y ver como ha quedado finalmente, de lo cual estoy, sinceramente orgulloso. Los resultados obtenidos como proyecto en sí me parecen más bien normales, de lo que sí me siento orgulloso es de como lo he tenido que compaginar con un trabajo a jornada completa desde su inicio, y aunque he tenido que hacer parones no deseados en su elaboración y no he tardado lo que me gustaría, lo he conseguido. También me gusta que es un proyecto algo distinto, en mi opinión, a muchos de los últimos que he visto.
+Creo que también es hora de echar la vista más atrás y reflexionar sobre la vida universitaria, con este proyecto termino una etapa de mi vida, una etapa muy importante en la que he adquirido conocimientos, habilidades, he perdido miedos, me he hecho una persona adulta y todo ello me servirá para el resto de mi vida, tanto profesional como personal.
+Cierro esta etapa con mucha alegría y muy orgulloso, y empiezo una nueva con mucha ilusión.
 
 
 
