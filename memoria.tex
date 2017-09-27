@@ -867,34 +867,36 @@ La conclusión que nosotros queremos sacar en este proyecto sobre el problema exp
 El estudio más amplio que hemos realizado hasta el momento tiene los siguientes datos:
 
 \begin{itemize}
-	\item \textbf{Número total de líneas analizadas: }332.340
+	\item \textbf{Número total de líneas analizadas: }378.989
 \end{itemize}
 
 De estas líneas, y con la nomenclatura explicada en el apartado 4, hemos encontrado:
 
 \begin{itemize}
-	\item \textbf{Número de líneas verdes: }284.767
+	\item \textbf{Número de líneas verdes: }330.900
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{Número de líneas naranjas: }27.667
+	\item \textbf{Número de líneas naranjas: }25.094
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{Número de líneas rojas: }19.906
+	\item \textbf{Número de líneas rojas: }18.904
 \end{itemize}
 
 Lo primero que nos llama la atención de estos datos es la cantidad de líneas que han salido de cada tipo, es decir, en un principio mi idea era que todo el código que hemos analizado, o casi todo, seguiría el PEP8, por tanto apenas encontraríamos ``línea rojas''.
 
-Analizando este dato, vemos que aunque el número de líneas (19.906) nos puede parecer grande en un principio, hay que pensar que tan sólo es el 5.98\%, el cual es un porcentaje bastante bajo. 
-Al no ser este el grupo de líneas que nos interesa no entramos en más profundidad en cuanto a datos, pero si pudimos ver en una rápida comprobación que la gran mayoría de líneas que se encuentran aquí son comentarios del propio desarrolador o tipo de líneas similares, que no deberíamos tomar como líneas de código real a la hora de sacar conclusiones.
+Analizando este dato, vemos que aunque el número de líneas (18.904) nos puede parecer grande en un principio, hay que pensar que tan sólo es el 4.98\%, el cual es un porcentaje bastante bajo. 
+Al no ser este el grupo de líneas que nos interesa no hemos entrado demasiado en detalle, aunque si que hemos hecho una comprobación en nuestro código. Hemos querido comprobar cuantas de estas líneas pertenecen a comentarios (tanto comentarios in-line, como comentarios de varias líneas), para comprobar si este dato está falseado y realmente no encontramos líneas reales en la zona roja.
 
-\ \\ % asi se hacen 1 saltos de linea.
-Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver que la inmensa mayoría están en las llamadas ``línea verdes'' un 85,68\%. 
-Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 8.32\%, lo cual es un porcentaje bajo respecto al total.
+Este análisis nos ha dado como resultado 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas reales que están en nuestra zona roja, lo cual, llama me llamó la atención, aunque como hemos dicho antes, es un porcentaje muy bajo respecto al total.
+
+\ \\ \ \\% asi se hacen 1 saltos de linea.
+Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver que la inmensa mayoría están en las llamadas ``línea verdes'' un 87,31\%. 
+Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 7,71\%, lo cual es un porcentaje bajo respecto al total.
 
 La gran mayoría de las líneas están por debajo del umbral que marca el PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite.
-Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo el PEP8, sin embargo, no las valoramos al ser en su inmensa mayoría comentarios.
+Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo el PEP8.
 Por último tenemos otro pequeño porcentaje de líneas las cuales están en nuestro rango conflictivo, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
 
@@ -905,38 +907,38 @@ Como decimos, para poder llegar a una conclusión, debemos analizar con detalle e
 Después de pasar nuestro primer filtro, el cual explicamos en el punto 4, las primeras líneas que podemos considerar conflictivas según nuestros parámetros, son las siguientes:
 
 \begin{itemize}
-	\item \textbf{Número de líneas conflictivas: }523
+	\item \textbf{Número de líneas conflictivas: }326
 \end{itemize}
 
 Esto supone:
 
 \begin{itemize}
-	\item 0.15\% del total de líneas analizadas (332.340)
+	\item 0.08\% del total de líneas analizadas (378.989)
 \end{itemize}
 
 \begin{itemize}
-	\item 1.89\% del total de líneas en zona naranja (27.667)
+	\item 1.29\% del total de líneas en zona naranja (25.094)
 \end{itemize}
 
 Como podemos ver estos datos son unos porcentajes bajísimos, prácticamente ninguna línea se presta a que le pueda ocurrir el problema planteado.
 
-De hecho, todavía queda analizar esas 523 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo:
+De hecho, todavía queda analizar esas 326 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo:
 
 
 \begin{itemize}
-	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }3
+	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas corta: }109
+	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas corta: }106
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }26
+	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }3
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{Resto de líneas: }385
+	\item \textbf{Resto de líneas: }206
 \end{itemize}
 
 
@@ -944,23 +946,23 @@ Como ya vimos, tenemos dos grupos que pueden entrar dentro de nuestro estudio, q
 
 
 \begin{itemize}
-	\item \textbf{Grupo conflictivo: }25.81\%
+	\item \textbf{Grupo conflictivo: }33,43\%
 \end{itemize}
 
 
 \begin{itemize}
-	\item \textbf{Grupo NO conflictivo: }74.19\%
+	\item \textbf{Grupo NO conflictivo: }66,57\%
 \end{itemize}
 
-Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menos en porcentaje en todos los puntos.
+Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menor que el porcentaje que se descarta, en todos los puntos.
 
-Si comparamos este último filtrado con los datos iniciales, tenemos que \textbf{135 líneas de 332.340} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.040\%}.
+Si comparamos este último filtrado con los datos iniciales, tenemos que \textbf{109 líneas de 378.989} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.028\%}.
 
 \ \\  % asi se hacen 1 saltos de linea
 Este dato es un porcentaje ínfimo y despreciable en cualquier caso.
 
 \ \\  % asi se hacen 1 saltos de linea
-Por último, cabe destacar que las 135 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
+Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
 
 Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto somos capaces de llegar a una conclusión.
 
@@ -1169,12 +1171,15 @@ Dentro de la carpeta routes meteremos el código javascript que ejecutaremos en l
 % BIBLIOGRAFIA %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cleardoublepage
 
+\cleardoublepage
 % Las siguientes dos instrucciones es todo lo que necesitas
 % para incluir las citas en la memoria
-\bibliographystyle{abbrv}
-\bibliography{memoria}  % memoria.bib es el nombre del fichero que contiene
+\bibliographystyle{unsrt}
+\bibliography{memoria} 
+\newpage \thispagestyle{empty} \cleardoublepage
+\nocite{*}
+% mArgumento para crear un "pull request"emoria.bib es el nombre del fichero que contiene
 % las referencias bibliográficas. Abre ese fichero y mira el formato que tiene,
 % que se conoce como BibTeX. Hay muchos sitios que exportan referencias en
 % formato BibTeX. Prueba a buscar en http://scholar.google.com por referencias
