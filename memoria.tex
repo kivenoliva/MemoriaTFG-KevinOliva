@@ -919,10 +919,10 @@ De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 \cleardoublepage
 \chapter{Resultados}
 
-\section{Resultados análisis general}
+\section{Resultados del análisis general}
 \label{sec:resultados-analisis- general}
 
-Una vez terminado nuestro proyecto, tenemos ante nosotros la posibilidad de analizar un gran volumen de líneas de código en lenguaje Python.
+Una vez que hemos creado el software de apoyo, tenemos ante nosotros la posibilidad de analizar un gran volumen de líneas de código en lenguaje Python.
 
 No presentamos una aplicación que ayuda al desarrollador al mismo tiempo que está programando, o que le permite revisarlo una vez terminado, como podrían ser otros proyectos sobre el análisis de la calidad del código como pueden ser \texttt{pycodestyle}, \texttt{pyflakes} o \texttt{pylint}.
 Más bien, lo que ofrecemos es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
@@ -932,7 +932,7 @@ Cabe destacar que para realizar nuestro estudio hemos intentado recoger datos lo
 
 Los datos que hemos utilizado para analizar son repositorios reales que hay en GitHub. Hemos buscado los repositorios más famosos y grandes de Python en dicho portal para formar nuestra base de análisis.
 
-Pensando en la variedad, para obtener datos de un mayor número de desarrolladores o más bien, mayor número de ``tipo de desarrolladores'', hemos querido coger el mayor número de repositorios posibles, en vez de un solo repositorio muy grande, pensando que quizás en un mismo proyecto se puede trabajar bajo unas mismas pautas marcadas de ante mano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos trabajarían bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
+Pensando en la variedad, para obtener datos de un mayor número de desarrolladores, hemos querido coger el mayor número de repositorios posibles, en vez de un solo repositorio muy grande, pensando que quizás en un mismo proyecto se puede trabajar bajo unas mismas pautas marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos trabajarían bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
 
 \ \\ \ \\ % asi se hacen 1 saltos de linea.
 La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiere, ya que sabemos que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
@@ -958,40 +958,38 @@ De estas líneas, y con la nomenclatura explicada en el apartado 4, hemos encontr
 	\item \textbf{Número de líneas rojas: }18.904
 \end{itemize}
 
+FIXME: aquí vendría bien un diagrama de barras.
+
 Lo primero que nos llama la atención de estos datos es la cantidad de líneas que han salido de cada tipo, es decir, en un principio mi idea era que todo el código que hemos analizado, o casi todo, seguiría la guía de estilo PEP8, por tanto apenas encontraríamos ``línea roja''.
 
-Analizando este dato, vemos que aunque el número de líneas (18.904) nos puede parecer grande en un principio, hay que pensar que tan sólo es el 5,11\%, el cual es un porcentaje bastante bajo.
-Al no ser este el grupo de líneas que nos interesa no hemos entrado demasiado en detalle, aunque si que hemos hecho una comprobación en nuestro código. Hemos querido comprobar cuantas de estas líneas pertenecen a comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas), para comprobar si este dato está falseado y realmente no
-encontramos líneas reales en la zona roja.
+Analizando este dato, vemos que aunque el número de líneas (18.904) nos puede parecer grande en un principio, hay que pensar que tan sólo es el 5,11\%, que es un porcentaje bastante bajo.
+Al no ser este el grupo de líneas que nos interesa no hemos entrado demasiado en detalle, aunque sí que hemos hecho una comprobación en nuestro código. Hemos querido comprobar cuantas de estas líneas pertenecen a comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas), para comprobar si este dato está falseado y no son líneas \emph{reales} de código fuente en la zona roja.
 
-Este análisis nos ha dado como resultado 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas reales que están en nuestra zona roja, lo cual, llama me llamó la atención, aunque como hemos dicho antes, es un porcentaje muy bajo respecto al total.
+Este análisis nos ha dado como resultado 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas de código fuente que están en nuestra zona roja.
 
 \ \\ \ \\% asi se hacen 1 saltos de linea.
 Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver
 que la inmensa mayoría están en las llamadas ``línea verdes'' un 89,45\%.
-Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 5,43\%, lo cual es un porcentaje bajo respecto al total.
+Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 5,43\%.
 
 La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite.
 Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8.
-Por último tenemos otro pequeño porcentaje de líneas las cuales están en nuestro rango conflictivo, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
+Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
-\section{Resultados análisis grupo conflictivo}
-\label{sec:resultados-analisis- grupo-conflictivo}
+\section{Resultados del análisis del grupo conflictivo}
+\label{sec:resultados-analisis-grupo-conflictivo}
 
-Para poder llegar a una conclusión, debemos analizar con detalle el grupo que hemos considerado conflictivo.
-Después de pasar nuestro primer filtro, el cual explicamos en el punto 4, las primeras líneas que podemos considerar conflictivas según nuestros parámetros, son las siguientes:
+En esta sección analizamos con detalle el grupo que hemos considerado \emph{conflictivo}.
+Después de pasar nuestro primer filtro (FIXME: poner referencia), las primeras líneas que podemos considerar \emph{conflictivas} según nuestros parámetros, son las siguientes:
 
 \begin{itemize}
 	\item \textbf{Número de líneas conflictivas: }396
 \end{itemize}
 
-Esto supone:
+Esto nos da:
 
 \begin{itemize}
 	\item 0.10\% del total de líneas analizadas (369.911)
-\end{itemize}
-
-\begin{itemize}
 	\item 1.96\% del total de líneas en zona naranja (20.107)
 \end{itemize}
 
@@ -999,21 +997,14 @@ Como podemos ver estos datos son unos porcentajes bajísimos, prácticamente ningu
 
 De hecho, todavía queda analizar esas 396 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo:
 
+FIXME: contar cómo has hecho la clasificación. Si no recuerdo mal, lo hiciste manualmente.
+
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
-\end{itemize}
-
-\begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas
 		corta: }125
-\end{itemize}
-
-\begin{itemize}
 	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa
 		a ser más corta: }3
-\end{itemize}
-
-\begin{itemize}
 	\item \textbf{Resto de líneas: }267
 \end{itemize}
 
@@ -1022,13 +1013,10 @@ como conflictivas, obtenemos:
 
 \begin{itemize}
 	\item \textbf{Grupo conflictivo: }32,32\%
-\end{itemize}
-
-\begin{itemize}
 	\item \textbf{Grupo NO conflictivo: }67,68\%
 \end{itemize}
 
-Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menor que el porcentaje que se descarta, en todos los puntos.
+Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menor que el porcentaje que se descarta.
 
 Si comparamos este último filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.034\%}.
 
@@ -1037,6 +1025,8 @@ Este dato es un porcentaje ínfimo y despreciable en cualquier caso.
 
 \ \\ % asi se hacen 1 saltos de linea
 Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
+
+FIXME: pensaba que esto lo habías hecho. Podrías coger algunas de ellas, 10 o 20, y analizarlas.
 
 Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto somos capaces de llegar a una conclusión.
 
@@ -1055,9 +1045,9 @@ Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto s
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-En el punto 2 de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, los cuales, después de desarrollar los apartados 3,4 y 5, podemos decidir y exponer si se han cumplido o no.
+En el punto 2 de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, los cuales, después de desarrollar los apartados 3, 4 y 5, podemos decidir y exponer si se han cumplido o no. FIXME: reescribir con referencia, p.ej.~\ref{sec:consecucion-objetivos}. No son puntos, sino capítulos
 
-En primer lugar se planteaba como gran objetivo principal, el ser capaces de realizar un amplio estudio sobre código Python para poder llegar a una conclusión sobre si los desarrolladores estaban realizando en líneas generales una determinada práctica.
+En primer lugar, se planteaba como gran objetivo principal ser capaces de realizar un amplio estudio sobre código Python para poder llegar a una conclusión sobre si los desarrolladores estaban realizando en líneas generales una determinada práctica.
 
 Para ello necesitábamos que nuestro estudio fuese lo suficientemente amplio como para que los parámetros utilizados fueran reales para poder dar una conclusión a nivel global, también necesitábamos que nuestro código tuviese los filtros suficientes, y la capacidad de acotar lo suficiente nuestro problema como para dar justo el resultado que necesitamos.
 
@@ -1066,15 +1056,13 @@ Creo que este objetivo se ha cumplido completamente, ya que si bien es cierto qu
 \ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
 En este punto también se plantea otro objetivo, quizás más secundario, pero sobre todo más abstracto. Planteamos la idea, sobre todo a nivel de estudiante, de plantearse que es realmente un código de calidad, y la correcta utilización de algunas reglas o guía de estilo como PEP8 o similares.
 
-No se sí se puede decir que esto sea un objetivo en sí, y si lo es, que se haya cumplido como tal. Creo que este proyecto en sí no se ha centrado en expandir esta idea, quizás si algún alumno lee esta memoria si que pueda obtenerla. Sin embargo puedo decir que este objetivo se ha cumplido con creces en mi persona. Antes de realizar este proyecto no me había planteado tanto la diferencia entre un código que funciona y un código que es bueno.
+No se sí se puede decir que esto sea un objetivo en sí, y si lo es, que se haya cumplido como tal. Creo que este proyecto en sí no se ha centrado en expandir esta idea, quizás si algún alumno lee esta memoria sí que pueda obtenerla. Sin embargo puedo decir que este objetivo se ha cumplido con creces en mi persona. Antes de realizar este proyecto no me había planteado tanto la diferencia entre un código que funciona y un código que es bueno.
 
-En cuanto a los objetivos secundarios que comentamos también en el punto 2:
+En cuanto a los objetivos secundarios que comentamos también en el punto 2 (FIXME: referencia al capítulo 2):
 
 \begin{itemize}
 	\item \textbf{Trabajar de una forma orientada al mundo profesional: } Este objetivo se ha cumplido con el uso de GitHub, centrándonos para el desarrollo de código en GitFlow. También lo he notado en que es un trabajo en el que estás mucho más solo que en el resto de tu vida universitaria, esto te permite enfrentarte sólo a los problemas, organizarte y dividir tu proyecto de la forma que creas necesaria.
-\end{itemize}
 
-\begin{itemize}
 \item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } Creo que este objetivo también se ha cumplido. En este proyecto he buscado en todo momento utilizar tecnologías que no he visto en mi vida universitaria o aplicarlas de distinta forma. Por eso en el caso de hacer un desarrollo en la parte del servidor en una posible futura aplicación cliente-servidor he utilizado Node.js y JavaScript como lenguaje. En la universidad hemos visto JavaScript, pero únicamente en la parte del cliente, que es lo más común. En la universidad sólo habíamos trabajado en servidor con java y Python con Django.
 Para el tema de las bases de datos solo hemos visto SQL, trabajando sólo con bases de datos relaciones, por ese motivo decidí utilizar Mongo, para trabajar con una base de datos no relacional y poder captar las diferencias entre una y otra a la hora de utilizar realmente las dos.
 
@@ -1145,7 +1133,7 @@ Cierro esta etapa con mucha alegría y muy orgulloso, y empiezo una nueva con muc
 
 Todo lo instalado se ha hecho sobre Windows 10.
 
-\subsection{NodeJS} 
+\section{NodeJS} 
 \label{sec:nodejs}
 
 Lo primero que necesitamos instalar en este caso es Node en nuestro ordenador. Al igual que muchas aplicaciones, Node tiene su propio MSI(Microsoft Installer), el cual podemos descargar desde la página principal de Node e instalar fácilmente en nuestro ordenador siguiendo todos los pasos.
@@ -1158,7 +1146,7 @@ Lo primero que necesitamos instalar en este caso es Node en nuestro ordenador. A
 \end{figure}
 
 
-\subsection{NPM} 
+\section{NPM} 
 \label{sec:npm}
 
 Node Package Manager es un gestor de paquetes que nos ayuda a gestionar las dependencias de nuestro proyecto.\\
@@ -1198,7 +1186,7 @@ Cuando tengamos todas las librerías añadidas a nuestro proyecto, nuestro \texttt
 \end{figure}
 
 
-\section{Nuevo proyecto} 
+\section{Creación de un nuevo proyecto Express} 
 \label{sec:nuevo-proyecto}
 
 Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express, el framework de Node.js con el que vamos a realizar nuestro proyecto.\\
