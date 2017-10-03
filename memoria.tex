@@ -242,19 +242,17 @@ Imaginemos que el desarrollador ha escrito la siguiente línea de código:
 
 
 \begin{verbatim}
-'subtitles': self.extract-subtitles(video_id, video_subtitles_id, hl)
+'subtitles': self.extract-subtitles(video_id, video_subtitles_id)
 \end{verbatim}
 
 Si estamos leyendo código y pasamos por esta línea, se entiende bastante bien, sin necesidad de contar con más contexto. Se puede suponer fácilmente que estamos obteniendo los subtítulos, los cuales obtenemos de una función llamada ``extract-subtitles''. El nombre de la función parece que se ha elegido con sentido, al ser informativo. También sabemos que para ello le pasamos como parámetros el id del vídeo y el id de los subtítulos.
-
-FIXME: y qué es el hl?
 
 Si estamos analizando código y tenemos todo el contexto de nuestro programa, es posible que no haga falta ir a la documentación de la función ``extract-subtitles'', porque sabemos todo lo que nos hace falta con esta línea y podremos seguir leyendo el código que estamos analizando sin perder más tiempo.
 
 Esta línea en sí, no ocupa más que 69 caracteres. Pero, supongamos que por motivos de \emph{indentación}\footnote{Este término \emph{indentación} significa mover un bloque de texto hacia la derecha insertando espacios o tabuladores, para así separarlo del margen izquierdo y mejor distinguirlo del texto adyacente. Es utilizado para mejorar la legibilidad del código fuente por parte de los programadores.}, esta línea superara los 79 caracteres. El desarrollador ha intentado refactorizar su código pero no consigue quitar las \emph{indentaciones} y como le ha saltado el \emph{warning} de que no cumple la regla de estilo únicamente por la longitud de la línea, decide para no perder más tiempo, acortar el nombre de las variables, y forzando un caso extremo, también el de la función, de tal forma que la línea quedara con menos de 80 caracteres y cumplir con la regla. De forma que la línea resultante podría quedar de la siguiente forma:
 
 \begin{verbatim}
-'subtitles': self.e_s(v_id, v_s_id, hl) 
+'subtitles': self.e_s(v_id, v_s_id) 
 \end{verbatim}
 
 Como se puede ver, la línea ahora es más difícil de explicar de por sí. Si estamos analizando código bien puede pasar que seríamos incapaces de saber cómo estamos obteniendo la variable ``subtitles'', necesitaríamos irnos a la función para intentar entender qué hace, y qué parámetros le están llegando. La línea ahora cumple las reglas de estilo, pero es ilegible. Hemos ido a peor.
@@ -363,6 +361,7 @@ Aparte del objetivo explicado anteriormente, a la hora de realizar este proyecto
 
 \cleardoublepage
 \chapter{Estado del arte}
+\label{chap:estado-del-arte}
 
 En esta sección vamos a describir brevemente las tecnologías aplicadas en o relacionadas con este proyecto.
 
@@ -675,6 +674,7 @@ Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\r
 
 \cleardoublepage
 \chapter{Diseño e implementación}
+\label{sec:diseno}
 
 %\section{Análisis del estudio realizado} 
 %\label{sec:esquema-del-funcionamiento-del-estudio}
@@ -866,14 +866,32 @@ Lo que hacemos en este punto es ejecutar la instrucción \texttt{git log} (con la
 \section{Análisis del pasado de una línea} 
 \label{sec:analisis-del-pasado-de-una-linea}
 
-Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando exactamente en este punto, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).
-\ \\ \ \\% asi se hacen 1 saltos de linea
+Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando exactamente en este punto, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).\\
 
-Esta iteración se puede dar muchas veces y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea para comprobar que en ese cambio, la línea actual y la línea en el pasado son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
+Muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea, y para implementarlo en código, la única forma que tenemos es comprobar que en ese cambio, la línea actual y la línea en el pasado son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
 
-FIXME: aquí deberíamos poner un ejemplo para clarificar por qué hacemos esto.
+Vamos a intentar clarificar este último párrafo viendo esta cuestión con algún ejemplo. Lo que queremos decir es que la línea puede tener infinitos cambios en su pasado, de hecho puede ser que pase de la zona roja a la zona naranja, vuelva otra vez a la zona roja, pase a la verde, etc.
+Lo que queremos comprobar es que la línea actual es lo suficientemente parecida a la última versión de la línea en la que tenía más de 80 caracteres, para comprobar como ya explicamos en el párrafo anterior si el cambio se produce por nuestro motivo.
+Si vemos el siguiente ejemplo sacado de nuestro propio estudio:
 
-En este punto todavía no podemos saber si la línea ha sufrido ese cambio por nuestro motivo, sin embargo, lo que sí podemos filtrar es que la línea es suficientemente parecida a su pasado como para que pueda darse, y para ello vamos a utilizar la distancia de Levenshtein\footnote{\url{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}}.\\
+\begin{verbatim}
+settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT': None}
+settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
+\end{verbatim}
+
+La primera línea de código,es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
+Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
+
+Sin embargo, imaginemos que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual quedaría así.
+
+\begin{verbatim}
+[settings, data] = {'FEED_FORMAT': None}
+settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
+\end{verbatim}
+
+Esta línea no entraría seguramente en nuestros filtros, ya que como podemos ver la línea en la actualidad no es lo suficientemte parecida a su última versión en la zona roja. Esta línea ha pasado de estar en la zona roja a la zona naranja a lo largo de su historia, sin embargo, no entraría dentro de nuestros parámetros.
+
+Como decimos, en este punto todavía no podemos saber si la línea ha sufrido ese cambio por nuestro motivo, sin embargo, lo que sí podemos filtrar es que la línea es suficientemente parecida a su pasado como para que pueda darse, y para ello vamos a utilizar la distancia de Levenshtein\footnote{\url{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}}.\\
 
 Teníamos guardadas todo el pasado de la línea, lo que haremos es comparar cada estado de la línea en su pasado, con el estado actual, y basándonos en la respuesta que nos devuelva la distancia de Levenshtein tomar una decisión.
 Si la respuesta está dentro de nuestro umbral, nos quedaremos con ``ese pasado de la línea'', en caso contrario, lo desecharemos.\\
@@ -921,7 +939,7 @@ De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 
 \cleardoublepage
 \chapter{Resultados}
-
+\label{chap:resultados}
 \section{Resultados del análisis general}
 \label{sec:resultados-analisis- general}
 
@@ -983,7 +1001,7 @@ Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango
 \label{sec:resultados-analisis-grupo-conflictivo}
 
 En esta sección analizamos con detalle el grupo que hemos considerado \emph{conflictivo}.
-Después de pasar nuestro primer filtro (FIXME: poner referencia), las primeras líneas que podemos considerar \emph{conflictivas} según nuestros parámetros, son las siguientes:
+Después de pasar nuestro primer filtro (\ref{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}), las primeras líneas que podemos considerar \emph{conflictivas} según nuestros parámetros, son las siguientes:
 
 \begin{itemize}
 	\item \textbf{Número de líneas conflictivas: }396
@@ -1048,7 +1066,7 @@ Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto s
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-En el punto 2 de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, los cuales, después de desarrollar los apartados 3, 4 y 5, podemos decidir y exponer si se han cumplido o no. FIXME: reescribir con referencia, p.ej.~\ref{sec:consecucion-objetivos}. No son puntos, sino capítulos
+En el capítulo 2 (\ref{sec:objetivo-principal}) y (\ref{sec:objetivos-secundarios}) de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, los cuales, después de desarrollar los capítulos (\ref{chap:estado-del-arte}), (\ref{chap:resultados}) y (\ref{sec:diseno}), podemos decidir y exponer si se han cumplido o no.
 
 En primer lugar, se planteaba como gran objetivo principal ser capaces de realizar un amplio estudio sobre código Python para poder llegar a una conclusión sobre si los desarrolladores estaban realizando en líneas generales una determinada práctica.
 
@@ -1061,7 +1079,7 @@ En este punto también se plantea otro objetivo, quizás más secundario, pero sobr
 
 No se sí se puede decir que esto sea un objetivo en sí, y si lo es, que se haya cumplido como tal. Creo que este proyecto en sí no se ha centrado en expandir esta idea, quizás si algún alumno lee esta memoria sí que pueda obtenerla. Sin embargo puedo decir que este objetivo se ha cumplido con creces en mi persona. Antes de realizar este proyecto no me había planteado tanto la diferencia entre un código que funciona y un código que es bueno.
 
-En cuanto a los objetivos secundarios que comentamos también en el punto 2 (FIXME: referencia al capítulo 2):
+En cuanto a los objetivos secundarios que comentamos también en el capítulo 2 (\ref{sec:objetivos-secundarios}):
 
 \begin{itemize}
 	\item \textbf{Trabajar de una forma orientada al mundo profesional: } Este objetivo se ha cumplido con el uso de GitHub, centrándonos para el desarrollo de código en GitFlow. También lo he notado en que es un trabajo en el que estás mucho más solo que en el resto de tu vida universitaria, esto te permite enfrentarte sólo a los problemas, organizarte y dividir tu proyecto de la forma que creas necesaria.
