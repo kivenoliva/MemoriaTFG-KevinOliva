@@ -62,7 +62,8 @@
 \vspace{3cm}
 
 \Large
-LINELENGTH
+LINELENGTH: \\
+HERRAMIENTA Y ANÁLISIS DE CUMPLIMIENTO DE LA GUÍA DE ESTILO DE PYTHON EN RELACIÓN CON LA LONGITUD MÁXIMA DE LÍNEA
 
 \vspace{0.4cm}
 
@@ -73,10 +74,6 @@ Curso Académico 2017/2018
 
 Trabajo Fin de Grado
 
-\vspace{2.5cm}
-
-\LARGE
-LINELENGTH
 
 \vspace{4cm}
 
@@ -104,7 +101,8 @@ Tutor : Dr. Gregorio Robles
 
 \vspace{1cm}
 \large
-LINELENGTH
+LINELENGTH: Herramienta y Análisis de Cumplimiento de la Guía de Estilo de Python en Relación con la Longitud Máxima de Línea
+
 
 \vspace{1cm}
 \large
@@ -168,15 +166,13 @@ no sea para siempre, pero tu madre sí.
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Este proyecto pretende realizar un estudio sobre la mala interpretación, o el mal uso, de una de las reglas de estilo que contiene la guía de estilo de Python PEP8\footnote{\url{http://https://pythonwiki.wikispaces.com/pep8}}.
+Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas de estilo que contiene la guía de estilo de Python PEP8\footnote{\url{http://https://pythonwiki.wikispaces.com/pep8}}.
 La regla en cuestión es la siguiente: ``\textbf{Máxima longitud de las líneas:} Limita todas las líneas a un máximo de 79 caracteres''.
-Esta regla ha producido un pequeño debate en la comunidad Python, consistente en saber si se está dejando un peor código, un código más ilegible, debido a una mala práctica de los desarrolladores a la hora de ``forzar'' su código a que cumpla dicha regla de al guía de estilo Python PEP8.
-En el estudio realizado en este proyecto intentamos detectar las líneas de código que han sufrido esta mala práctica por parte de los desarrolladores, la cual consiste en cambiar el nombre de variables, dándoles un nuevo nombre más corto, para cuadrar la longitud de la línea a 79 caracteres. Esto produce que el nuevo nombre de la variable carezca de sentido alguno, lo que hace que el código sea totalmente ilegible. 
-\\
-Si esto ocurre nos encontramos ante un problema, ya que la regla de estilo de máxima longitud está produciendo un efecto contrario al que pretendía.
+Esta regla ha producido un pequeño debate en la comunidad Python, ya que seguirla al pie de la letra muchas veces tiene como resultado un peor código. Esto es debido a que los desarrolladores acortan, por ejemplo, el nombre de las variables hasta hacerlas ininteligibles.
 
+En el estudio realizado en este proyecto intentamos detectar las líneas de código que han sufrido esta mala práctica por parte de los desarrolladores. Así, intentamos identificar cuándo los desarrolladores han cambiado el nombre de variables, dándoles un nombre más corto, para cuadrar la longitud de la línea a 79 caracteres. Si esto ocurre nos encontramos ante un problema, ya que la regla de estilo de máxima longitud está produciendo un efecto contrario al que pretendía.
 
-Para realizar este estudio se ha implementado el lado del servidor con Node.js (utilizando Express) y lenguaje JavaScript. Con la idea de dejar preparado un servidor por si en un futuro se quiere envolver esta idea en una aplicación web, sólo tener que realizar la parte del cliente en JavaScript y conectarlo de forma fácil al servidor con Express.
+Para realizar este estudio se ha implementado el lado del servidor con Node.js (utilizando Express) y el lenguaje JavaScript.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -227,61 +223,62 @@ just before submitting.
 \label{sec:motivacion}
 
 Cuando terminas de estudiar y por fin empiezas a dedicarte  profesionalmente al desarrollo de software, rápidamente te das  cuenta de una cosa, 
-la cual nunca, o casi nunca, habías pensado en tu vida de estudiante: en tu trabajo pasas más tiempo leyendo código de otra(s) persona(s) que tu 
+que nunca, o casi nunca, habías pensado en tu vida de estudiante: en tu trabajo pasas más tiempo leyendo código de otra(s) persona(s) que tu 
 propio código. Esto hace que, repentinamente, empiecen a cobrar sentido las frases que tanto te repetían tus profesores sobre estructurar bien tu código o elegir nombres ``inteligentes'' para las variables o funciones.
 
-Coincidiendo con el inicio de mi etapa profesional, cuando verdaderamente me he dado cuenta de la importancia de escribir código de calidad, y no sólo ``algo que funcione'', mi tutor, Gregorio me habló de un vídeo en el que Raymond Hettinger expone buenas prácticas para escribir un código legible y de calidad\footnote{\url{https://www.youtube.com/watch?v=wf-BqAjZb8M}}. Se trata de una charla en una \emph{PyCon}, el congreso anual más grande sobre el lenguaje de programación en Python, sobre cómo programar de manera lo más legible y comprensible posible. En el vídeo se indica que se ha de seguir unas normas de estilo (que vienen recogidas en la guía de estilo de Python, conocida como PEP8\footnote{PEP es el acrónimo de Python Enhancement Proposal, un documento que se propone y debate en la comunidad Python antes de ser definitivamente aceptado como ``oficial'', que es cuando se le asigna finalmente un número.}, ya que eso facilita la tarea de comprensión del código. Sin embargo, en este vídeo se plantea, lo que para mí, es una interesante cuestión, la cual, podemos resumir en la siguiente pregunta: ¿Podemos dejar un peor código al realizar un cambio para cumplir una regla de la guía de estilo de Python PEP8? Dicha cuestión es la que vamos a estudiar en este TFG. Nos centraremos en un caso muy concreto, muy debatido en la comunidad de Python. La regla en cuestión es la siguiente:
+Coincidiendo con el inicio de mi etapa profesional, cuando verdaderamente me he dado cuenta de la importancia de escribir código de calidad, y no sólo ``algo que funcione'', mi tutor, Gregorio me habló de un vídeo con una charla en una \emph{PyCon}, el congreso anual más grande sobre el lenguaje Python, en el que Raymond Hettinger, uno de los desarrolladores principales de Python, expone buenas prácticas para escribir un código legible y de calidad\footnote{\url{https://www.youtube.com/watch?v=wf-BqAjZb8M}}. En el vídeo se indica que se ha de seguir unas normas de estilo (que vienen recogidas en la guía de estilo de Python, conocida como PEP8\footnote{PEP es el acrónimo de Python Enhancement Proposal, un documento que se propone y debate en la comunidad Python antes de ser definitivamente aceptado como ``oficial'', que es cuando se le asigna finalmente un número.}, ya que eso facilita la tarea de comprensión del código. Sin embargo, en el vídeo se plantea lo que para mí es una interesante cuestión: ¿Podemos dejar un código peor de lo que estaba al realizar un cambio para cumplir con una regla de la guía de estilo de Python?
+
+Dicha cuestión es la que vamos a estudiar en este TFG. Nos centraremos en un caso muy concreto, a la vez que muy debatido en la comunidad de Python. La regla en cuestión es la siguiente:
 
 ``Máxima longitud de las líneas: Limita todas las líneas a un máximo de 79 caracteres'' 
 
-El caso que nos preocupa es que el desarrollador se encuentre ante una línea de código mayor a 80 caracteres y decida cambiarla, acortando para ello el nombre de alguna variable para cuadrar el tamaño a 79 caracteres, de forma que el nombre de la variable, después del cambio, carezca de ningún sentido.
+El caso que nos preocupa es el siguiente: un desarrollador encuentra ante una línea de código mayor a los 79 caracteres, por lo que decide cambiarla, acortando para ello el nombre de alguna variable. Al hacerlo, el nombre de la variable carece de sentido, por lo que la legibilidad del código se resiente.
 
 Para entender mejor esto que explicamos, vamos a poner un pequeño ejemplo.
-Imaginemos que el desarrollador ha escrito esta línea de código
+Imaginemos que el desarrollador ha escrito la siguiente línea de código:
 
 
 \begin{verbatim}
-'subtitles': self.extract-subtitles(video_id, video_subtitles_id, hl) 
+'subtitles': self.extract-subtitles(video_id, video_subtitles_id, hl)
 \end{verbatim}
 
-Si estamos leyendo código y pasamos por esta línea, se entiende perfectamente, sin más contexto, sabemos que estamos obteniendo los subtítulos, los cuales obtenemos de una función llamada ``extract-subtitles'', sabemos esto porque el nombre de la función se ha elegido correctamente y es informativo. También sabemos que para ello le pasamos como parámetros el id del vídeo y el id de los subtítulos.
+Si estamos leyendo código y pasamos por esta línea, se entiende bastante bien, sin necesidad de contar con más contexto. Se puede suponer fácilmente que estamos obteniendo los subtítulos, los cuales obtenemos de una función llamada ``extract-subtitles''. El nombre de la función parece que se ha elegido con sentido, al ser informativo. También sabemos que para ello le pasamos como parámetros el id del vídeo y el id de los subtítulos.
 
-Si estamos analizando código y tenemos todo el contexto de nuestro programa, es posible que no haga falta ir a la función ``extract-subtitles'', porque sabemos todo lo que nos hace falta con esta línea y podremos seguir leyendo el código que estamos analizando sin perder más tiempo.
+FIXME: y qué es el hl?
 
-Supongamos que por motivos de indentación, esta línea supera los 80 caracteres. El desarrollador ha intentado refactorizar su código pero no consigue quitar las indentaciones y como le ha saltado que no cumple la regla de estilo únicamente por la longitud de la línea, decide para no perder más tiempo, acortar el nombre de las variables, y forzando un caso extremo, también el de la función, de tal forma que la línea quedaría con menos de 80 caracteres y así cumplir con la regla. De forma que la línea se queda de la siguiente forma:
+Si estamos analizando código y tenemos todo el contexto de nuestro programa, es posible que no haga falta ir a la documentación de la función ``extract-subtitles'', porque sabemos todo lo que nos hace falta con esta línea y podremos seguir leyendo el código que estamos analizando sin perder más tiempo.
+
+Esta línea en sí, no ocupa más que 69 caracteres. Pero, supongamos que por motivos de \emph{indentación}\footnote{Este término \emph{indentación} significa mover un bloque de texto hacia la derecha insertando espacios o tabuladores, para así separarlo del margen izquierdo y mejor distinguirlo del texto adyacente. Es utilizado para mejorar la legibilidad del código fuente por parte de los programadores.}, esta línea superara los 79 caracteres. El desarrollador ha intentado refactorizar su código pero no consigue quitar las \emph{indentaciones} y como le ha saltado el \emph{warning} de que no cumple la regla de estilo únicamente por la longitud de la línea, decide para no perder más tiempo, acortar el nombre de las variables, y forzando un caso extremo, también el de la función, de tal forma que la línea quedara con menos de 80 caracteres y cumplir con la regla. De forma que la línea resultante podría quedar de la siguiente forma:
 
 \begin{verbatim}
 'subtitles': self.e_s(v_id, v_s_id, hl) 
 \end{verbatim}
 
-En este caso, la línea en sí carece de sentido alguno, si estamos analizando código seríamos incapaces de saber como estamos obteniendo la variable ``subtitles'', necesitaríamos irnos a la función para intentar entender que hace, y que parámetros le están llegando. La línea ahora cumple las reglas de estilo, pero es ilegible.
+Como se puede ver, la línea ahora es más difícil de explicar de por sí. Si estamos analizando código bien puede pasar que seríamos incapaces de saber cómo estamos obteniendo la variable ``subtitles'', necesitaríamos irnos a la función para intentar entender qué hace, y qué parámetros le están llegando. La línea ahora cumple las reglas de estilo, pero es ilegible. Hemos ido a peor.
 
-Este hecho me parece digno de estudio, por varios motivos. Uno de ellos, indudablemente es el debate que puede crear en la comunidad Python sobre si un código que cumple la guía de estilo PEP8 puede ser de peor calidad que uno que no lo cumpla, debido a esta cuestión.
+Este hecho me parece digno de estudio, por varios motivos. Uno de ellos, indudablemente, está relacionado con el debate que puede crear en la comunidad Python, sobre si un código que cumple la guía de estilo PEP8 puede ser de peor calidad que uno que no lo cumpla.
 
 Pero siendo sincero, el motivo por el cual decidí realizar el proyecto sobre este tema fue que, con mi experiencia como estudiante, no pude evitar imaginar el siguiente pensamiento por parte de cualquiera de nosotros: ``He terminado mi práctica de Python, voy a pasar a mi código un filtro que me he descargado de la guía de estilo PEP8 para entregar un buen código, lo más importante es que pase este filtro. Por tanto, si me salta algún error haré cualquier cambio rápido y sin pensar mucho sólo para forzar a que el filtro pase correctamente.''
 
-Creo firmemente que como estudiantes no somos capaces de asimilar la importancia de escribir un código de calidad, y de las horas y horas que ahorraremos a nuestros compañeros de trabajo, o a nosotros mismo cuando retomamos código propio de hace tiempo. Son cosas simples, pero es importante que desde el principio de nuestra formación se cojan estas buenas costumbres.
+Creo firmemente que, como estudiantes, no somos capaces de asimilar la importancia de escribir un código de calidad, y de las horas y horas que ahorraremos a nuestros compañeros de trabajo, o a nosotros mismo cuando retomamos código propio de hace tiempo. Son cosas simples, pero es importante que desde el principio de nuestra formación se adopten estas buenas costumbres.
 
 \section{La Guía de Estilo PEP8}
 \label{sec:la-guia-de-estilo-PEP8}
 
-Desde que empezamos a escribir código y conforme progresamos, adquirimos ciertas pautas que definen la manera en que expresamos nuestras ideas en el lenguaje que manejemos, ya sea JavaScript, Python, HTML u otro. Esto define nuestro estilo, y toma en cuenta la manera en la que \emph{indentamos}\footnote{Este término significa mover un bloque de texto hacia la derecha insertando espacios o tabuladores, para así separarlo del margen izquierdo y mejor distinguirlo del texto adyacente. Es utilizado para mejorar la legibilidad del código fuente por parte de los programadores.}, definimos nombres de variables y funciones, el proceso de realizar o no comentarios de código entre otros.
+Desde que empezamos a escribir código y conforme progresamos, adquirimos ciertas pautas que definen la manera en que expresamos nuestras ideas en el lenguaje que manejemos, ya sea JavaScript, Python, C u otro. Esto define nuestro estilo, y tiene en cuenta la manera en la que \emph{indentamos}, definimos nombres de variables y funciones, o el proceso de realizar o no comentarios de código, entre otros.
 
 ¿Por qué es tan importante seguir un estilo cuando estamos programando?
-Por muchos motivos, pero el principal y más importante es porque el código debe ser mantenido, ya sea por nosotros mismos o por otras personas. En mi opinión, a lo largo de nuestra vida como desarrolladores, pasamos muchas más horas leyendo código que escribiéndolo, por tanto, esto adquiere una importancia abismal.
+El principal y más importante es porque el código debe ser mantenido, ya sea por nosotros mismos o por otras personas. Y a lo largo de nuestra vida como desarrolladores, pasamos muchas más horas leyendo código que escribiéndolo.
 \ \\ % asi se hacen 1 saltos de linea
 
-Para esto nacieron las guías de estilo de código. El principal objetivo de una guía de estilo es que nuestro código sea más fácil de leer, compartir y analizar. Facilita la consistencia entre programas de distintos usuarios y hace que nuestro código sea mucho más mantenible.
+Para esto nacieron las guías de estilo de código. El principal objetivo de una guía de estilo es que nuestro código sea más fácil de leer, compartir y analizar. Facilita la consistencia entre el código fuente de distintos usuarios y hace que nuestro código sea mucho más mantenible.
 
-Las guías de estilo es algo que está generalizado en los distintos lenguajes de programación, por ejemplo para PHP tenemos  PSR-2\footnote{http://www.php-fig.org/psr/psr-2/}, en Javascript una de las más notables es Crockford\footnote{http://javascript.crockford.com/code.html}. No hay una sola guía de estilo para cada lenguaje, podemos encontrar varias de distintas fuentes, algo muy común es consultar las guías que ha creado google, por ejemplo para Java podemos encontrar la siguiente\footnote{https://google.github.io/styleguide/javaguide.html}.
+Las guías de estilo son algo que está generalizado en los distintos lenguajes de programación, por ejemplo para PHP tenemos  PSR-2\footnote{http://www.php-fig.org/psr/psr-2/}, y en JavaScript una de las más notables es Crockford\footnote{http://javascript.crockford.com/code.html}. No hay una sola guía de estilo para cada lenguaje, podemos encontrar varias de distintas fuentes (es muy común que los proyectos de software libre tengan una propia). Algo muy común es consultar las guías que ha creado Google. Por ejemplo, para Java podemos encontrar la siguiente\footnote{https://google.github.io/styleguide/javaguide.html}.
 \ \\ % asi se hacen 1 saltos de linea
 
-En esta memoria nos centraremos en la guía de estilo para python PEP8. 
-Una de las PEP, que hemos explicado antes, que posee Python es PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan.
+En esta memoria nos centraremos en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la cual se basa este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
 
-Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de python a la hora de escribir código python para la librería estandar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la cual se basa este proyecto, como ya hemos dicho con anterioridad en esta memoria:``Limitar los tamaños de línea a 79 caracteres como máximo''.
-
-Para aplicar las reglas de calidad que marca PEP8 tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 hablaremos en profundidad sobre una de ellas, esta herramienta es ``pycodestyle''. Antes conocida como ``pep8''.
+Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 hablaremos en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
 
 
 
@@ -290,12 +287,12 @@ Para aplicar las reglas de calidad que marca PEP8 tenemos a nuestra disposición 
 Creemos conveniente explicar muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
 
 \begin{enumerate}
-	\item \textbf{Introducción: }En este capítulo se intenta explicar el contexto que envuelve este proyecto, así como las razones por las que se elige el tema a tratar.
+	\item \textbf{Introducción: }En este capítulo se explica el contexto de este proyecto, así como las razones por las que se elige el tema a tratar.
 	\item \textbf{Objetivos: }En este capítulo se detalla cada uno de los objetivos que se han planteado desde el inicio del proyecto.
 	\item \textbf{Estado del arte: }Aquí presentamos las tecnologías con las que se ha implementado el proyecto, además de algún concepto para entender mejor la estructura del mismo.
 	\item \textbf{Diseño e implementación: }Este capítulo profundiza e intenta explicar en detalle el desarrollo del proyecto.
 	\item \textbf{Resultados: }Aquí se presenta, a modo de resumen, como ha quedado finalmente el proyecto.
-	\item \textbf{Conclusiones: }Es el capítulo final, en él se intenta evaluar de forma general el proyecto, haciendo hincapié en los conceptos aprendidos en su elaboración.
+	\item \textbf{Conclusiones: }Es el capítulo final; en él se intenta evaluar de forma general el proyecto, haciendo hincapié en los conceptos aprendidos en su elaboración.
 \end{enumerate}
 
 Finalmente se expondrá la bibliografía, que se ha consultado para la elaboración del trabajo y de la memoria.
@@ -314,7 +311,11 @@ Finalmente se expondrá la bibliografía, que se ha consultado para la elaboración
 
 Este proyecto tiene como objetivo principal:
 
-``Analizar una serie de repositorios reales de GitHub con bastante código Python, para obtener unos resultados y en función de ellos, decidir si el hábito explicado en el apartado anterior es un problema real en los desarrolladores de Python''.
+\vspace{0.2cm}
+\begin{center}
+\fbox{\parbox{0.85\textwidth}{``Analizar una serie de repositorios reales de GitHub con bastante código Python, para obtener unos resultados y en función de ellos, decidir si el hábito explicado en el apartado anterior es un problema real en los desarrolladores de Python''.}}
+\end{center}
+\vspace{0.2cm}
 
 El proyecto consistirá en un programa software que analizará código fuente de un programa en el lenguaje de programación Python y detectará aquellas líneas que han sido acortadas cambiando el nombre de una variable por un nombre más corto, y por tanto, menos entendible, para conseguir pasar la regla de la guía de estilo PEP8 de la máxima longitud de línea.
 
@@ -324,12 +325,12 @@ Por una parte se pretende hacer un estudio bastante amplio, con un volumen de re
 
 Por otra parte, también se pretende alcanzar otro objetivo más a largo alcance, el cual consiste en intentar interiorizar una cuestión, sobre todo a nivel de estudiantes. Dicha cuestión es la importancia de saber realmente lo que es un buen código, sobre todo, no caer en el típico error cuando eres estudiante de pensar que un buen código es algo que funciona.
 
-Según está orientado en la actualidad el aprendizaje de la programación a nivel de universidad, es muy difícil darse cuenta que el código que produces no es algo que vas a escribir una vez, vas a probar que funciona, vas a entregar y no vas a volver a ver en tu vida. Este ciclo es lo que suele pasar con el código que creaas como estudiante. Esto unido a ciertas circunstancias, como agobios y prisas por los plazos de entrega, o que en algunas ocasiones sólo se valore el resultado del programa, hace que generalmente se creen malos hábitos por parte de los alumnos a la hora de programar.
+Según está orientado en la actualidad el aprendizaje de la programación a nivel de universidad, es muy difícil darse cuenta que el código que produces no es algo que vas a escribir una vez, vas a probar que funciona, vas a entregar y no vas a volver a ver en tu vida. Este ciclo es lo que suele pasar con el código que creas como estudiante. Esto unido a ciertas circunstancias, como agobios y prisas por los plazos de entrega, o que en algunas ocasiones sólo se valore el resultado del programa, hace que generalmente se creen malos hábitos por parte de los alumnos a la hora de programar.
 
 
 El proyecto intenta llegar a este objetivo creando un ``debate'' alrededor del caso concreto que se estudia. ¿Es mejor el código que no cumple la guía de estilo PEP8 antes de realizar el cambio, pero que tiene un buen nombre de variable?, ¿o es mejor el código después del cambio que cumple la guía de estilo PEP8 pero que ha dejado la variable con un nombre sin sentido?
 
-Quizás la respuesta correcta sea decir que se debe cambiar la línea de código para que cumpla la regla de máxima longitud de línea pero realizando otro cambio, y si no es posible cambiar esa sola línea, darle una vuelta al código para \emph{refactorizarlo} y hacer que todas las líneas cumplan de esta forma las reglas de calidad.
+Quizás la respuesta correcta sea decir que se debe cambiar la línea de código para que cumpla la regla de máxima longitud de línea pero realizando otro cambio, y si no es posible cambiar esa línea, darle una vuelta al código para \emph{refactorizarlo} y hacer que todas las líneas cumplan de esta forma las reglas de calidad.
 
 
 Lo que se intenta decir con esto es que cuando un estudiante ya ha adquirido ciertos conocimientos técnicos sobre la programación y sobre la generación de código de calidad, debe darse cuenta que tenemos en nuestra mano una serie de reglas de calidad como la guía de estilo PEP8 o similares, las cuales se deben utilizar, pero no de cualquier forma. Es decir, hay que pararse a pensar un minuto y ser coherente e inteligente a la hora de aplicarlas en nuestro desarrollo, y no dejar un código peor que el que teníamos antes por intentar forzar a que pasen estas reglas de cualquier manera.
@@ -343,11 +344,11 @@ Aparte del objetivo explicado anteriormente, a la hora de realizar este proyecto
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no controlo en profundidad, ya que no se han enseñado o se ha pasado de refilón sobre ellas en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos sobre este mundo y aprovechar esto para conseguir nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
+	\item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no conozco en profundidad, ya que no se han enseñado de refilón en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos y aprovechar esto para conocer nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
 	\begin{enumerate}
-		\item En cuanto a la aplicación de tecnologías he usado para hacer la parte del servidor JavaScript, utilizando para ello Node.js con Express (entraremos más en detalle en siguientes capítulos), mi elección se debe a que en la universidad se ha enseñado a montar servidores con java, y sobre todo con Python y Django. De esta forma quería dominar otros casos para tener más donde comparar.
-		Para la base de datos he utilizado MongoDB, en lugar de SQL por el mismo motivo, en la universidad hemos utilizado bases de datos relacionales, y quería utilizar una no relacional, para entender mejor los pros y contras de cada una de ellas, y tener más conocimientos sobre cual elegir en mis futuros desarrollos. 
-		\item Enfocar una idea de trabajo más orientada a la investigación. Normalmente en nuestra vida como estudiante partimos siempre de un enunciado redactado al empezar a desarrollar, en el proyecto tenemos la oportunidad de investigar sobre una idea para realizar luego nuestro desarrollo.
+		\item En cuanto a la aplicación de tecnologías, he usado un servidor JavaScript, Node.js con Express. Mi elección se debe a que en la universidad se ha enseñado a montar servidores en lenguajes como Java, y sobre todo, con Python y Django.
+		Para la base de datos he utilizado MongoDB, en lugar de SQL por el mismo motivo. En la universidad hemos utilizado bases de datos relacionales, y quería utilizar una no relacional, para entender mejor los \emph{pros} y \emph{contras} de cada una de ellas, y tener más conocimientos sobre cuál elegir en mis futuros desarrollos. 
+		\item Enfocar una idea de trabajo más orientada a la investigación. Normalmente en nuestra vida como estudiante partimos siempre de un enunciado redactado al empezar a desarrollar. En el proyecto tenemos la oportunidad de investigar sobre una idea para realizar luego nuestro desarrollo.
 	\end{enumerate}
 \end{itemize}
 
@@ -360,65 +361,56 @@ Aparte del objetivo explicado anteriormente, a la hora de realizar este proyecto
 \cleardoublepage
 \chapter{Estado del arte}
 
-En esta sección vamos a describir brevemente las tecnologías aplicadas en este proyecto.
+En esta sección vamos a describir brevemente las tecnologías aplicadas en o relacionadas con este proyecto.
 
 \section{App Cliente-Servidor} 
 \label{sec:app-cliente-servidor}
 
-La arquitectura cliente-servidor es una de las más extendidas en la actualidad. Dicha estructura es un modelo de aplicación distribuida en el que las tareas se reparten entre los proveedores de recursos o servicios, llamados \textbf{servidores}, y los demandantes, llamados \textbf{clientes}. Un cliente realiza peticiones a otro programa, el servidor, quien le da respuesta: 
+La arquitectura \emph{cliente-servidor} es una de las más extendidas en la actualidad. Dicha estructura es un modelo de aplicación distribuida en el que las tareas se reparten entre los proveedores de recursos o servicios, llamados \textbf{servidores}, y los demandantes, llamados \textbf{clientes} (véase figura~\ref{fig:cliente-servidor}). Un cliente realiza peticiones a otro programa, y es el servidor quien atiende su petición y le da respuesta: 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.66]{img/esquemaClienteServidor}
 	\caption{Esquema básico de la estructura cliente-servidor}
-	\label{Figura 3.1}
+	\label{fig:cliente-servidor}
 \end{figure}
 
-Esta arquitectura presenta una clara separación de las responsabilidades lo que facilita y clarifica el diseño del sistema. Es una arquitectura claramente centralizada, ya que toda la información reside en el servidor, y el cliente es el que realiza peticiones para obtener dicha información. Esto provoca que el servidor posea una lógica más compleja, es capaz de manejar de forma distinta las peticiones dependiendo de quien las realice. Esto también se hace por motivos de seguridad, ya que la parte del cliente es mucho más sensible a ataques.
+Esta arquitectura presenta una clara separación de las responsabilidades, lo que facilita y clarifica el diseño del sistema. Es una arquitectura claramente centralizada, ya que toda la información reside en el servidor, y el cliente es el que realiza peticiones para obtener dicha información. Esto provoca que el servidor posea una lógica más compleja, y que potencialmente sea capaz de manejar de forma distinta las peticiones dependiendo de quién las realice.
 
-En nuestro proyecto no hemos realizado como tal una \emph{app} de cliente-servidor, ya que ha ido más enfocado a la investigación y a la obtención de un resultado. Sin embargo, el código realizado para obtener dichos resultados se ha dejado organizado en la parte del servidor de una aplicación web, para obtenerlo con distintas peticiones. Por si en un futuro se quiere mejorar este proyecto, y se decide hacer una aplicación web con el contenido investigado aquí, solo sería necesario realizar la parte del cliente.
+En nuestro proyecto no hemos realizado como tal una \emph{app} de cliente-servidor, ya que ha ido más enfocado a la investigación y a la obtención de un resultado. Sin embargo, el código realizado para obtener dichos resultados se ha dejado organizado en la parte del servidor de una aplicación web, para obtenerlo con distintas peticiones. Si en un futuro se quiere mejorar este proyecto, y se decide hacer una aplicación web con el contenido investigado aquí, solo sería necesario realizar la parte del cliente.
 
 \section{Python} 
 \label{sec:python}
 
-\begin{figure}[H] 
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.3]{img/python-logo}
 	\caption{Python}
-	\label{Figura 3.2}
+	\label{fig:python}
 \end{figure}
 
 
-Python es un lenguaje de programación de muy alto nivel, multiplataforma y multiparadigma, el cual, fue creado a finales de los años 80 por el holandés  Guido van Rossum, Python fue creado como sucesor del lenguaje de programación ABC.\\
-¿Qué quiere decir que es un lenguaje multiplataforma?, quiere decir que es un lenguaje interpretado, y por tanto no necesita compilación. Esto tiene como ventaja, por ejemplo, que da igual el sistema operativo donde se ejecute, o que aporta mayor rapidez al desarrollarlo.
+Python es un lenguaje de programación de muy alto nivel, multiplataforma y multiparadigma, el cual, fue creado a finales de los años 80 por el holandés  Guido van Rossum, Python fue creado como sucesor del lenguaje de programación ABC. El logo de Python se puede ver en la figura~\ref{fig:python}.\\
+¿Qué quiere decir que es un lenguaje multiplataforma? Quiere decir que es un lenguaje interpretado, y por tanto no necesita compilación. Esto tiene como ventaja, por ejemplo, que da igual el sistema operativo donde se ejecute, o que aporta mayor rapidez al desarrollarlo.
 
-¿Qué quiere decir que es multiparadigma?, esto quiere decir que no obliga al desarrollador a adaptarse a un estilo de programación concreto, Python soporta programación funcional, programación imperativa y programación orientada a objetos.\\
+¿Qué quiere decir que es multiparadigma? Esto quiere decir que no obliga al desarrollador a adaptarse a un estilo de programación concreto, Python soporta programación funcional, programación imperativa y programación orientada a objetos.\\
 Python se caracteriza por tener una sintaxis limpia y ordenada, haciendo mucho hincapié en la legibilidad del código, a pesar de ello, tiene funcionalidades muy avanzadas, propias de lenguajes como C o C++.\\
 Python es un lenguaje que ha adquirido gran popularidad en los últimos años, algunas de las razones por las que esto ha sucedido son las siguientes:
 
 \ \\  % asi se hacen 1 saltos de linea
 \begin{itemize}
 	\item Sencillez y velocidad a la hora de crear desarrollos completos, normalmente un programa en Python tendrá muchas menos líneas que sus equivalente en otros lenguajes (java, C, etc).
-\end{itemize}
-
-\begin{itemize}
 	\item Ofrece una gran cantidad de librerías, con funciones incorporadas, funcionalidades o tipos de datos, que favorecen la realización de muchas tareas sin necesidad de empezar completamente de 0.
-\end{itemize}
-
-\begin{itemize}
 	\item Se puede obtener de forma gratuita y utilizarse con fines comerciales.
 \end{itemize}
 
 
-\section{Pycodestyle (antes \texttt{pep8})} 
+\section{\texttt{pycodestyle} (antes \texttt{pep8})} 
 \label{sec:pycodestyle}
 
-Como ya hemos dicho anteriormente cuando hablábamos de PEP8, existen herramientas con las que podemos comprobar de forma automática si nuestro código cumple las reglas que dicta el PEP8.
+Como ya hemos dicho anteriormente cuando hablábamos de PEP8, existen herramientas con las que podemos comprobar de forma automática si nuestro código cumple las reglas que dicta el PEP8. quí vamos a hablar un poco más en profundidad de una de ellas: ``\texttt{pycodestyle}'', antes conocida como ``PEP8''. Se cambió de nombre para evitar confusiones con la propia guía de estilo.
 
-Aquí vamos a hablar un poco más en profundidad de una de ellas, la cual se llama ``pycodestyle'', este herramienta antes era conocida como ``PEP8'', pero se cambió de nombre para evitar confusiones con la propia guía de estilo.
-
-Este herramienta nos permite, como decimos, pasar un análisis una vez nuestro código está terminado, para ver si cumple calidad. Podemos encontrar información sobre esta herramienta en github\footnote{\url{https://github.com/PyCQA/pycodestyle}}. Pero
-básicamente, la forma de utilizarla y lo que nos aporta es lo siguiente:
+Este herramienta nos permite pasar un análisis una vez nuestro código está terminado, para ver si cumple calidad. Podemos encontrar información sobre esta herramienta en GitHub\footnote{\url{https://github.com/PyCQA/pycodestyle}}. Básicamente, la forma de utilizarla y lo que nos aporta es lo siguiente:
 
 Podemos instalar, actualizar o desinstalar la herramienta de forma fácil con los siguientes comandos:
 
@@ -428,12 +420,12 @@ $ pip install -- upgrade pycodestyle
 $ pip uninstall pycodestyle
 \end{verbatim}
 
-Una vez instalado podemos revisar nuestro código de forma sencilla, por ejemplo, con el siguiente comando, analizamos nuestro fuente: ``optparse.py'':
+Una vez instalado podemos revisar nuestro código de forma sencilla, por ejemplo, con el siguiente comando, analizamos el código fuente del fichero ``optparse.py'':
 \begin{verbatim}
 $ pycodestyle -- first optparse.py
 \end{verbatim}
 
-La salida que pycodestyle nos proporciona sería la siguiente:
+La salida que \texttt{pycodestyle} nos proporciona sería la siguiente:
 \begin{verbatim}
 optparse.py:69:11: E401 multiple imports on one line
 optparse.py:77:1: E302 expected 2 blank lines, found 1
@@ -446,82 +438,69 @@ optparse.py:472:29: E221 multiple spaces before operator
 optparse.py:544:21: W601 .has_key() is deprecated, use &#39;in&#39;
 \end{verbatim}
 
-Como vemos, pycodestyle nos muetra de manera clara la línea y el sitio justo donde estamos cometiendo el error de calidad y por el cual no cumplimos la norma correspondiente de la guía PEP8.
+Como vemos, \texttt{pycodestyle} nos muestra de manera clara la línea y el sitio justo donde estamos cometiendo el error de calidad y por el cual no cumplimos la norma correspondiente de la guía PEP8.
 
-Podemos ver por ejemplo como en la siguiente línea:
+Podemos ver por ejemplo como en la siguiente línea
 \begin{verbatim}
 optparse.py:425:80: E501 line too long (82 characters)
 \end{verbatim}
 
-Se nos muestra el mensaje del error para el máximo tamaño de línea permitido, el cual tiene que ver con todo este proyecto. Como hemos hablado ya alguna vez, estas herramientas te detectan el error, pero el desarrollador es el que debe tomar tomar le decisión de como
+se nos muestra el mensaje del error que un programador verá cuando una línea supera el máximo tamaño de línea permitido. Esta herramienta detecta el error, pero es el desarrollador es el que debe tomar tomar le decisión de cómo
 solucionarlo.
 
-\section{Otros programas del estilo de Pycodestyle} 
+\section{Otros programas del estilo de \texttt{pycodestyle}} 
 \label{sec:otros-programas-del-estilo-de-pycodestyle}
 
-A parte del actual pycodestyle, existen otras herramientas parecidas que también nos sirven para analizar la calidad de nuestro código Python. Entre ellas cabe destacar pylint y pyflakes.
+A parte del actual \texttt{pycodestyle}, existen otras herramientas parecidas que también nos sirven para analizar la calidad de nuestro código Python. Entre ellas cabe destacar \texttt{pylint} y \texttt{pyflakes}.
 
 \begin{itemize}
-	\item \textbf{ Pyflakes: } Es un programa sencillo que comprueba los errores de los archivos fuente de Python. Funciona analizando el archivo de origen, no importándolo, por lo que es seguro utilizar en módulos con efectos secundarios. También es mucho más rápido.
+	\item \textbf{ \texttt{pyflakes}: } Es un programa sencillo que comprueba los errores de los archivos fuente de Python. Funciona analizando el archivo de origen, no importándolo, por lo que es seguro utilizar en módulos con efectos secundarios. También es mucho más rápido.
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{ Pylint: } Es otro comprobador de código fuente para Python. Sigue el estilo recomendado por PEP 8. Es similar a Pychecker y Pyflakes , pero incluye las siguientes características: comprobación de la longitud de cada línea, comprobar si los nombres de las variables están bien formados de acuerdo con la norma de codificación del proyecto, comprobación de si las interfaces declaradas se implementan realmente.
+	\item \textbf{ \texttt{pylint}: } Es otro comprobador de código fuente para Python. Sigue el estilo recomendado por PEP 8. Es similar a \texttt{pychecker} y \texttt{pyflakes}, pero incluye las siguientes características: comprobación de la longitud de cada línea, comprobar si los nombres de las variables están bien formados de acuerdo con la norma de codificación del proyecto, comprobación de si las interfaces declaradas se implementan realmente.
 \end{itemize}
 
 
 \section{JavaScript} 
 \label{sec:JavaScript}
 
-javascript
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.5]{img/javascript}
-	\caption{Javascript}
-	\label{Figura 3.3}
+	\caption{JavaScript}
+	\label{fig:javascript}
 \end{figure}
 
-JavaScript es un lenguaje orientado a objetos y basado en prototipos. Una de sus características más importantes es que se define como un lenguaje asíncrono, por lo que es muy útil para reaccionar a eventos por parte del usuario. Es un lenguaje interpretado, por lo que no es necesario compilar los programas para ejecutarlos. En otras palabras, los programas escritos con JavaScript se pueden probar directamente en cualquier navegador sin necesidad de procesos intermedios.
+JavaScript es un lenguaje orientado a objetos y basado en prototipos. Una de sus características más importantes es que se define como un lenguaje asíncrono, por lo que es muy útil para reaccionar a eventos por parte del usuario. Es un lenguaje interpretado, por lo que no es necesario compilar los programas para ejecutarlos. En otras palabras, los programas escritos con JavaScript se pueden probar directamente en cualquier navegador sin necesidad de procesos intermedios. En la figura~\ref{fig:javascript} se puede ver el logo de JavaScript.
 
-Se utiliza principalmente en su forma del lado del cliente (client-side), implementado como parte de un navegador web permitiendo mejoras en la interfaz de usuario y páginas web dinámicas, una página web dinámica es aquella que incorpora efectos como texto que aparece y desaparece, animaciones, acciones que se activan al pulsar botones y ventanas con mensajes de aviso al usuario.
+Se utiliza principalmente en su forma del lado del cliente (\emph{client-side}), implementado como parte de un navegador web permitiendo mejoras en la interfaz de usuario y páginas web dinámicas, una página web dinámica es aquella que incorpora efectos como texto que aparece y desaparece, animaciones, acciones que se activan al pulsar botones y ventanas con mensajes de aviso al usuario.
 
-Sin embargo, existe una forma de JavaScript del lado del servidor(Server-side JavaScript o SSJS), como veremos más adelante en esta memoria cuando profundicemos en Node.js.
+Sin embargo, existe una forma de JavaScript del lado del servidor(\emph{Server-side JavaScript} o SSJS), como veremos más adelante en esta memoria cuando profundicemos en Node.js.
 
 
 
 \section{Node JS} 
 \label{sec:node-js}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.5]{img/nodejs}
 	\caption{Node.js}
-	\label{Figura 3.4}
+	\label{fig:node}
 \end{figure}
 
 
-Node.js es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8.
+Node.js es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8. El logo de Node.js se muestra en la figura~\ref{fig:node}.
 
-Node ejecuta JavaScript utilizando el motor V8, desarrollado por Google. Este motor permite a Node proporcionar un entorno de ejecución del lado del servidor que compila y ejecuta JavaScript a velocidades increíbles. El aumento de velocidad es importante debido a que V8 compila JavaScript en código de máquina nativo, en lugar de interpretarlo o ejecutarlo como \emph{bytecode}. Node es de código abierto, y se ejecuta en Mac OS X, Windows y Linux.
-
-
+Node.js ejecuta JavaScript utilizando el motor V8, desarrollado por Google. Este motor permite a Node.js proporcionar un entorno de ejecución del lado del servidor que compila y ejecuta JavaScript a velocidades increíbles. El aumento de velocidad es importante debido a que V8 compila JavaScript en código de máquina nativo, en lugar de interpretarlo o ejecutarlo como \emph{bytecode}. Node es de código abierto, y se ejecuta en Mac OS X, Windows y Linux.
 
 Aunque JavaScript tradicionalmente ha sido relegado a realizar tareas menores en el navegador, es actualmente un lenguaje de programación total, tan capaz como cualquier otro lenguaje tradicional como C++, Ruby o Java. Además JavaScript tiene la ventaja de poseer un excelente modelo de eventos, ideal para la programación asíncrona.
 
-¿Cuál es la razón por la que decidimos adentrarnos en elaborar un servidor en JavaScript con Node.js?
+%¿Cuál es la razón por la que decidimos adentrarnos en elaborar un servidor en JavaScript con Node.js?
 
-¿Cuál es el problema con los programas de servidor actuales? A medida que crece su base de clientes, si quieres que tu aplicación soporte más usuarios, necesitarás agregar más y más servidores. Esto hace que el cuello de botella en toda la arquitectura de aplicación Web era el número máximo de conexiones concurrentes que podía manejar un servidor.
-
-Node resuelve este problema cambiando la forma en que se realiza una conexión con el servidor. En lugar de generar un nuevo hilo de OS para cada conexión (y de asignarle la memoria acompañante), cada conexión dispara una ejecución de evento dentro del proceso del motor de Node. Node también afirma que nunca se quedará en punto muerto, porque no se permiten bloqueos.
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.6]{img/appNodeMongoAngular}
-	\caption{Estructura de aplicación MEAN: Mongo + Express + Angular + Node}
-	\label{Figura 3.5}
-\end{figure}
+¿Cuál es el problema con los programas de servidor actuales? A medida que crece su base de clientes, si quieres que tu aplicación soporte más usuarios, necesitarás agregar más y más servidores. Esto hace que el cuello de botella en toda la arquitectura de aplicación Web era el número máximo de conexiones concurrentes que podía manejar un servidor. Node.js resuelve este problema cambiando la forma en que se realiza una conexión con el servidor. En lugar de generar un nuevo hilo de OS para cada conexión (y de asignarle la memoria acompañante), cada conexión dispara una ejecución de evento dentro del proceso del motor de Node.js. Node.js también afirma que nunca se quedará en punto muerto, porque no se permiten bloqueos.
 
 
 
@@ -529,76 +508,69 @@ Node resuelve este problema cambiando la forma en que se realiza una conexión co
 \section{Express} 
 \label{sec:express}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.88]{img/express}
 	\caption{Express.js}
-	\label{Figura 3.6}
+	\label{fig:express}
 \end{figure}
 
+Express es sin duda el framework más conocido de Node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc. Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
 
-
-Express es sin duda el framework más conocido de Node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc.
-
-Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
-
-El verdadero éxito de Express se encuentra en lo sencillo que es de usar. Tienes la capacidad de crear de forma rápida y sencilla una API sólida. Además, Express abarca un sin número de aspectos que muchos desconocen pero son necesarios.
+El verdadero éxito de Express se encuentra en lo sencillo que es de usar. Tienes la capacidad de crear de forma rápida y sencilla una API sólida. Además, Express abarca un sin número de aspectos que muchos desconocen pero son necesarios. El logo de Express se puede ver en la figura~\ref{fig:express}.
 
 De entre las tantas cosas que tiene este framework podemos destacar:
 
 \begin{itemize}
 	\item Session Handler.
-\end{itemize}
-
-\begin{itemize}
 	\item 11 \emph{middleware} poderosos así como de terceros.
-\end{itemize}
-
-\begin{itemize}
 	\item cookieParser, bodyParser \ldots
-\end{itemize}
-
-\begin{itemize}
 	\item vhost
-\end{itemize}
-
-\begin{itemize}
 	\item router
 \end{itemize}
+
 
 
 \section{MongoDB} 
 \label{sec:mongodb}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.6]{img/mongoDB}
 	\caption{MongoDB}
-	\label{Figura 3.7}
+	\label{fig:mongodb}
 \end{figure}
 
-MongoDB forma parte de la nueva familia de sistemas de base de datos NoSQL, es la base de datos NoSQL líder y permite a las empresas ser más ágiles y escalables.
+MongoDB forma parte de la nueva familia de sistemas de base de datos NoSQL, es la base de datos NoSQL líder y permite a las empresas ser más ágiles y escalables. El logo de MongoDB se muestra en la figura~\ref{fig:mongodb}.
 
 En lugar de guardar los datos en tablas como se hace en las base de datos relacionales, MongoDB guarda estructuras de datos en documentos similares a JSON con un esquema dinámico (MongoDB utiliza una especificación llamada BSON). Esto hace que sea una base de datos ágil ya que permite a los esquemas cambiar rápidamente cuando las aplicaciones evolucionan, proporcionando siempre la funcionalidad que los desarrolladores esperan de las bases de datos tradicionales, tales como índices secundarios, un lenguaje completo de búsquedas y consistencia estricta.
+
+
+La arquitectura completa de las tecnologías utilizadas en este proyecto se puede ver en la figura~\ref{fig:todo}.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.6]{img/appNodeMongoAngular}
+	\caption{Estructura de aplicación MEAN: Mongo + Express + Angular + Node}
+	\label{fig:todo}
+\end{figure}
+
 
 \section{JSON} 
 \label{sec:json}
 
- JSON (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos. JSON es un subconjunto de la notación literal de objetos de JavaScript aunque hoy, debido a su amplia adopción como alternativa a XML, se considera un formato de lenguaje independiente.
- 
- 
- JSON nació como una alternativa a XML, el fácil uso en JavaScript ha generado un gran número de seguidores de esta alternativa.
+ JSON (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos. JSON es un subconjunto de la notación literal de objetos de JavaScript aunque hoy, debido a su amplia adopción como alternativa a XML, se considera un formato de lenguaje independiente. JSON nació como una alternativa a XML, el fácil uso en JavaScript ha generado un gran número de seguidores de esta alternativa. Se puede ver un ejemplo de una estructura de datos en JSON en la figura~\ref{fig:json}.
  
  Una de las supuestas ventajas de JSON sobre XML como formato de intercambio de datos es que es mucho más sencillo escribir un analizador sintáctico (parser) de JSON, lo cual ha sido fundamental para que JSON haya sido aceptado por parte de la comunidad de desarrolladores AJAX, debido a la ubicuidad de JavaScript en casi cualquier navegador web.
  
- Otra ventaja a tener en cuenta del uso de JSON es que puede ser leído por cualquier lenguaje de programación. Por lo tanto, puede ser usado para el intercambio de información entre distintas tecnologías
+ Otra ventaja a tener en cuenta del uso de JSON es que puede ser leído por cualquier lenguaje de programación. Por lo tanto, puede ser usado para el intercambio de información entre distintas tecnologías.
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.635]{img/jsonEjemplo}
 	\caption{Ejemplo del formato JSON}
-	\label{Figura 3.8}
+	\label{fig:json}
 \end{figure}
 
 \section{Git} 
@@ -608,30 +580,30 @@ En lugar de guardar los datos en tablas como se hace en las base de datos relaci
 Los sistemas de control de versiones (VCS) son programas que tienen como objetivo controlar los cambios en el desarrollo de cualquier tipo de software, permitiendo conocer el estado actual de un proyecto, los cambios que se le han realizado a cualquiera de sus piezas, las personas que intervinieron en ellos, etc.
 
 \texttt{git} es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran número de archivos de código fuente.
-La principal diferencia entre \texttt{git} y cualquier otro VCS es cómo \texttt{git} modela sus datos. Conceptualmente, la mayoría de los demás sistemas almacenan la información como una lista de cambios en los archivos. Estos sistemas (CVS, Subversion, Perforce, Bazaar, etc.) modelan la información que almacenan como un conjunto de archivos y las modificaciones hechas sobre cada uno de ellos a lo largo del tiempo.
+La principal diferencia entre \texttt{git} y cualquier otro VCS es cómo \texttt{git} modela sus datos. Conceptualmente, la mayoría de los demás sistemas almacenan la información como una lista de cambios en los archivos. Estos sistemas (CVS, Subversion, Perforce, Bazaar, etc.) modelan la información que almacenan como un conjunto de archivos y las modificaciones hechas sobre cada uno de ellos a lo largo del tiempo, como se puede ver en la figura~\ref{fig:git}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.6]{img/git1}
 	\caption{Esquema de como organizan la información los demás VCS}
-	\label{Figura 3.9}
+	\label{fig:git}
 \end{figure}
 
-\texttt{git} no modela ni almacena sus datos de este modo. En cambio, \texttt{git} modela sus datos más como un conjunto de instantáneas de un mini sistema de archivos. Cada vez que confirmas un cambio, o guardas el estado de tu proyecto en Git, él básicamente hace una foto del aspecto de todos tus archivos en ese momento, y guarda una referencia a esa instantánea. Para ser eficiente, si los archivos no se han modificado, \texttt{git} no almacena el archivo de nuevo, sólo un enlace al archivo anterior idéntico que ya tiene almacenado.\\
+Como se puede ver en la figura~\ref{fig:git2}, \texttt{git} no modela ni almacena sus datos de este modo. En cambio, \texttt{git} modela sus datos más como un conjunto de instantáneas de un mini sistema de archivos. Cada vez que confirmas un cambio, o guardas el estado de tu proyecto en Git, él básicamente hace una foto del aspecto de todos tus archivos en ese momento, y guarda una referencia a esa instantánea. Para ser eficiente, si los archivos no se han modificado, \texttt{git} no almacena el archivo de nuevo, sólo un enlace al archivo anterior idéntico que ya tiene almacenado.\\
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.6]{img/git2}
 	\caption{Esquema de como \texttt{git} organiza la información}
-	\label{Figura 3.10}
+	\label{fig:git2}
 \end{figure}
 
 
 \section{GitFlow} 
 \label{sec:gitflow}
 
-GitFlow es un modelo de flujo de trabajo para \texttt{git} que da muchísima importancia a las ramas y que de hecho las crea de varios tipos, de forma temática, tal que cada tipo de rama es creada con un objetivo en concreto.
+GitFlow es un modelo de flujo de trabajo para \texttt{git} que da muchísima importancia a las ramas y que de hecho las crea de varios tipos, de forma temática, tal que cada tipo de rama es creada con un objetivo en concreto, como se puede ver en la figura~\ref{fig:gitflow}:
 
 \begin{enumerate}
 	\item \textbf{Master: }La rama \emph{master} es la única rama existente que nos proporciona \texttt{git} al crear un repositorio nuevo. Esta rama  tiene como objetivo ser el contenido del servidor de producción. Es decir, el HEAD de esta rama ha de apuntar en todo momento a la última versión de nuestro proyecto.
@@ -661,35 +633,35 @@ Ya que \emph{develop} contiene la última foto de nuestro proyecto, crearemos la 
 
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.8]{img/gitflow}
 	\caption{Diagrama GitFlow}
-	\label{Figura 3.11}
+	\label{fig:gitflow}
 \end{figure}
 
 En el caso de este proyecto, es difícil usar todo el esquema explicado aquí de GITFLOW, debido a que es un proyecto pequeño, es decir, sin distintos entornos de desarrollo(desarrollo, preproducción, producción, etc). Además sólo lo ha desarrollado una persona a la vez. Sin embargo, he visto muy útil la utilización de la rama \textit{feature}, para tener siempre la última versión estable guardada en \emph{develop}, y aislar el desarrollo de nuevas funcionalidades en éstas ramas. Una vez terminada y probada la nueva funcionalidad, integraba la rama \emph{feature} con la \emph{develop} y borraba la \emph{feature}. Este ha sido el uso que he dado en mi caso a \texttt{GitFlow}.
-Para llevar esto a cabo, he encontrado \textit{Source Tree}, que es una interfaz visual para utilizar Git. Es especialmente útil cuando queremos utilizar \texttt{GitFlow}, ya que es un poco lioso de entender con tantas ramas, sobre todo cuando se mantiene todo de forma manual. Con Source Tree podremos ver todo el esquema de ramas que forme nuestro proyecto de forma visual y crear las distintas ramas de forma mucho más fácil.
+Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\ref{fig:sourcetree1} y la figura~\ref{fig:sourcetree2}), que es una interfaz visual para utilizar Git. Es especialmente útil cuando queremos utilizar \texttt{GitFlow}, ya que es un poco lioso de entender con tantas ramas, sobre todo cuando se mantiene todo de forma manual. Con Source Tree podremos ver todo el esquema de ramas que forme nuestro proyecto de forma visual y crear las distintas ramas de forma mucho más fácil.
 
 \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ % asi se hacen 1 saltos de linea
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=150mm]{img/sourceTree2}
 	\caption{Vemos como podemos iniciar el método \texttt{GitFlow} en nuestro proyecto de manera sencilla.}
-	\label{Figura 3.12}
+	\label{fig:sourcetree1}
 \end{figure}
 
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\subfloat[]{
 		\includegraphics[width=0.3\textwidth]{img/sourceTree1}}
 	\subfloat[]{
 		\includegraphics[width=0.3\textwidth]{img/sourceTree3}}
 	\caption{Imágenes de ejemplo de uso de Source Tree}
-	\label{Figura 3.13}
+	\label{fig:sourcetree2}
 \end{figure}
 
 
@@ -704,13 +676,13 @@ Para llevar esto a cabo, he encontrado \textit{Source Tree}, que es una interfaz
 \section{Análisis del estudio realizado} 
 \label{sec:esquema-del-funcionamiento-del-estudio}
 
-En el siguiente diagrama de flujo explicamos el funcionamiento de nuestro estudio sobre el problema que estamos tratando en este proyecto:
+En el diagrama de flujo de la figura~\ref{fig:diagrama} se muestra el funcionamiento de nuestro estudio sobre el problema que estamos tratando en este proyecto. En las siguientes secciones se entrará en detalle sobre cada uno de los pases.
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.45]{img/diagramaFlujo}
 	\caption{Diagrama de flujo del funcionamiento del estudio}
-	\label{Figura 4.5}
+	\label{fig:diagrama}
 \end{figure}
 
 \subsection{Análisis de los repositorios} 
@@ -727,10 +699,10 @@ Lo primero que hacemos es analizar una serie de repositorios que tenemos prepara
 \end{itemize}
 
 \begin{itemize}
-	\item Grupo 3: ``Zona roja'', la línea posee 80 o más caracteres de longitud. Este grupo de líneas no cumpliría con las reglas de estilo PEP8.\\
+	\item Grupo 3: ``Zona roja'', la línea posee 80 o más caracteres de longitud. Este grupo de líneas no cumple con las reglas de estilo PEP8.\\
 \end{itemize}
 
-Cuando nos encontramos una línea que pertenece a la zona naranja, lo que haremos es crear un nuevo objeto en nuestra base de datos, en nuestro esquema Linea, el objeto que guardaremos tiene el siguiente aspecto:\\\\
+Cuando nos encontramos una línea que pertenece a la zona naranja, lo que haremos es crear un nuevo objeto en nuestra base de datos, en nuestro esquema Linea. El objeto que guardaremos tiene el siguiente aspecto:\\\\
 
 \begin{verbatim}
 var lineaSchema = mongoose.Schema({
@@ -761,13 +733,13 @@ Donde:
 	\item \textbf{longitudLinea: }será la longitud de la línea.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{pasadoRojo: }En este punto, siempre iniciaremos a \emph{False} este parámetro, ya que todavía no hemos comprobado el pasado de la línea. Lo haremos más adelante.
+	\item \textbf{pasadoRojo: }En este punto siempre iniciaremos a \emph{False} este parámetro, ya que todavía no hemos comprobado el pasado de la línea. Lo haremos más adelante.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{historia: }En este punto, siempre inicializaremos un \emph{array} vacío en este parámetro. Al igual que el anterior, realizaremos esta comprobación más adelante. Cuando lo hagamos, lo que guardaremos aquí será las distintas versiones de la línea en su pasado, en las que su longitud era mayor de 80 caracteres. Más adelante veremos con más detalle las diferentes comprobaciones que hacemos para actualizar este parámetro.\\
+	\item \textbf{historia: }En este punto, siempre inicializaremos un \emph{array} vacío en este parámetro. Al igual que el anterior, realizaremos esta comprobación más adelante. Cuando lo hagamos, lo que guardaremos aquí serán las distintas versiones de la línea en las que su longitud era mayor de 80 caracteres. Más adelante veremos con más detalle las diferentes comprobaciones que hacemos para actualizar este parámetro.\\
 \end{itemize}
 
-Además de esto, llevaremos la cuenta del total de líneas que nos hemos ido encontrando de cada grupo, en el análisis conjunto de todos los repositorios, para al final mostrar los datos analizados organizados, y poder sacar una buena conclusión sobre el estudio. De esta forma, al terminar de analizar todos los repositorios crearemos un nuevo objeto en nuestra base de datos, con el siguiente formato:\\
+Además de esto, llevaremos la cuenta del total de líneas que nos hemos ido encontrando de cada grupo en el análisis conjunto de todos los repositorios, para al final mostrar los datos analizados organizados, y poder sacar una buena conclusión sobre el estudio. De esta forma, al terminar de analizar todos los repositorios crearemos un nuevo objeto en nuestra base de datos, con el siguiente formato:\\
 
 \begin{verbatim}
 var repositorioSchema = mongoose.Schema({
@@ -800,29 +772,27 @@ Donde:
 \subsection{Analizar el grupo de líneas seleccionadas para nuestro estudio} 
 \label{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}
 
-Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en la base de datos. Como hemos visto anteriormente, en este punto tendremos sólo las líneas que pertenecen al grupo de la ``zona naranja'', por tanto, nos recorremos todas las líneas para analizaras.
+Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en la base de datos. Como hemos visto anteriormente, en este punto tendremos sólo las líneas que pertenecen al grupo de la ``zona naranja''. Por tanto, recorremos todas las líneas para analizaras.
 
-La primera comprobación que haremos es mirar si la línea es un comentario, por tanto, no estamos ante una línea de código real. Si nos encontramos ante un comentario descartaremos la línea. En el caso contrario, lo que haremos es ejecutar la instrucción \texttt{git log} a dicha línea para estudiar su pasado.
+La primera comprobación que haremos es mirar si la línea es un comentario, y no estamos ante una línea de código real. Si nos encontramos ante un comentario descartaremos la línea. En el caso contrario, lo que haremos es ejecutar la instrucción \texttt{git log} a dicha línea para estudiar su pasado.
 
 
 \subsection{Ejecución de la instrucción \texttt{git log}.} 
 \label{sec:ejecucion-del-comando-git-log}
 
-En primer lugar, vamos a poner un poco en contexto:
+En primer lugar, vamos a poner un poco en contexto: lo que buscamos es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
 
-En este punto, nosotros lo que buscamos es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
+Para llevar a cabo esto, en un principio estudiamos la posibilidad de utilizar el comando \texttt{git blame}, que da información sobre la historia de una línea. \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
+Sin embargo, la información que proporciona \texttt{blame} se nos quedaba un poco escaso para nuestro propósito, por lo que, terminando de revisar otras funcionalidades de git, y también revisando las distintas librerías JavaScript que nos permitieran implementar esto mediante código en nuestro servidor, tomamos la decisión de explotar la instrucción \texttt{git log}.\\
 
-Para llevar a cabo esto, y repasando la funcionalidad que \texttt{git} nos ofrece, pensamos en utilizar el comando \texttt{git blame}, \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
-Sin embargo, esto se nos quedaba un poco escaso para nuestro propósito final, por lo que, terminando de revisar otras funcionalidades de git, y también revisando las distintas librerías JavaScript que nos permitieran implementar esto mediante código en nuestro servidor, tomamos la decisión de explotar la instrucción \texttt{git log}.\\
+Vamos a ver en qué consiste la instrucción \texttt{git log}, y las opciones que nosotros hemos utilizado.
+Si ejecutamos la instrucción \texttt{git log} sin ningún parámetro, por defecto lo que nos devuelve es una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
 
-En segundo lugar,vamos a ver en qué consiste la instrucción \texttt{git log}, y las opciones que nosotros hemos utilizado.
-Si ejecutamos la instrucción \texttt{git log}, sin ningún parámetro, por defecto lo que nos devuelve es una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. Como podemos ver en la siguiente imagen, el formato en que \texttt{git log} nos devuelve su respuesta es el siguiente:
-
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.70]{img/salidaGitLog}
 	\caption{Salida por defecto de la instrucción \texttt{git log}}
-	\label{Figura 4.6}
+	\label{fig:log}
 \end{figure}
 
 
@@ -830,24 +800,23 @@ Lo que nos muestra, como podemos ver, es cada \emph{commit} con su suma de compr
 
 La instrucción \texttt{git log} posee múltiples opciones para ajustar la búsqueda que realmente queremos, la opción que nosotros utilizamos fue la siguiente:
 
-
 \begin{verbatim}
 git log -L numeroLinea,numeroLinea:nombreFichero
 \end{verbatim}
 
 De esta forma obtendremos la lista de todos los cambios que ha sufrido la línea que indiquemos desde su creación en el fichero hasta la actualidad.
 
-Podemos ver en el siguiente ejemplo, la salida del comando que estamos tratando en nuestro código:
+Podemos ver en el siguiente ejemplo, la salida del comando que estamos tratando en nuestro código se muestra en la figura~\ref{fig:log2}.
 
 \begin{verbatim}
 git log -L 155,155:git-web--browse.sh
 \end{verbatim}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.8]{img/salidaGitLogOpciones}
 	\caption{Salida de la instrucción \texttt{git log} con opciones}
-	\label{Figura 4.7}
+	\label{fig:log2}
 \end{figure}
 
 Analizando esta salida, podemos ver que la línea 155 del fichero \texttt{git-web--browse.sh} ha sufrido los siguientes cambios.
@@ -889,7 +858,7 @@ historia: []
 }); 
 \end{verbatim}
 
-Lo que hacemos en este punto es ejecutar la instrucción \texttt{git log} (con las opciones que acabamos de explicar), y en el caso de que nuestra línea haya tenido en algún momento de su historia una longitud mayor a 80, modificaremos su registro en la base de datos cambiando el valor del parámetro ``pasadoRojo'' a true y también nos guardaremos todo el pasado de la línea para analizarlo.
+Lo que hacemos en este punto es ejecutar la instrucción \texttt{git log} (con las opciones que acabamos de explicar), y en el caso de que nuestra línea haya tenido en algún momento de su historia una longitud mayor a 80, modificaremos su registro en la base de datos cambiando el valor del parámetro ``pasadoRojo'' a \texttt{True} y también nos guardaremos todo el pasado de la línea para analizarlo.
 
 \subsection{Análisis del pasado de una línea} 
 \label{sec:analisis-del-pasado-de-una-linea}
@@ -899,23 +868,25 @@ Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando
 
 Esta iteración se puede dar muchas veces y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea para comprobar que en ese cambio, la línea actual y la línea en el pasado son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
 
-Como decimos, en este punto todavía no podemos saber si la línea ha sufrido ese cambio por nuestro motivo, sin embargo, lo que sí podemos filtrar es que la línea es suficientemente parecida a su pasado como para que pueda darse, y para ello vamos a utilizar la distancia de Levenshtein\footnote{\url{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}}.\\
+FIXME: aquí deberíamos poner un ejemplo para clarificar por qué hacemos esto.
+
+En este punto todavía no podemos saber si la línea ha sufrido ese cambio por nuestro motivo, sin embargo, lo que sí podemos filtrar es que la línea es suficientemente parecida a su pasado como para que pueda darse, y para ello vamos a utilizar la distancia de Levenshtein\footnote{\url{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}}.\\
 
 Teníamos guardadas todo el pasado de la línea, lo que haremos es comparar cada estado de la línea en su pasado, con el estado actual, y basándonos en la respuesta que nos devuelva la distancia de Levenshtein tomar una decisión.
 Si la respuesta está dentro de nuestro umbral, nos quedaremos con ``ese pasado de la línea'', en caso contrario, lo desecharemos.\\
 
-Al terminar este proceso tendremos un \emph{array} con todos los estados de la línea en su pasado que han sido mayores de 80 y que se parecen lo suficiente a la línea actual como para ser nuestro caso. (En este \emph{array}  normalmente sólo tendremos un registro, que será el paso anterior a cómo era la línea justo antes de cómo es en la actualidad. En caso de que más estados de la línea en su pasado entren en estos criterios y se cuelen aquí, solo interesaría el último caso en que la línea ha estado en la zona roja antes de pasar a la naranja, por tanto, más adelante los filtraremos).\\
+Al terminar este proceso,, tendremos un \emph{array} con todos los estados de la línea en su pasado que han sido mayores de 80 y que se parecen lo suficiente a la línea actual como para ser nuestro caso. En este \emph{array}  normalmente sólo tendremos un registro, que será el paso anterior a cómo era la línea justo antes de cómo es en la actualidad. En caso de que más estados de la línea en su pasado entren en estos criterios y se cuelen aquí, solo interesaría el último caso en que la línea ha estado en la zona roja antes de pasar a la naranja, por tanto, más adelante los filtraremos.\\
 
-En este punto volvemos a actualizar el objeto que tenemos para dicha línea guardado en nuestra base de datos, en este caso modificaremos el parámetro ``historia:[]''. Dándole como valor el \emph{array}  que comentamos en el párrafo anterior.\\
+En este punto volvemos a actualizar el objeto que tenemos para dicha línea guardado en nuestra base de datos. En este caso modificaremos el parámetro ``historia:[]'', dándole como valor el \emph{array}  que comentamos en el párrafo anterior.\\
 
 Una vez hecho todo esto, limpiaremos la base de datos, de forma que borraremos todos los registros de las líneas que no hayan cumplido alguna de estas comprobaciones.
 
 \subsection{Clasificación de líneas conflictivas} 
 \label{sec:clasificacion-de-lineas-conflictivas}
 
-En este punto, tenemos en nuestra base de datos únicamente las líneas que consideramos conflictivas para nuestro caso de estudio, después de pasar por todas nuestras comprobaciones. Ahora lo que necesitamos es clasificar estas líneas según creamos cual es la razón por la que esa línea se ha acortado y ha pasado de nuestra zona roja a nuestra zona naranja.\\
+En este punto, tenemos en nuestra base de datos únicamente las líneas que consideramos conflictivas para nuestro caso de estudio, después de pasar por todas nuestras comprobaciones. Ahora lo que necesitamos es clasificar estas líneas según creamos que es la razón por la que esa línea se ha acortado y ha pasado de nuestra zona roja a nuestra zona naranja.\\
 
-Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos, (recordamos que siempre comparando la iteración en la que la línea pasa de tener más de 80 caracteres a tener entre 70 y 79): 
+Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos --recordemos que siempre comparando la iteración en la que la línea pasa de tener más de 80 caracteres a tener entre 70 y 79--: 
 
 \begin{enumerate}
 	\item La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta (caso que buscamos).
@@ -928,11 +899,8 @@ Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos, 
 	
 \end{enumerate}
 
-Hemos elegido estos 4 casos porque son los más comunes, por ejemplo, el caso de las tabulaciones, y los casos que afectan directamente a nuestro estudio, como es el 1 principalmente, y como puede ser el 3.
+Hemos elegido estos cuatro casos porque son los más comunes, por ejemplo, el caso de las tabulaciones, y los casos que afectan directamente a nuestro estudio, como es el 1 principalmente, y como puede ser el 3.
 De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
-
-
-
 
 
 
@@ -956,8 +924,8 @@ De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 
 Una vez terminado nuestro proyecto, tenemos ante nosotros la posibilidad de analizar un gran volumen de líneas de código en lenguaje Python.
 
-No tenemos ante nosotros una aplicación que permite ayudar al desarrollador al mismo tiempo que realiza su código, o que le permite revisarlo una vez terminado, o del estilo, como podrían ser otros proyectos presentados aquí sobre el análisis de la calidad del código.
-Más bien, lo que tenemos aquí es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
+No presentamos una aplicación que ayuda al desarrollador al mismo tiempo que está programando, o que le permite revisarlo una vez terminado, como podrían ser otros proyectos sobre el análisis de la calidad del código como pueden ser \texttt{pycodestyle}, \texttt{pyflakes} o \texttt{pylint}.
+Más bien, lo que ofrecemos es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
 
 \ \\ % asi se hacen 1 saltos de linea.
 Cabe destacar que para realizar nuestro estudio hemos intentado recoger datos lo más cercanos posible al código que hay en el ``mundo real'' y que nos permitan sacar conclusiones reales.
@@ -1010,7 +978,7 @@ Por último tenemos otro pequeño porcentaje de líneas las cuales están en nuestro
 \section{Resultados análisis grupo conflictivo}
 \label{sec:resultados-analisis- grupo-conflictivo}
 
-Como decimos, para poder llegar a una conclusión, debemos analizar con detalle el grupo que hemos considerado conflictivo.
+Para poder llegar a una conclusión, debemos analizar con detalle el grupo que hemos considerado conflictivo.
 Después de pasar nuestro primer filtro, el cual explicamos en el punto 4, las primeras líneas que podemos considerar conflictivas según nuestros parámetros, son las siguientes:
 
 \begin{itemize}
