@@ -673,8 +673,8 @@ Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\r
 \cleardoublepage
 \chapter{Diseño e implementación}
 
-\section{Análisis del estudio realizado} 
-\label{sec:esquema-del-funcionamiento-del-estudio}
+%\section{Análisis del estudio realizado} 
+%\label{sec:esquema-del-funcionamiento-del-estudio}
 
 En el diagrama de flujo de la figura~\ref{fig:diagrama} se muestra el funcionamiento de nuestro estudio sobre el problema que estamos tratando en este proyecto. En las siguientes secciones se entrará en detalle sobre cada uno de los pases.
 
@@ -685,7 +685,7 @@ En el diagrama de flujo de la figura~\ref{fig:diagrama} se muestra el funcionami
 	\label{fig:diagrama}
 \end{figure}
 
-\subsection{Análisis de los repositorios} 
+\section{Análisis de los repositorios} 
 \label{sec:analisis-de-los-repositorios}
 
 Lo primero que hacemos es analizar una serie de repositorios que tenemos preparados para realizar el estudio. Cuando nos encontremos con un fichero Python y analicemos sus líneas, las dividiremos en tres grupos, dependiendo de la longitud que poseen en la actualidad:\\
@@ -769,7 +769,7 @@ Donde:
 
 \ \\  % asi se hacen 1 saltos de linea
 
-\subsection{Analizar el grupo de líneas seleccionadas para nuestro estudio} 
+\section{Análisis del grupo de líneas seleccionadas para nuestro estudio} 
 \label{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}
 
 Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en la base de datos. Como hemos visto anteriormente, en este punto tendremos sólo las líneas que pertenecen al grupo de la ``zona naranja''. Por tanto, recorremos todas las líneas para analizaras.
@@ -777,7 +777,7 @@ Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en 
 La primera comprobación que haremos es mirar si la línea es un comentario, y no estamos ante una línea de código real. Si nos encontramos ante un comentario descartaremos la línea. En el caso contrario, lo que haremos es ejecutar la instrucción \texttt{git log} a dicha línea para estudiar su pasado.
 
 
-\subsection{Ejecución de la instrucción \texttt{git log}.} 
+\section{Ejecución de la instrucción \texttt{git log}.} 
 \label{sec:ejecucion-del-comando-git-log}
 
 En primer lugar, vamos a poner un poco en contexto: lo que buscamos es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
@@ -860,7 +860,7 @@ historia: []
 
 Lo que hacemos en este punto es ejecutar la instrucción \texttt{git log} (con las opciones que acabamos de explicar), y en el caso de que nuestra línea haya tenido en algún momento de su historia una longitud mayor a 80, modificaremos su registro en la base de datos cambiando el valor del parámetro ``pasadoRojo'' a \texttt{True} y también nos guardaremos todo el pasado de la línea para analizarlo.
 
-\subsection{Análisis del pasado de una línea} 
+\section{Análisis del pasado de una línea} 
 \label{sec:analisis-del-pasado-de-una-linea}
 
 Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando exactamente en este punto, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).
@@ -881,7 +881,7 @@ En este punto volvemos a actualizar el objeto que tenemos para dicha línea guard
 
 Una vez hecho todo esto, limpiaremos la base de datos, de forma que borraremos todos los registros de las líneas que no hayan cumplido alguna de estas comprobaciones.
 
-\subsection{Clasificación de líneas conflictivas} 
+\section{Clasificación de líneas conflictivas} 
 \label{sec:clasificacion-de-lineas-conflictivas}
 
 En este punto, tenemos en nuestra base de datos únicamente las líneas que consideramos conflictivas para nuestro caso de estudio, después de pasar por todas nuestras comprobaciones. Ahora lo que necesitamos es clasificar estas líneas según creamos que es la razón por la que esa línea se ha acortado y ha pasado de nuestra zona roja a nuestra zona naranja.\\
