@@ -920,6 +920,21 @@ Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos -
 	
 \end{enumerate}
 
+En resumen, lo que hemos hecho en código para implementar esto es lo siguiente:
+Iremos pasando cada proceso que vamos a explicar a continuación a cada grupo de líneas (línea antigua con más de 80 y línea actual entre 70 y 79), si la línea cumple con algún proceso se añadirá a dicho grupo, si la línea no encaja en ningún proceso se añadirá al último grupo \textbf{Resto de líneas}.
+
+\begin{itemize}
+	\item \textbf{La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta: }Partimos tanto la línea antigua como la línea actual por espacios, de manera que nos quedamos con dos arrays los cuales guardan las palabras de cada línea. Comparamos estos dos arrays, y si sólo se diferencian en una posición, querrá decir que solo hay una palabra distinta. Esta palabra puede que sea una variable, por tanto se añade a este grupo.
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{La línea se diferencia por que se han eliminado 4 espacios: }Lo que hacemos es eliminar los 4 primeros caracteres de la línea antigua, y guardarnos el resto. Comparamos el resto de la línea antigua con la línea actual, y comprobamos si ahora son exactamente iguales, y además si los 4 caracteres que hemos eliminado de la línea antigua son 4 espacios. Si esto se cumple se añade a este grupo.
+\end{itemize}
+
+\begin{itemize}
+	\item \textbf{La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, la cual se ha acortado: }Lo que hacemos aquí es comparar si la línea antigua y la actual son distintas en un principio, pero luego, eliminando los espacios y tabulaciones, tienen el mismo número de palabras, de esta forma, sabremos que solo se diferencian por espacios. Después de esto comprobamos si todas las palabras son exactamente iguales menos una. Si esto ocurre, estamos ante una línea de este grupo.
+\end{itemize}
+
 Hemos elegido estos cuatro casos porque son los más comunes, por ejemplo, el caso de las tabulaciones, y los casos que afectan directamente a nuestro estudio, como es el 1 principalmente, y como puede ser el 3.
 De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 
@@ -1016,9 +1031,7 @@ Esto nos da:
 
 Como podemos ver estos datos son unos porcentajes bajísimos, prácticamente ninguna línea se presta a que le pueda ocurrir el problema planteado.
 
-De hecho, todavía queda analizar esas 396 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo:
-
-FIXME: contar cómo has hecho la clasificación. Si no recuerdo mal, lo hiciste manualmente.
+De hecho, todavía queda analizar esas 396 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo, de la forma que ya explicamos en el capítulo 4, (\ref{sec:clasificacion-de-lineas-conflictivas})
 
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
@@ -1047,9 +1060,63 @@ Este dato es un porcentaje ínfimo y despreciable en cualquier caso.
 \ \\ % asi se hacen 1 saltos de linea
 Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
 
-FIXME: pensaba que esto lo habías hecho. Podrías coger algunas de ellas, 10 o 20, y analizarlas.
+FIXME
+Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultados, y vamos a analizarlos aquí:
 
+(Anulamos las tabulaciones iniciales de todas ellas)
+
+\textbf{Par de líneas}:
+\begin{verbatim}
+Línea Actual ---------->     _VALID_URL = 
+r'https?://(?:www\.)?alpha\.com/videos/(?P<id>[^/]+)'
+\end{verbatim}
+\begin{verbatim}
+Línea en el Pasado ---->     _VALID_URL = 
+r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
+\end{verbatim}
+
+\textbf{Opinión}:
+
+En este caso vemos que la palabra que se acorta no parece mucho una variable que haya creado el desarrollador. No tenemos más contexto del resto del código que tiene esta línea alrededor, pero por el nombre de la variable inicial y por el contenido de esta, parece que la parte que se acorta no es una variable en sí. Se puede pensar que depende del programa, el desarrollador esté creando la url él y decida su contenido, pensando así que lo ha podido acortar por nuestro motivo, sin embargo, personalmente no me parece el caso, normalmente trabajas con url que ya existen, y no parece ser que el desarrollador haya acortado una variable suya por el motivo que tratamos. Por tanto yo diría NO.
+\ \\ % asi se hacen 1 saltos de linea
+
+\textbf{Par de líneas}:
+\begin{verbatim}
+Línea Actual ---------->         return
+self.playlist_result(entries, video_id, title, description)
+\end{verbatim}
+\begin{verbatim}
+Línea en el Pasado ---->         return
+self.playlist_result(entries, video_id, playlist_title, description)
+\end{verbatim}
+
+
+\textbf{Opinión}:
+
+En esta línea diría nada más verla que SÍ. Podemos observar de manera fácil que lo que ha cambiado es una variable, ya que es un parámetro que se le está pasando a una función. La variable ha pasado de ser ``playlist-title'' a simplemente ``title''. En este caso creo que podemos afirmar que el nombre de la variable ha perdido sentido, ya que llamar a una variable título, no es muy buena elección, antes sabíamos que era el título de una playlist, sin embargo ahora no podemos tener idea del contenido de esa variable, el código ha quedado pero que el anterior, siempre bajo mi punto de vista.
+
+\ \\ % asi se hacen 1 saltos de linea
+\textbf{Par de líneas}:
+\begin{verbatim}
+Línea Actual ---------->         'skip': 'redirect to
+http://swrmediathek.de/index.htm?hinweis=swrlink',
+\end{verbatim}
+\begin{verbatim}
+Línea en el Pasado ---->         '_skip': 'redirect to
+http://swrmediathek.de/index.htm?hinweis=swrlink',
+\end{verbatim}
+
+\textbf{Opinión}:
+
+En esta línea tenemos un caso en el que parece claro que la palabra que se ha acortado es una variable, sin embargo, no parece que la variable haya perdido sentido respecto a su nombre anterior por este motivo, ya que lo único que se ha hecho ha sido quitar un guión bajo inicial. Por tanto para esta línea también diría que NO.
+
+
+\ \\ \ \\% asi se hacen 1 saltos de linea
 Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto somos capaces de llegar a una conclusión.
+
+
+
+
 
 
 
