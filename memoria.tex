@@ -1012,6 +1012,173 @@ La gran mayoría de las líneas están por debajo del umbral que marca la guía de e
 Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8.
 Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
+Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado:
+
+\begin{enumerate}
+	\item \textbf{youtube-dl: }127.737
+		
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }112.898
+		\end{itemize}
+	
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }6.332
+		\end{itemize}
+
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }8.507, de las cuales 5 son comentarios.(0,058\%)
+		\end{itemize}
+		
+	\item \textbf{SerpentAI: }3.781
+		
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }3.396
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }130
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }282, de las cuales 0 son comentarios.(0\%)
+		\end{itemize}
+	
+	\item \textbf{requests: }33.894
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }29.164
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }1.475
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }3.235, de las cuales 79 son comentarios.(2,44\%)
+		\end{itemize}	
+	
+	\item \textbf{scrapy: }35.283
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }31.174
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }2.400
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }1.709, de las cuales 99 son comentarios.(5,79\%)
+		\end{itemize}
+	
+	\item \textbf{pythondotorg: }11.590
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }10.609
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }380
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }601, de las cuales 3 son comentarios.(0,49\%)
+		\end{itemize}
+	
+	\item \textbf{models: }60.253
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }56.246
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }2.949
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }1.058, de las cuales 683 son comentarios.(0,64\%)
+		\end{itemize}
+	
+	\item \textbf{lbry: }28.417
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }24.832
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }1.700
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }1.885, de las cuales 59 son comentarios.(3,12\%)
+		\end{itemize}
+		
+	\item \textbf{keras: }54.409
+		
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }49.456
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }3.428
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }1.525, de las cuales 60 son comentarios.(3,93\%)
+		\end{itemize}
+	
+	\item \textbf{flask: }14.436
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }13.030
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }1.307
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }99, de las cuales 11 son comentarios.(11,11\%)
+		\end{itemize}
+	
+	\item \textbf{awesome-python: }76
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }70
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }3
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }3, de las cuales 1 son comentarios.(33,3\%)
+		\end{itemize}
+	
+	\item \textbf{awesome-machine-learning': }38
+	
+		\begin{itemize}
+			\item \textbf{Líneas verdes: }35
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas naranjas: }3
+		\end{itemize}
+		
+		\begin{itemize}
+			\item \textbf{Líneas rojas: }0
+		\end{itemize}
+					
+\end{enumerate}
+
+Como podemos ver, hemos utilizado repositorios distintos tanto en tamaño como en características. Me llaman la atención algunos datos.
+
+Como es de esperar, en todos los repositorios, la gran mayoría de líneas son verdes.
+
+Sólo hemos encontrado un repositorio que no tenga líneas rojas, y tampoco podemos tenerlo muy en cuenta ya que solo tiene 38 líneas en total.
+
+Tenemos 5 repositorios en los que hay más líneas naranjas que rojas, 5 repositorios en los que hay más líneas rojas que naranjas, y un repositorio en el que hay las mismas líneas rojas que naranjas. Estos datos no nos dejan sacar ninguna conclusión sobre esto ya que son demasiado igualados, aunque si que es cierto que en el recuento total, tenemos más líneas naranjas que rojas.
+
 \section{Resultados del análisis del grupo conflictivo}
 \label{sec:resultados-analisis-grupo-conflictivo}
 
@@ -1035,11 +1202,58 @@ De hecho, todavía queda analizar esas 396 líneas, las cuales han pasado el filtr
 
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
+	
+	Ejemplo:
+	\begin{verbatim}
+	Línea Actual ---------->         'url':
+	 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
+	\end{verbatim}
+	\begin{verbatim}
+	Línea en el Pasado ---->             'url':
+	 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
+	\end{verbatim}
+	
 	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas
 		corta: }125
-	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa
-		a ser más corta: }3
+	
+	Ejemplo:
+	\begin{verbatim}
+	Línea Actual ---------->             'subtitles':
+	 self.extract_subtitles(video_id, subtitles_id, hl),
+	\end{verbatim}
+	\begin{verbatim}
+	Línea en el Pasado ---->             'subtitles':
+	 self.extract_subtitles(video_id, video_subtitles_id, hl),
+	\end{verbatim}
+	
+	
+	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }3
+	
+	Ejemplo:
+	\begin{verbatim}
+	Línea Actual ---------->                 'https:
+	//tv.nrk.no/program/Episodes/{series}/{season}'.format(
+	\end{verbatim}
+	\begin{verbatim}
+	Línea en el Pasado ---->             self.url_result('https:
+	//tv.nrk.no/program/Episodes/{series}/{season}'.format(
+	\end{verbatim}
+	
+	
 	\item \textbf{Resto de líneas: }267
+	
+	Ejemplo:
+	\begin{verbatim}
+	Línea Actual ---------->         'url':
+	 'http://www.chilloutzone.net/video/eine-sekunde-bevor.html',
+	\end{verbatim}
+	\begin{verbatim}
+	Línea en el Pasado ---->     	u'url':
+	 u'http://www.chilloutzone.net/video/enemene-meck-alle-katzen-weg.html',
+	\end{verbatim}
+	
+	
+	
 \end{itemize}
 
 Como ya vimos, tenemos dos grupos que pueden entrar dentro de nuestro estudio, que son: ``La línea se acorta exclusivamente por que una palabra pasa a ser mas corta'' y ``La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta''. Si los agrupamos y hablamos de porcentajes en función de las 396 líneas que ya hemos filtrado
@@ -1061,8 +1275,6 @@ Este dato es un porcentaje ínfimo y despreciable en cualquier caso.
 Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
 
 Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultados, y vamos a analizarlos aquí:
-
-(Anulamos las tabulaciones iniciales de todas ellas)
 
 \textbf{Par de líneas}:
 \begin{verbatim}
@@ -1124,7 +1336,7 @@ Línea en el Pasado ---->         except (TimeoutError,
 
 \textbf{Opinión}:
 
-En este caso vemos que la línea cumple el patrón de nuestro análisis para estae aquí, sin embargo, si la analizamos vemos que efectivamente la palabra afectada es una variable, que ha pasado de ``ConnectionError'' a ``ProtocolError''. Sin embargo, si nos fijamos en el nombre de la variable no parece que este cambio haya sido para acortar la misma, parece que ahora la variable se refiere a otra cosa y ha cambiado de nombre, el cual no ha perdido significado, porque habría habido un error o un cambio en el desarrollo y ahora esa variable ha pasado a ser otra, no parece que el motivo sea mantener la misma variable pero acortando el nombre, por tanto, diría que NO.
+En este caso vemos que la línea cumple el patrón de nuestro análisis para estar aquí, sin embargo, si la analizamos vemos que efectivamente la palabra afectada es una variable, que ha pasado de ``ConnectionError'' a ``ProtocolError''. Sin embargo, si nos fijamos en el nombre de la variable no parece que este cambio haya sido para acortar la misma, parece que ahora la variable se refiere a otra cosa y ha cambiado de nombre, el cual no ha perdido significado, no parece que el motivo sea mantener la misma variable pero acortando el nombre, por tanto, diría que NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1156,7 +1368,7 @@ Línea en el Pasado ---->         `(batch, new_rows, new_cols,
 
 \textbf{Opinión}:
 
-En esta línea vemos que la palabra afectada parece ser una variable. Esta variable ha pasado de ser ``nb\_filter'' a ``filters'', según vemos aquí y sin tener más contexto, como en las demás ocasiones, podemos pensar que esta variable ha podido sufrir el ``truco'' del que hablamos aquí por parte del desarrollador, sin embargo, la clave aquí es estudiar si la variable ha perdido significado con el cambio, en este caso creo que no es así. La razón es que la parte qué se ha eliminado de la variable no me importa información, es decir, entiendo igual que la variable es un filtro, y el hecho de tener delante ``\_nb'' no me aporta más información. Por lo tanto diría que NO.
+En esta línea vemos que la palabra afectada parece ser una variable. Esta variable ha pasado de ser ``nb\_filter'' a ``filters'', según vemos aquí y sin tener más contexto, como en las demás ocasiones, podemos pensar que esta variable ha podido sufrir el ``truco'' del que hablamos aquí por parte del desarrollador, sin embargo, la clave aquí es estudiar si la variable ha perdido significado con el cambio, en este caso creo que no es así. La razón es que la parte qué se ha eliminado de la variable no me aporta información, es decir, entiendo igual que la variable es un filtro, y el hecho de tener delante ``\_nb'' no me aporta más información. Por lo tanto diría que NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1188,7 +1400,7 @@ Línea en el Pasado ---->                 'lynda returned
 
 \textbf{Opinión}:
 
-Nos encontramos ante un caso en el que la parte de la línea afectada o está claro si es una variable, en mi opinión, lo que se ha acortado aquí puede ser el nombre de una función o método. La parte afectada ha pasado de ser ``video\_json['Message']'' a ser ``video['Message']''. En este caso, puede que no demasido, pero me atrevería a decir que el nombre afectado ha perdido información, ya que el nombre antiguo: ``video\_json'' no es demsiado explicativo, sin embargo, anular la parte ``\_json'' resta una información que puede ser importante, ya que habla sobre un formato. Por tanto, en esta ocasión me atrevería a decir que SI ha ocurrido el caso que buscamos.
+Nos encontramos ante un caso en el que la parte de la línea afectada no está claro si es una variable, en mi opinión, lo que se ha acortado aquí puede ser el nombre de una función o método. La parte afectada ha pasado de ser ``video\_json['Message']'' a ser ``video['Message']''. En este caso, puede que no demasiado, pero me atrevería a decir que el nombre afectado ha perdido información, ya que el nombre antiguo: ``video\_json'' no es demasiado explicativo, sin embargo, anular la parte ``\_json'' resta una información que puede ser importante, ya que habla sobre un formato. Por tanto, en esta ocasión me atrevería a decir que SI ha ocurrido el caso que buscamos.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1220,7 +1432,7 @@ logging.info("Responding with %s infos", str(len(blob_infos)))
 
 \textbf{Opinión}:
 
-La parte afectada aquí no parece ser una variable, hemos pasado de ``logging.info'' a ``log.info''. Claramente no estamos ante nuestro caso ya que estos son unos logs, que han cambiado. Por tanto añadiría otro NO.
+La parte afectada aquí no parece ser una variable, hemos pasado de ``logging.info'' a ``log.info''. Claramente no estamos ante nuestro caso ya que esto son unos logs, que han cambiado. Por tanto añadiría otro NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
