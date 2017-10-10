@@ -958,29 +958,27 @@ De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
 \section{Resultados del análisis general}
 \label{sec:resultados-analisis- general}
 
-Una vez que hemos creado el software de apoyo, tenemos ante nosotros la posibilidad de analizar un gran volumen de líneas de código en lenguaje Python.
+Una vez que hemos creado el software, podemos analizar un gran volumen de líneas de código en lenguaje Python.
 
-No presentamos una aplicación que ayuda al desarrollador al mismo tiempo que está programando, o que le permite revisarlo una vez terminado, como podrían ser otros proyectos sobre el análisis de la calidad del código como pueden ser \texttt{pycodestyle}, \texttt{pyflakes} o \texttt{pylint}.
-Más bien, lo que ofrecemos es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
+%No presentamos una aplicación que ayuda al desarrollador al mismo tiempo que está programando, o que le permite revisarlo una vez terminado, como podrían ser otros proyectos sobre el análisis de la calidad del código como pueden ser \texttt{pycodestyle}, \texttt{pyflakes} o \texttt{pylint}.
+%Más bien, lo que ofrecemos es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
 
 \ \\ % asi se hacen 1 saltos de linea.
-Cabe destacar que para realizar nuestro estudio hemos intentado recoger datos lo más cercanos posible al código que hay en el ``mundo real'' y que nos permitan sacar conclusiones reales.
-
-Los datos que hemos utilizado para analizar son repositorios reales que hay en GitHub. Hemos buscado los repositorios más famosos y grandes de Python en dicho portal para formar nuestra base de análisis.
+Cabe destacar que para realizar nuestro estudio hemos intentado recoger datos del ``mundo real'', es decir, de proyectos reales de software libre, que nos permitan sacar conclusiones reales. Por ello, analizamos repositorios de GitHub, en particular, los repositorios más famosos y de mayor tamaño de Python en dicho portal para formar nuestra base de análisis.
 
 Pensando en la variedad, para obtener datos de un mayor número de desarrolladores, hemos querido coger el mayor número de repositorios posibles, en vez de un solo repositorio muy grande, pensando que quizás en un mismo proyecto se puede trabajar bajo unas mismas pautas marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos trabajarían bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
 
 \ \\ \ \\ % asi se hacen 1 saltos de linea.
-La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiere, ya que sabemos que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
+%La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiere, ya que sabemos que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
 
 \ \\ % asi se hacen 1 saltos de linea.
-El estudio más amplio que hemos realizado hasta el momento tiene los siguientes datos:
+Así, hemos analizado en total el siguiente número de líneas, tal y como se muestra en la figura~\ref{fig:resultados_generales}:
 
 \begin{itemize}
 	\item \textbf{Número total de líneas analizadas: }369.911
 \end{itemize}
 
-De estas líneas, y con la nomenclatura explicada en el apartado 4, hemos encontrado:
+De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontrado:
 
 \begin{itemize}
 	\item \textbf{Número de líneas verdes: }330.900
@@ -994,30 +992,30 @@ De estas líneas, y con la nomenclatura explicada en el apartado 4, hemos encontr
 	\item \textbf{Número de líneas rojas: }18.904
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.80]{img/diagramaBarras}
 	\caption{Diagrama de barras de los resultados generales}
-	\label{fig:resultados generales}
+	\label{fig:resultados_generales}
 \end{figure}
 
-Lo primero que nos llama la atención de estos datos es la cantidad de líneas que han salido de cada tipo, es decir, en un principio mi idea era que todo el código que hemos analizado, o casi todo, seguiría la guía de estilo PEP8, por tanto apenas encontraríamos ``línea roja''.
+Lo primero que nos llama la atención de estos datos es la cantidad de líneas que han salido de cada tipo, es decir, en un principio esperábamos que todo el código analizado, o casi todo, seguiría la guía de estilo PEP8 y, por tanto, apenas encontraríamos ``líneas rojas''.
 
-Analizando este dato, vemos que aunque el número de líneas (18.904) nos puede parecer grande en un principio, hay que pensar que tan sólo es el 5,11\%, que es un porcentaje bastante bajo.
-Al no ser este el grupo de líneas que nos interesa no hemos entrado demasiado en detalle, aunque sí que hemos hecho una comprobación en nuestro código. Hemos querido comprobar cuantas de estas líneas pertenecen a comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas), para comprobar si este dato está falseado y no son líneas \emph{reales} de código fuente en la zona roja.
+Analizando este dato, vemos que aunque el número de líneas (18.904) nos puede parecer grande en un principio, hay que pensar que tan sólo supone el 5,11\%, que es un porcentaje bastante bajo.
+Al no ser este el grupo de líneas que nos interesa, no hemos entrado demasiado en detalle, aunque sí que hemos hecho una comprobación en nuestro código. Hemos querido comprobar cuantas de estas líneas pertenecen a comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas), para comprobar si este dato está falseado y no son líneas \emph{reales} de código fuente en la zona roja.
 
-Este análisis nos ha dado como resultado 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas de código fuente que están en nuestra zona roja.
+Este análisis nos ha dado como resultado 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas de código fuente que están en nuestra \emph{zona roja}.
 
 \ \\ \ \\% asi se hacen 1 saltos de linea.
 Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver
 que la inmensa mayoría están en las llamadas ``línea verdes'' un 89,45\%.
-Esto quiere decir que el grupo conflictivo que nosotros queremos estudiar, ``línea naranjas'', queda en un 5,43\%.
+Esto quiere decir que el grupo conflictivo que queremos estudiar, las ``línea naranjas'', queda en un 5,43\%.
 
-La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite.
-Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8.
+La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite. FIXME: no me queda claro esta frase.
+Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8. FIXME: ni esta.
 Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
-Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado:
+Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado: FIXME: esto debería ser una tabla
 
 \begin{enumerate}
 	\item \textbf{youtube-dl: }127.737
@@ -1176,19 +1174,23 @@ Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vam
 					
 \end{enumerate}
 
-Como podemos ver, hemos utilizado repositorios distintos tanto en tamaño como en características. Me llaman la atención algunos datos.
+Como podemos ver, hemos utilizado repositorios distintos, tanto en tamaño como en características. Lo más destacable es:
 
-Como es de esperar, en todos los repositorios, la gran mayoría de líneas son verdes.
+\begin{itemize}
 
-Sólo hemos encontrado un repositorio que no tenga líneas rojas, y tampoco podemos tenerlo muy en cuenta ya que solo tiene 38 líneas en total.
+  \item Como es de esperar, en todos los repositorios, la gran mayoría de líneas son verdes.
 
-Tenemos 5 repositorios en los que hay más líneas naranjas que rojas, 5 repositorios en los que hay más líneas rojas que naranjas, y un repositorio en el que hay las mismas líneas rojas que naranjas. Estos datos no nos dejan sacar ninguna conclusión sobre esto ya que son demasiado igualados, aunque si que es cierto que en el recuento total, tenemos más líneas naranjas que rojas.
+  \item Sólo hemos encontrado un repositorio que no tenga líneas rojas, aunque solo tiene 38 líneas en total.
+
+  \item Hay 5 repositorios en los que hay más líneas naranjas que rojas, 5 repositorios en los que hay más líneas rojas que naranjas, y un repositorio en el que hay las mismas líneas rojas que naranjas.
+
+\end{itemize}
 
 \section{Resultados del análisis del grupo conflictivo}
 \label{sec:resultados-analisis-grupo-conflictivo}
 
 En esta sección analizamos con detalle el grupo que hemos considerado \emph{conflictivo}.
-Después de pasar nuestro primer filtro (\ref{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}), las primeras líneas que podemos considerar \emph{conflictivas} según nuestros parámetros, son las siguientes:
+Después de pasar nuestro primer filtro (véase la sección~\ref{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}), las primeras líneas que podemos considerar \emph{conflictivas} según nuestros parámetros, son las siguientes:
 
 \begin{itemize}
 	\item \textbf{Número de líneas conflictivas: }396
@@ -1201,9 +1203,7 @@ Esto nos da:
 	\item 1.96\% del total de líneas en zona naranja (20.107)
 \end{itemize}
 
-Como podemos ver estos datos son unos porcentajes bajísimos, prácticamente ninguna línea se presta a que le pueda ocurrir el problema planteado.
-
-De hecho, todavía queda analizar esas 396 líneas, las cuales han pasado el filtro para ser conflictivas, pero todavía hay que clasificarlas según su motivo, de la forma que ya explicamos en el capítulo 4, (\ref{sec:clasificacion-de-lineas-conflictivas})
+Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y las clasificamos según su motivo, de la forma que ya explicamos en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), obtenemos el siguiente resultado:s
 
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
@@ -1261,7 +1261,7 @@ De hecho, todavía queda analizar esas 396 líneas, las cuales han pasado el filtr
 	
 \end{itemize}
 
-Como ya vimos, tenemos dos grupos que pueden entrar dentro de nuestro estudio, que son: ``La línea se acorta exclusivamente por que una palabra pasa a ser mas corta'' y ``La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta''. Si los agrupamos y hablamos de porcentajes en función de las 396 líneas que ya hemos filtrado
+Como ya vimos, tenemos dos grupos que pueden entrar dentro de nuestro estudio, que son: ``La línea se acorta exclusivamente por que una palabra pasa a ser más corta'' y ``La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta''. Si los agrupamos y hablamos de porcentajes en función de las 396 líneas que ya hemos filtrado
 como conflictivas, obtenemos:
 
 \begin{itemize}
@@ -1271,10 +1271,7 @@ como conflictivas, obtenemos:
 
 Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menor que el porcentaje que se descarta.
 
-Si comparamos este último filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.034\%}.
-
-\ \\ % asi se hacen 1 saltos de linea
-Este dato es un porcentaje ínfimo y despreciable en cualquier caso.
+Si comparamos este último, filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.034\%}. Este dato es un porcentaje ínfimo, que da a entender que el debate sobre esta cuestión carece de sentido, o al menos, no debería tener la importancia que se le ha dado.
 
 \ \\ % asi se hacen 1 saltos de linea
 Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
@@ -1293,7 +1290,7 @@ r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
 
 \textbf{Opinión}:
 
-En este caso vemos que la palabra que se acorta no parece mucho una variable que haya creado el desarrollador. No tenemos más contexto del resto del código que tiene esta línea alrededor, pero por el nombre de la variable inicial: ``\_VALID\_URL'' y por el contenido de esta, parece que la parte que se acorta no es una variable en sí (display\_id a id). Se puede pensar que depende del programa, el desarrollador esté creando la url él y decida su contenido, pensando así que lo ha podido acortar por nuestro motivo, sin embargo, personalmente no me parece el caso, normalmente trabajas con url que ya existen, y no parece ser que el desarrollador haya acortado una variable suya por el motivo que tratamos. Por tanto yo diría NO.
+En este caso vemos que la palabra que se acorta no parece mucho una variable que haya creado el desarrollador. No tenemos más contexto del resto del código que tiene esta línea alrededor, pero por el nombre de la variable inicial: ``\_VALID\_URL'' y por el contenido de esta, parece que la parte que se acorta no es una variable en sí (display\_id a id). Se puede pensar que depende del programa, el desarrollador esté creando la URL él y decida su contenido, pensando así que lo ha podido acortar por nuestro motivo, sin embargo, personalmente no me parece el caso, normalmente trabajas con url que ya existen, y no parece ser que el desarrollador haya acortado una variable suya por el motivo que tratamos. Por tanto, creemos que NO.
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
