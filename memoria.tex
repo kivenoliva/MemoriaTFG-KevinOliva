@@ -1013,164 +1013,30 @@ Esto quiere decir que el grupo conflictivo que queremos estudiar, las ``línea na
 
 %La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite. Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8. Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
-Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado: FIXME: esto debería ser una tabla, la tabla~\ref{tab:proyectos}.
+Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado:
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{Proyectos Analizados}
 \label{tab:proyectos}
 \begin{tabular}{|l|r|r|r|r|r|}
  \hline
-Proyecto & Verdes & Naranjas & Rojas & Rojas Comentarios  & Totales  \\ \hline \hline
+Proyecto & Líneas Verdes & Líneas Naranjas & Líneas Rojas & Rojas Comentarios  & Totales  \\ \hline \hline
 youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,058\%) &  127.737 \\ \hline
- &  &  &  &  & \\ \hline
- &  &  &  &  & \\ \hline 
+ SerpentAI & 3.396 & 130 & 282 & 0 (0\%) & 3.808\\ \hline
+ requests & 29.164 & 1.475 & 3.235 & 79 (2,44\%) & 33.874\\ \hline 
+ scrapy & 31.174 & 2.400 & 1.709 & 99 (5,79\%) & 35.283\\ \hline 
+ pythondotorg & 10.609 & 380 & 601 & 3 (0,49\%) & 11.590\\ \hline 
+ models & 56.246 & 2.949 & 1.058 & 683 (0,64\%) & 60.253\\ \hline 
+ lbry & 24.832 & 1.700 & 1.885 & 59 (3,12\%) & 28.417\\ \hline 
+ keras & 49.456 & 3.428 & 1.525 & 60 (3,93\%)& 54.409\\ \hline 
+ flask & 13.030 & 1.307 & 99  & 11 (11,11\%) & 14.436\\ \hline 
+ awesome-python & 70 & 3 & 3 & 1 (33,3\%) & 76\\ \hline 
+ awesome-machine-learning & 25 & 3 & 0 & 0 (0\%) & 28\\ \hline 
+ 
+ 
 \end{tabular}
 \end{table}
-
-\begin{enumerate}
-		
-	\item \textbf{SerpentAI: }3.781
-		
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }3.396
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }130
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }282, de las cuales 0 son comentarios.(0\%)
-		\end{itemize}
-	
-	\item \textbf{requests: }33.894
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }29.164
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }1.475
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }3.235, de las cuales 79 son comentarios.(2,44\%)
-		\end{itemize}	
-	
-	\item \textbf{scrapy: }35.283
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }31.174
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }2.400
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }1.709, de las cuales 99 son comentarios.(5,79\%)
-		\end{itemize}
-	
-	\item \textbf{pythondotorg: }11.590
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }10.609
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }380
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }601, de las cuales 3 son comentarios.(0,49\%)
-		\end{itemize}
-	
-	\item \textbf{models: }60.253
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }56.246
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }2.949
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }1.058, de las cuales 683 son comentarios.(0,64\%)
-		\end{itemize}
-	
-	\item \textbf{lbry: }28.417
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }24.832
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }1.700
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }1.885, de las cuales 59 son comentarios.(3,12\%)
-		\end{itemize}
-		
-	\item \textbf{keras: }54.409
-		
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }49.456
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }3.428
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }1.525, de las cuales 60 son comentarios.(3,93\%)
-		\end{itemize}
-	
-	\item \textbf{flask: }14.436
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }13.030
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }1.307
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }99, de las cuales 11 son comentarios.(11,11\%)
-		\end{itemize}
-	
-	\item \textbf{awesome-python: }76
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }70
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }3
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }3, de las cuales 1 son comentarios.(33,3\%)
-		\end{itemize}
-	
-	\item \textbf{awesome-machine-learning': }38
-	
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }35
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }3
-		\end{itemize}
-		
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }0
-		\end{itemize}
-					
-\end{enumerate}
 
 Como podemos ver, hemos utilizado repositorios distintos, tanto en tamaño como en características. Lo más destacable es:
 
@@ -1206,10 +1072,8 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
 	
-	FIXME: cambiar esta parte para que se vea mejor. Por ejemplo, como esto de abajo y no como lo siguiente.
-	
 	Ejemplo: \\
-		Línea Actual:
+	Línea Actual:
     \begin{footnotesize}
 	\begin{verbatim}  
 	 'url': 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
@@ -1217,49 +1081,67 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	\end{footnotesize}
 
 	Línea en el Pasado:
-	\begin{verbatim}
-          'url':
-	 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
+	\begin{footnotesize}
+	\begin{verbatim}  
+     'url':'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
 	\end{verbatim}
+	\end{footnotesize}
+	
+	\ \\ \ \\% asi se hacen 1 saltos de linea.
 	
 	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas
 		corta: }125
 	
-	Ejemplo:
-	\begin{verbatim}
-	Línea Actual ---------->             'subtitles':
-	 self.extract_subtitles(video_id, subtitles_id, hl),
+	Ejemplo: \\
+	Línea Actual:
+    \begin{footnotesize}
+	\begin{verbatim} 
+	             'subtitles':self.extract_subtitles(video_id, subtitles_id, hl),
 	\end{verbatim}
-	\begin{verbatim}
-	Línea en el Pasado ---->             'subtitles':
-	 self.extract_subtitles(video_id, video_subtitles_id, hl),
+	\end{footnotesize}
+	
+	Línea en el Pasado:
+	\begin{footnotesize}
+	\begin{verbatim} 
+	              'subtitles':self.extract_subtitles(video_id, video_subtitles_id, hl),
 	\end{verbatim}
+	\end{footnotesize}
 	
 	
 	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }3
 	
-	Ejemplo:
-	\begin{verbatim}
-	Línea Actual ---------->                 'https:
-	//tv.nrk.no/program/Episodes/{series}/{season}'.format(
+	Ejemplo: \\
+	Línea Actual:
+	\begin{footnotesize}
+	\begin{verbatim} 
+	                 'https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
 	\end{verbatim}
-	\begin{verbatim}
-	Línea en el Pasado ---->             self.url_result('https:
-	//tv.nrk.no/program/Episodes/{series}/{season}'.format(
+	\end{footnotesize}
+	
+	Línea en el Pasado:
+	\begin{footnotesize}
+	\begin{verbatim} 
+	             self.url_result('https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
 	\end{verbatim}
+	\end{footnotesize}
 	
 	
 	\item \textbf{Resto de líneas: }267
 	
-	Ejemplo:
-	\begin{verbatim}
-	Línea Actual ---------->         'url':
-	 'http://www.chilloutzone.net/video/eine-sekunde-bevor.html',
+	Ejemplo: \\
+	Línea Actual:
+	\begin{footnotesize}
+	\begin{verbatim} 
+	         'url':'http://www.chilloutzone.net/video/eine-sekunde-bevor.html',
 	\end{verbatim}
-	\begin{verbatim}
-	Línea en el Pasado ---->     	u'url':
-	 u'http://www.chilloutzone.net/video/enemene-meck-alle-katzen-weg.html',
+	\end{footnotesize}
+	
+	Línea en el Pasado:
+	\begin{footnotesize}
+	\begin{verbatim} 
+	     	u'url':u'http://www.chilloutzone.net/video/enemene-meck-alle-katzen-weg.html',
 	\end{verbatim}
+	\end{footnotesize}
 	
 	
 	
@@ -1285,14 +1167,20 @@ Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no ha
 Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultados, y vamos a analizarlos aquí.
 
 \textbf{Par de líneas}:
-\begin{verbatim}
-Línea Actual ---------->     _VALID_URL = 
-r'https?://(?:www\.)?alpha\.com/videos/(?P<id>[^/]+)'
+
+Línea Actual:
+\begin{footnotesize}
+\begin{verbatim} 
+     _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<id>[^/]+)'
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->     _VALID_URL = 
-r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
+     _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1300,14 +1188,20 @@ En este caso vemos que la palabra que se acorta no parece mucho una variable que
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->         return
-self.playlist_result(entries, video_id, title, description)
+         return self.playlist_result(entries, video_id, title, description)
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->         return
-self.playlist_result(entries, video_id, playlist_title, description)
+         return self.playlist_result(entries, video_id, playlist_title, description)
 \end{verbatim}
+\end{footnotesize}
 
 
 \textbf{Análisis}:
@@ -1315,15 +1209,22 @@ self.playlist_result(entries, video_id, playlist_title, description)
 En esta línea, así a bote pronton, parece que SÍ se trata de un cambio para cumplir con la guía de estilo PEP8. Se puede ver de manera fácil que lo que ha cambiado es una variable, ya que es un parámetro que se le está pasando a una función. La variable ha pasado de ser ``playlist-title'' a simplemente ``title''. Podemos afirmar que el nombre de la variable ha perdido sentido, ya que llamar a una variable \emph{título} no es muy buena elección. Antes se sabía que era el título de una playlist, sin embargo ahora es más difícil adivinar el contenido de esa variable. A nuestro entender, el código ha quedado peor que el original.
 
 \ \\ % asi se hacen 1 saltos de linea
+
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->         'skip': 'redirect to
-http://swrmediathek.de/index.htm?hinweis=swrlink',
+         'skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->         '_skip': 'redirect to
-http://swrmediathek.de/index.htm?hinweis=swrlink',
+         '_skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1333,14 +1234,20 @@ En esta línea tenemos un caso en el que parece claro que la palabra que se ha ac
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->         except (TimeoutError,
- HTTPException, SocketError, ProtocolError) as e:
+         except (TimeoutError, HTTPException, SocketError, ProtocolError) as e:
 \end{verbatim}
-\begin{verbatim}
-Línea en el Pasado ---->         except (TimeoutError,
- HTTPException, SocketError, ConnectionError) as e:
+\end{footnotesize}
+
+Línea en el Pasado
+\begin{footnotesize}
+	\begin{verbatim}
+         except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1349,14 +1256,21 @@ En este caso, vemos que la línea cumple el patrón de nuestro análisis para estar
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->             elif 
-status['startup_status']['code'] == LOADING_WALLET_CODE:
+             elif status['startup_status']['code'] == LOADING_WALLET_CODE:
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->             elif 
-status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
+             elif status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
 \end{verbatim}
+\end{footnotesize}
+
 
 \textbf{Análisis}:
 
@@ -1365,14 +1279,20 @@ En esta línea podemos ver algo que también nos puede pasar. Debido a la forma en
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->         `(batch, new_rows, new_cols,
- filters)` if data_format='channels_last'.
+         `(batch, new_rows, new_cols, filters)` if data_format='channels_last'.
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->         `(batch, new_rows, new_cols,
- nb_filter)` if data_format='channels_last'.
+         `(batch, new_rows, new_cols, nb_filter)` if data_format='channels_last'.
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1381,14 +1301,20 @@ En esta línea vemos que la palabra afectada parece ser una variable. Esta variab
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->     def _download_name(self, name,
- timeout=None, download_directory=None,
+     def _download_name(self, name, timeout=None, download_directory=None,
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->     def _download_name(self, name,
- timeout=conf.settings.download_timeout, download_directory=None,
+     def _download_name(self, name, timeout=conf.settings.download_timeout, download_directory=None,
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1397,14 +1323,20 @@ En esta línea vuelve a parecer que efectivamente la palabra afectada parece una 
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->                 'lynda returned
- error: %s' % video['Message'], expected=True)
+                 'lynda returned error: %s' % video['Message'], expected=True)
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->                 'lynda returned
- error: %s' % video_json['Message'], expected=True)
+                 'lynda returned error: %s' % video_json['Message'], expected=True)
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1413,14 +1345,20 @@ Nos encontramos ante un caso en el que la parte de la línea afectada no está cla
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->         with mock.patch.object
-(attr, '__setattr__') as mock_setattr, \
+         with mock.patch.object(attr, '__setattr__') as mock_setattr, \
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:	
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->         with mock.patch.object
-(SettingsAttribute, '__setattr__') as mock_setattr, \
+         with mock.patch.object(SettingsAttribute, '__setattr__') as mock_setattr, \
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
@@ -1429,14 +1367,20 @@ Nos volvemos a encontrar ante lo que parece una variable, en la que hemos pasado
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
+
+Línea Actual:
+\begin{footnotesize}
 \begin{verbatim}
-Línea Actual ---------->                     
-log.info("Responding with %s infos", str(len(blob_infos)))
+                     log.info("Responding with %s infos", str(len(blob_infos)))
 \end{verbatim}
+\end{footnotesize}
+
+Línea en el Pasado:	
+\begin{footnotesize}
 \begin{verbatim}
-Línea en el Pasado ---->                     
-logging.info("Responding with %s infos", str(len(blob_infos)))
+                     logging.info("Responding with %s infos", str(len(blob_infos)))
 \end{verbatim}
+\end{footnotesize}
 
 \textbf{Análisis}:
 
