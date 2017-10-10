@@ -1273,10 +1273,12 @@ Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de
 
 Si comparamos este último, filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.034\%}. Este dato es un porcentaje ínfimo, que da a entender que el debate sobre esta cuestión carece de sentido, o al menos, no debería tener la importancia que se le ha dado.
 
+\subsection{Análisis (manual) de líneas particulares}
+
 \ \\ % asi se hacen 1 saltos de linea
 Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
 
-Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultados, y vamos a analizarlos aquí:
+Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultados, y vamos a analizarlos aquí.
 
 \textbf{Par de líneas}:
 \begin{verbatim}
@@ -1288,9 +1290,9 @@ Línea en el Pasado ---->     _VALID_URL =
 r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En este caso vemos que la palabra que se acorta no parece mucho una variable que haya creado el desarrollador. No tenemos más contexto del resto del código que tiene esta línea alrededor, pero por el nombre de la variable inicial: ``\_VALID\_URL'' y por el contenido de esta, parece que la parte que se acorta no es una variable en sí (display\_id a id). Se puede pensar que depende del programa, el desarrollador esté creando la URL él y decida su contenido, pensando así que lo ha podido acortar por nuestro motivo, sin embargo, personalmente no me parece el caso, normalmente trabajas con url que ya existen, y no parece ser que el desarrollador haya acortado una variable suya por el motivo que tratamos. Por tanto, creemos que NO.
+En este caso vemos que la palabra que se acorta no parece mucho una variable que haya creado el desarrollador. No tenemos más contexto del resto del código que tiene esta línea (las líneas colindantes), pero por el nombre de la variable inicial: ``\_VALID\_URL'' y por el contenido de esta variable, parece que la parte que se acorta no es una variable en sí (display\_id a id). Se puede pensar que depende del programa, el desarrollador esté creando la URL y decida su contenido, pensando así que lo ha podido acortar por el motivo que perseguimos en nuestro análisis. Sin embargo, en esta situación no parece que se dé el caso, ya que normalmente se trabaja con URLs que ya existen, y no parece ser que el desarrollador haya acortado una variable por el motivo que tratamos. Por tanto, creemos que en este caso no se trata de un cambio en el nombre de la variable con el fin de cumplir con la guía de estilo PEP8.
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
@@ -1304,9 +1306,9 @@ self.playlist_result(entries, video_id, playlist_title, description)
 \end{verbatim}
 
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En esta línea diría nada más verla que SÍ. Podemos observar de manera fácil que lo que ha cambiado es una variable, ya que es un parámetro que se le está pasando a una función. La variable ha pasado de ser ``playlist-title'' a simplemente ``title''. En este caso creo que podemos afirmar que el nombre de la variable ha perdido sentido, ya que llamar a una variable título, no es muy buena elección, antes sabíamos que era el título de una playlist, sin embargo ahora no podemos tener idea del contenido de esa variable, el código ha quedado pero que el anterior, siempre bajo mi punto de vista.
+En esta línea, así a bote pronton, parece que SÍ se trata de un cambio para cumplir con la guía de estilo PEP8. Se puede ver de manera fácil que lo que ha cambiado es una variable, ya que es un parámetro que se le está pasando a una función. La variable ha pasado de ser ``playlist-title'' a simplemente ``title''. Podemos afirmar que el nombre de la variable ha perdido sentido, ya que llamar a una variable \emph{título} no es muy buena elección. Antes se sabía que era el título de una playlist, sin embargo ahora es más difícil adivinar el contenido de esa variable. A nuestro entender, el código ha quedado peor que el original.
 
 \ \\ % asi se hacen 1 saltos de linea
 \textbf{Par de líneas}:
@@ -1319,9 +1321,9 @@ Línea en el Pasado ---->         '_skip': 'redirect to
 http://swrmediathek.de/index.htm?hinweis=swrlink',
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En esta línea tenemos un caso en el que parece claro que la palabra que se ha acortado es una variable, sin embargo, no parece que la variable haya perdido sentido respecto a su nombre anterior por este motivo, ya que lo único que se ha hecho ha sido quitar un guión bajo inicial. Por tanto para esta línea también diría que NO.
+En esta línea tenemos un caso en el que parece claro que la palabra que se ha acortado es una variable. Sin embargo, no parece que la variable haya perdido sentido respecto a su nombre anterior por este motivo, ya que lo único que se ha hecho ha sido quitar un guión bajo inicial. Por tanto para esta línea también la clasificaríamos como que NO.
 
 
 \ \\ % asi se hacen 1 saltos de linea
@@ -1336,9 +1338,9 @@ Línea en el Pasado ---->         except (TimeoutError,
  HTTPException, SocketError, ConnectionError) as e:
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En este caso vemos que la línea cumple el patrón de nuestro análisis para estar aquí, sin embargo, si la analizamos vemos que efectivamente la palabra afectada es una variable, que ha pasado de ``ConnectionError'' a ``ProtocolError''. Sin embargo, si nos fijamos en el nombre de la variable no parece que este cambio haya sido para acortar la misma, parece que ahora la variable se refiere a otra cosa y ha cambiado de nombre, el cual no ha perdido significado, no parece que el motivo sea mantener la misma variable pero acortando el nombre, por tanto, diría que NO.
+En este caso, vemos que la línea cumple el patrón de nuestro análisis para estar aquí. Sin embargo, si la analizamos vemos que efectivamente la palabra afectada es una variable, que ha pasado de ``ConnectionError'' a ``ProtocolError''. Si nos fijamos en el nombre de la variable no parece que este cambio haya sido para acortar la misma. Más bien parece que ahora la variable se refiere a otra cosa y ha cambiado de nombre, el cual no ha perdido significado. No parece que el motivo sea mantener la misma variable pero acortando el nombre, por tanto, diríamos que NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1352,9 +1354,9 @@ Línea en el Pasado ---->             elif
 status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En esta línea podemos ver algo que también nos puede pasar. Debido a la forma en la que clasificamos las líneas en los grupos finales, la parte de línea que detecta que ha cambiado es ``status['result']['startup\_status']['code']'' por ``status['startup\_status']['code']''. Podemos observar que al no tener espacios nos lo ha detectado como una palabra y posible variable. Claramente NO estamos ante un caso de los que buscamos.
+En esta línea podemos ver algo que también nos puede pasar. Debido a la forma en la que clasificamos las líneas en los grupos finales, la parte de línea que detecta que ha cambiado es ``status['result']['startup\_status']['code']'' por ``status['startup\_status']['code']''. Podemos observar que al no tener espacios, nuestra herramienta lo ha detectado como una palabra y posible variable. Claramente NO estamos ante un caso de los que buscamos.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1368,9 +1370,9 @@ Línea en el Pasado ---->         `(batch, new_rows, new_cols,
  nb_filter)` if data_format='channels_last'.
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En esta línea vemos que la palabra afectada parece ser una variable. Esta variable ha pasado de ser ``nb\_filter'' a ``filters'', según vemos aquí y sin tener más contexto, como en las demás ocasiones, podemos pensar que esta variable ha podido sufrir el ``truco'' del que hablamos aquí por parte del desarrollador, sin embargo, la clave aquí es estudiar si la variable ha perdido significado con el cambio, en este caso creo que no es así. La razón es que la parte qué se ha eliminado de la variable no me aporta información, es decir, entiendo igual que la variable es un filtro, y el hecho de tener delante ``\_nb'' no me aporta más información. Por lo tanto diría que NO.
+En esta línea vemos que la palabra afectada parece ser una variable. Esta variable ha pasado de ser ``nb\_filter'' a ``filters'', según vemos aquí y sin tener más contexto. Como en ocasiones anterioes, podemos pensar que esta variable ha podido sufrir el ``truco'' del que hablamos aquí por parte del desarrollador.  Sin embargo, la clave aquí está en estudiar si la variable ha perdido significado con el cambio. En este caso creo que no es así. La razón es que la parte que se ha eliminado de la variable no aporta información, es decir, se entiende igual que la variable es un filtro y el hecho de tener delante ``\_nb'' no me aporta mayor información. Por lo tanto diríamos que NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1384,9 +1386,9 @@ Línea en el Pasado ---->     def _download_name(self, name,
  timeout=conf.settings.download_timeout, download_directory=None,
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-En esta línea vuelve a parecer que efectivamente la palabra afectada parece una variable, sin embargo, nos encontramos ante un caso distinto al que buscamos, el motivo es que no sólo está afectada una variable, si no una variable y su asignación. La expresión afectada pasa de ser ``timeout=conf.settings.download\_timeout'' a ser ``timeout=None''. Este cambio parece ser un cambio que se ha tenido que realizar en el código, ya que esa variable ahora pasa a valer otra cosa, lo que está claro es que no parece ser el caso que buscamos, por tanto, apuntamos otro NO.
+En esta línea vuelve a parecer que efectivamente la palabra afectada parece una variable. Sin embargo, nos encontramos ante un caso distinto al que buscamos. El motivo es que no sólo se ve afectada una variable, sino una variable y su asignación. La expresión afectada pasa de ser ``timeout=conf.settings.download\_timeout'' a ser ``timeout=None''. Este cambio parece ser un cambio que se ha tenido que realizar en el código, ya que esa variable ahora pasa a valer otra cosa. Parece claro que no se trata de un caso que buscamos, por tanto, apuntamos otro NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1400,9 +1402,9 @@ Línea en el Pasado ---->                 'lynda returned
  error: %s' % video_json['Message'], expected=True)
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-Nos encontramos ante un caso en el que la parte de la línea afectada no está claro si es una variable, en mi opinión, lo que se ha acortado aquí puede ser el nombre de una función o método. La parte afectada ha pasado de ser ``video\_json['Message']'' a ser ``video['Message']''. En este caso, puede que no demasiado, pero me atrevería a decir que el nombre afectado ha perdido información, ya que el nombre antiguo: ``video\_json'' no es demasiado explicativo, sin embargo, anular la parte ``\_json'' resta una información que puede ser importante, ya que habla sobre un formato. Por tanto, en esta ocasión me atrevería a decir que SI ha ocurrido el caso que buscamos.
+Nos encontramos ante un caso en el que la parte de la línea afectada no está claro si es una variable, en mi opinión, lo que se ha acortado aquí puede ser el nombre de una función o método. La parte afectada ha pasado de ser ``video\_json['Message']'' a ser ``video['Message']''. En este caso, puede que no demasiado, pero me atrevería a decir que el nombre afectado ha perdido información, ya que el nombre antiguo: ``video\_json'' no es demasiado explicativo. Sin embargo, anular la parte ``\_json'' resta una información que puede ser importante, ya que habla sobre un formato. Por tanto, en esta ocasión me atrevería a decir que SÍ ha ocurrido el caso que buscamos.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1416,9 +1418,9 @@ Línea en el Pasado ---->         with mock.patch.object
 (SettingsAttribute, '__setattr__') as mock_setattr, \
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-Nos volvemos a encontrar ante lo que parece una variable, en la que hemos pasado de ``SettingsAttribute'' a ``attr''. Parece claro como decimos, que es una variable, y además en este caso me atrevería a decir que hemos perdido información con el cambio. En el primer nombre tenemos claramente información sobre el significado de esta variable, sin embargo, después del cambio solo tenemos una abreviatura que no nos aportan ninguna información. El código después del cambio ha quedado peor, y parece que el cambio se ha podido dar por el caso que tratamos aquí. Por tanto, añadiría esta línea al SI.
+Nos volvemos a encontrar ante lo que parece una variable, en la que hemos pasado de ``SettingsAttribute'' a ``attr''. Parece claro, como decimos, que es una variable, y además en este caso podemos decir que hemos perdido información con el cambio. En el primer nombre tenemos claramente información sobre el significado de esta variable. Sin embargo, después del cambio solo tenemos una abreviatura que no nos aportan ninguna información. El código después del cambio ha quedado peor, y parece que el cambio se ha podido dar por el caso que tratamos aquí. Por tanto, añadiríamos esta línea al SI.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1432,19 +1434,17 @@ Línea en el Pasado ---->
 logging.info("Responding with %s infos", str(len(blob_infos)))
 \end{verbatim}
 
-\textbf{Opinión}:
+\textbf{Análisis}:
 
-La parte afectada aquí no parece ser una variable, hemos pasado de ``logging.info'' a ``log.info''. Claramente no estamos ante nuestro caso ya que esto son unos logs, que han cambiado. Por tanto añadiría otro NO.
+La parte afectada aquí no parece ser una variable. Se ha pasado de ``logging.info'' a ``log.info''. Claramente no estamos ante nuestro caso ya que esto son unos logs, que han cambiado. Por tanto añadiríamos otro NO.
 
 \ \\ % asi se hacen 1 saltos de linea
 
-\textbf{Conclusión del análisis manual}: Hemos cogido una pequeña muestra de 10 líneas de nuestros resultados. Hemos obtenido 3 SI y 7 NO. Estos resultados son totalmente subjetivos, y además nos falta mucho contexto sobre el código analizado, ya que estamos tratando sobre líneas totalmente aisladas. Aun así de nuevo hemos obtenido unos resultados negativos respecto al caso buscado.
+\textbf{Conclusión del análisis manual}: Hemos cogido una pequeña muestra de 10 líneas de nuestros resultados. Hemos obtenido 3 SÍ y 7 NO. Estos resultados son subjetivos y sólo aportan evidencia parcial y no completa. Además nos falta mucho contexto sobre el código analizado, ya que estamos tratando sobre líneas totalmente aisladas. Aun así, permiten analizar en detalle el fondo de la cuestión y ampliar la perspectiva del análisis, tanto para ver la problemática a la que nos enfrentamos como los resultados de la misma. De nuevo, hemos obtenido generalmente unos resultados negativos respecto al caso buscado.
 
 
 \ \\ \ \\% asi se hacen 1 saltos de linea
-Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto somos capaces de llegar a una conclusión.
-
-
+%Lo que sí podemos afirmar es que con los resultados obtenidos en este proyecto somos capaces de llegar a una conclusión.
 
 
 
