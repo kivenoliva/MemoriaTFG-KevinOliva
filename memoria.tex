@@ -1011,26 +1011,24 @@ Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, po
 que la inmensa mayoría están en las llamadas ``línea verdes'' un 89,45\%.
 Esto quiere decir que el grupo conflictivo que queremos estudiar, las ``línea naranjas'', queda en un 5,43\%.
 
-La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite. FIXME: no me queda claro esta frase.
-Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8. FIXME: ni esta.
-Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
+%La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite. Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8. Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
 
-Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado: FIXME: esto debería ser una tabla
+Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado: FIXME: esto debería ser una tabla, la tabla~\ref{tab:proyectos}.
+
+\begin{table}[]
+\centering
+\caption{Proyectos Analizados}
+\label{tab:proyectos}
+\begin{tabular}{|l|r|r|r|r|r|}
+ \hline
+Proyecto & Verdes & Naranjas & Rojas & Rojas Comentarios  & Totales  \\ \hline \hline
+youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,058\%) &  127.737 \\ \hline
+ &  &  &  &  & \\ \hline
+ &  &  &  &  & \\ \hline 
+\end{tabular}
+\end{table}
 
 \begin{enumerate}
-	\item \textbf{youtube-dl: }127.737
-		
-		\begin{itemize}
-			\item \textbf{Líneas verdes: }112.898
-		\end{itemize}
-	
-		\begin{itemize}
-			\item \textbf{Líneas naranjas: }6.332
-		\end{itemize}
-
-		\begin{itemize}
-			\item \textbf{Líneas rojas: }8.507, de las cuales 5 son comentarios.(0,058\%)
-		\end{itemize}
 		
 	\item \textbf{SerpentAI: }3.781
 		
@@ -1208,13 +1206,19 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
 	
-	Ejemplo:
-	\begin{verbatim}
-	Línea Actual ---------->         'url':
-	 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
+	FIXME: cambiar esta parte para que se vea mejor. Por ejemplo, como esto de abajo y no como lo siguiente.
+	
+	Ejemplo: \\
+		Línea Actual:
+    \begin{footnotesize}
+	\begin{verbatim}  
+	 'url': 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
 	\end{verbatim}
+	\end{footnotesize}
+
+	Línea en el Pasado:
 	\begin{verbatim}
-	Línea en el Pasado ---->             'url':
+          'url':
 	 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
 	\end{verbatim}
 	
