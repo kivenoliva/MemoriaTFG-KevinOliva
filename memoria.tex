@@ -994,7 +994,7 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.80]{img/diagramaBarras}
+	\includegraphics[scale=0.75]{img/diagramaBarras}
 	\caption{Diagrama de barras de los resultados generales}
 	\label{fig:resultados_generales}
 \end{figure}
@@ -1021,7 +1021,7 @@ Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vam
 \label{tab:proyectos}
 \begin{tabular}{|l|r|r|r|r|r|}
  \hline
-Proyecto & Líneas Verdes & Líneas Naranjas & Líneas Rojas & Rojas Comentarios  & Totales  \\ \hline \hline
+Proyecto & Verdes & Naranjas & Rojas & Rojas Comentarios  & Totales  \\ \hline \hline
 youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,058\%) &  127.737 \\ \hline
  SerpentAI & 3.396 & 130 & 282 & 0 (0\%) & 3.808\\ \hline
  requests & 29.164 & 1.475 & 3.235 & 79 (2,44\%) & 33.874\\ \hline 
@@ -1067,7 +1067,7 @@ Esto nos da:
 	\item 1.96\% del total de líneas en zona naranja (20.107)
 \end{itemize}
 
-Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y las clasificamos según su motivo, de la forma que ya explicamos en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), obtenemos el siguiente resultado:s
+Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y las clasificamos según su motivo, de la forma que ya explicamos en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), obtenemos el siguiente resultados\footnote{Se ha omitido la indentación de las líneas para que quepan en el ancho de página.}:
 
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
@@ -1096,14 +1096,14 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	Línea Actual:
     \begin{footnotesize}
 	\begin{verbatim} 
-	             'subtitles':self.extract_subtitles(video_id, subtitles_id, hl),
+	'subtitles':self.extract_subtitles(video_id, subtitles_id, hl),
 	\end{verbatim}
 	\end{footnotesize}
 	
 	Línea en el Pasado:
 	\begin{footnotesize}
 	\begin{verbatim} 
-	              'subtitles':self.extract_subtitles(video_id, video_subtitles_id, hl),
+	'subtitles':self.extract_subtitles(video_id, video_subtitles_id, hl),
 	\end{verbatim}
 	\end{footnotesize}
 	
@@ -1114,14 +1114,14 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	Línea Actual:
 	\begin{footnotesize}
 	\begin{verbatim} 
-	                 'https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
+	'https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
 	\end{verbatim}
 	\end{footnotesize}
 	
 	Línea en el Pasado:
 	\begin{footnotesize}
 	\begin{verbatim} 
-	             self.url_result('https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
+	self.url_result('https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
 	\end{verbatim}
 	\end{footnotesize}
 	
@@ -1132,14 +1132,14 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	Línea Actual:
 	\begin{footnotesize}
 	\begin{verbatim} 
-	         'url':'http://www.chilloutzone.net/video/eine-sekunde-bevor.html',
+	'url':'http://www.chilloutzone.net/video/eine-sekunde-bevor.html',
 	\end{verbatim}
 	\end{footnotesize}
 	
 	Línea en el Pasado:
 	\begin{footnotesize}
 	\begin{verbatim} 
-	     	u'url':u'http://www.chilloutzone.net/video/enemene-meck-alle-katzen-weg.html',
+	u'url':u'http://www.chilloutzone.net/video/enemene-meck-alle-katzen-weg.html',
 	\end{verbatim}
 	\end{footnotesize}
 	
@@ -1171,14 +1171,14 @@ Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultad
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim} 
-     _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<id>[^/]+)'
+_VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<id>[^/]+)'
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:
 \begin{footnotesize}
 \begin{verbatim}
-     _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
+_VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
 \end{verbatim}
 \end{footnotesize}
 
@@ -1192,14 +1192,14 @@ En este caso vemos que la palabra que se acorta no parece mucho una variable que
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-         return self.playlist_result(entries, video_id, title, description)
+return self.playlist_result(entries, video_id, title, description)
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:
 \begin{footnotesize}
 \begin{verbatim}
-         return self.playlist_result(entries, video_id, playlist_title, description)
+return self.playlist_result(entries, video_id, playlist_title, description)
 \end{verbatim}
 \end{footnotesize}
 
@@ -1215,14 +1215,14 @@ En esta línea, así a bote pronton, parece que SÍ se trata de un cambio para cump
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-         'skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
+'skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:
 \begin{footnotesize}
 \begin{verbatim}
-         '_skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
+'_skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
 \end{verbatim}
 \end{footnotesize}
 
@@ -1238,14 +1238,14 @@ En esta línea tenemos un caso en el que parece claro que la palabra que se ha ac
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-         except (TimeoutError, HTTPException, SocketError, ProtocolError) as e:
+except (TimeoutError, HTTPException, SocketError, ProtocolError) as e:
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado
 \begin{footnotesize}
-	\begin{verbatim}
-         except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
+\begin{verbatim}
+except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
 \end{verbatim}
 \end{footnotesize}
 
@@ -1267,7 +1267,7 @@ Línea Actual:
 Línea en el Pasado
 \begin{footnotesize}
 \begin{verbatim}
-             elif status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
+elif status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
 \end{verbatim}
 \end{footnotesize}
 
@@ -1283,14 +1283,14 @@ En esta línea podemos ver algo que también nos puede pasar. Debido a la forma en
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-         `(batch, new_rows, new_cols, filters)` if data_format='channels_last'.
+`(batch, new_rows, new_cols, filters)` if data_format='channels_last'.
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:
 \begin{footnotesize}
 \begin{verbatim}
-         `(batch, new_rows, new_cols, nb_filter)` if data_format='channels_last'.
+`(batch, new_rows, new_cols, nb_filter)` if data_format='channels_last'.
 \end{verbatim}
 \end{footnotesize}
 
@@ -1305,14 +1305,14 @@ En esta línea vemos que la palabra afectada parece ser una variable. Esta variab
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-     def _download_name(self, name, timeout=None, download_directory=None,
+def _download_name(self, name, timeout=None, download_directory=None,
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:
 \begin{footnotesize}
 \begin{verbatim}
-     def _download_name(self, name, timeout=conf.settings.download_timeout, download_directory=None,
+def _download_name(self, name, timeout=conf.settings.download_timeout, download_directory=None,
 \end{verbatim}
 \end{footnotesize}
 
@@ -1327,14 +1327,14 @@ En esta línea vuelve a parecer que efectivamente la palabra afectada parece una 
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-                 'lynda returned error: %s' % video['Message'], expected=True)
+'lynda returned error: %s' % video['Message'], expected=True)
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:
 \begin{footnotesize}
 \begin{verbatim}
-                 'lynda returned error: %s' % video_json['Message'], expected=True)
+'lynda returned error: %s' % video_json['Message'], expected=True)
 \end{verbatim}
 \end{footnotesize}
 
@@ -1349,14 +1349,14 @@ Nos encontramos ante un caso en el que la parte de la línea afectada no está cla
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-         with mock.patch.object(attr, '__setattr__') as mock_setattr, \
+with mock.patch.object(attr, '__setattr__') as mock_setattr, \
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:	
 \begin{footnotesize}
 \begin{verbatim}
-         with mock.patch.object(SettingsAttribute, '__setattr__') as mock_setattr, \
+with mock.patch.object(SettingsAttribute, '__setattr__') as mock_setattr, \
 \end{verbatim}
 \end{footnotesize}
 
@@ -1371,14 +1371,14 @@ Nos volvemos a encontrar ante lo que parece una variable, en la que hemos pasado
 Línea Actual:
 \begin{footnotesize}
 \begin{verbatim}
-                     log.info("Responding with %s infos", str(len(blob_infos)))
+log.info("Responding with %s infos", str(len(blob_infos)))
 \end{verbatim}
 \end{footnotesize}
 
 Línea en el Pasado:	
 \begin{footnotesize}
 \begin{verbatim}
-                     logging.info("Responding with %s infos", str(len(blob_infos)))
+logging.info("Responding with %s infos", str(len(blob_infos)))
 \end{verbatim}
 \end{footnotesize}
 
