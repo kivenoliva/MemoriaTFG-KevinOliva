@@ -166,11 +166,11 @@ no sea para siempre, pero tu madre sí.
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas de estilo que contiene la guía de estilo de Python PEP8\footnote{\url{http://https://pythonwiki.wikispaces.com/pep8}}.
+Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas que contiene la guía de estilo de Python PEP8\footnote{\url{http://https://pythonwiki.wikispaces.com/pep8}}.
 La regla en cuestión es la siguiente: ``\textbf{Máxima longitud de las líneas:} Limita todas las líneas a un máximo de 79 caracteres''.
-Esta regla ha producido un pequeño debate en la comunidad Python, ya que seguirla al pie de la letra muchas veces tiene como resultado un peor código. Esto es debido a que los desarrolladores acortan, por ejemplo, el nombre de las variables hasta hacerlas ininteligibles.
+Esta regla ha producido un pequeño debate en la comunidad Python, ya que --según muchos desarrolladores-- seguirla al pie de la letra muchas veces tiene como resultado un peor código. Esto es debido a que, por ejemplo, hay desarrolladores que acortan el nombre de las variables hasta hacerlas ininteligibles. Si esto ocurre nos encontramos ante un problema, ya que la regla de estilo de máxima longitud está produciendo un efecto contrario al que pretendía.
 
-En el estudio realizado en este proyecto intentamos detectar las líneas de código que han sufrido esta mala práctica por parte de los desarrolladores. Así, intentamos identificar cuándo los desarrolladores han cambiado el nombre de variables, dándoles un nombre más corto, para cuadrar la longitud de la línea a 79 caracteres. Si esto ocurre nos encontramos ante un problema, ya que la regla de estilo de máxima longitud está produciendo un efecto contrario al que pretendía.
+En el estudio realizado en este Trabajo Fin de Grado intentamos detectar las líneas de código que han sufrido esta mala práctica por parte de los desarrolladores. Para ello, intentamos identificar --a partir de un análisis de repositorios de versiones con código de Python-- cuándo se ha cambiado el nombre de alguna variable, acortándolo para cuadrar la longitud de la línea a 79 caracteres. Los resultados obtenidos muestran que el número de ocurrencias en los que se cambia el nombre de una variable para cumplir la regla de longitud máxima de línea es muy bajo. Un análisis manual posterior, además de ofrecer una mayor perspectiva, indica que la incidencia de esta regla --a partir de los datos a los que hemos podido acceder-- en la calidad del código es realmente muy pequeña.
 
 Para realizar este estudio se ha implementado el lado del servidor con Node.js (utilizando Express) y el lenguaje JavaScript.
 
@@ -245,7 +245,7 @@ Imaginemos que el desarrollador ha escrito la siguiente línea de código:
 'subtitles': self.extract-subtitles(video_id, video_subtitles_id)
 \end{verbatim}
 
-Si estamos leyendo código y pasamos por esta línea, se entiende bastante bien, sin necesidad de contar con más contexto. Se puede suponer fácilmente que estamos obteniendo los subtítulos, los cuales obtenemos de una función llamada ``extract-subtitles''. El nombre de la función parece que se ha elegido con sentido, al ser informativo. También sabemos que para ello le pasamos como parámetros el id del vídeo y el id de los subtítulos.
+Si estamos leyendo código y pasamos por esta línea, se entiende bastante bien, sin necesidad de contar con más contexto. Se puede suponer fácilmente que estamos obteniendo los subtítulos, que obtenemos de una función llamada ``extract-subtitles''. El nombre de la función parece que se ha elegido con sentido, al ser informativo. También sabemos que para ello le pasamos como parámetros el id del vídeo y el id de los subtítulos.
 
 Si estamos analizando código y tenemos todo el contexto de nuestro programa, es posible que no haga falta ir a la documentación de la función ``extract-subtitles'', porque sabemos todo lo que nos hace falta con esta línea y podremos seguir leyendo el código que estamos analizando sin perder más tiempo.
 
@@ -277,7 +277,7 @@ Para esto nacieron las guías de estilo de código. El principal objetivo de una g
 Las guías de estilo son algo que está generalizado en los distintos lenguajes de programación, por ejemplo para PHP tenemos  PSR-2\footnote{http://www.php-fig.org/psr/psr-2/}, y en JavaScript una de las más notables es Crockford\footnote{http://javascript.crockford.com/code.html}. No hay una sola guía de estilo para cada lenguaje, podemos encontrar varias de distintas fuentes (es muy común que los proyectos de software libre tengan una propia). Algo muy común es consultar las guías que ha creado Google. Por ejemplo, para Java podemos encontrar la siguiente\footnote{https://google.github.io/styleguide/javaguide.html}.
 \ \\ % asi se hacen 1 saltos de linea
 
-En esta memoria nos centraremos en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la cual se basa este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
+En esta memoria nos centraremos en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la que se centra este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
 
 Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 hablaremos en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
 
@@ -402,7 +402,7 @@ Python es un lenguaje que ha adquirido gran popularidad en los últimos años, alg
 \ \\  % asi se hacen 1 saltos de linea
 \begin{itemize}
 	\item Sencillez y velocidad a la hora de crear desarrollos completos, normalmente un programa en Python tendrá muchas menos líneas que sus equivalente en otros lenguajes (java, C, etc).
-	\item Ofrece una gran cantidad de librerías, con funciones incorporadas, funcionalidades o tipos de datos, que favorecen la realización de muchas tareas sin necesidad de empezar completamente de 0.
+	\item Ofrece una gran cantidad de librerías, con funciones incorporadas, funcionalidades o tipos de datos, que favorecen la realización de muchas tareas sin necesidad de empezar completamente de cero.
 	\item Se puede obtener de forma gratuita y utilizarse con fines comerciales.
 \end{itemize}
 
@@ -418,13 +418,13 @@ Podemos instalar, actualizar o desinstalar la herramienta de forma fácil con los
 
 \begin{verbatim}
 $ pip install pycodestyle
-$ pip install -- upgrade pycodestyle
+$ pip install --upgrade pycodestyle
 $ pip uninstall pycodestyle
 \end{verbatim}
 
 Una vez instalado podemos revisar nuestro código de forma sencilla, por ejemplo, con el siguiente comando, analizamos el código fuente del fichero ``optparse.py'':
 \begin{verbatim}
-$ pycodestyle -- first optparse.py
+$ pycodestyle --first optparse.py
 \end{verbatim}
 
 La salida que \texttt{pycodestyle} nos proporciona sería la siguiente:
@@ -447,7 +447,7 @@ Podemos ver por ejemplo como en la siguiente línea
 optparse.py:425:80: E501 line too long (82 characters)
 \end{verbatim}
 
-se nos muestra el mensaje del error que un programador verá cuando una línea supera el máximo tamaño de línea permitido. Esta herramienta detecta el error, pero es el desarrollador es el que debe tomar tomar le decisión de cómo
+se nos muestra el mensaje del error que un programador verá cuando una línea supera el máximo tamaño de línea permitido. Esta herramienta detecta el error, pero es el desarrollador el que debe tomar tomar le decisión de cómo
 solucionarlo.
 
 \section{Otros programas del estilo de \texttt{pycodestyle}} 
@@ -563,7 +563,7 @@ La arquitectura completa de las tecnologías utilizadas en este proyecto se puede
 
  JSON (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos. JSON es un subconjunto de la notación literal de objetos de JavaScript aunque hoy, debido a su amplia adopción como alternativa a XML, se considera un formato de lenguaje independiente. JSON nació como una alternativa a XML, el fácil uso en JavaScript ha generado un gran número de seguidores de esta alternativa. Se puede ver un ejemplo de una estructura de datos en JSON en la figura~\ref{fig:json}.
  
- Una de las supuestas ventajas de JSON sobre XML como formato de intercambio de datos es que es mucho más sencillo escribir un analizador sintáctico (parser) de JSON, lo cual ha sido fundamental para que JSON haya sido aceptado por parte de la comunidad de desarrolladores AJAX, debido a la ubicuidad de JavaScript en casi cualquier navegador web.
+ Una de las supuestas ventajas de JSON sobre XML como formato de intercambio de datos es que es mucho más sencillo escribir un analizador sintáctico (parser) de JSON, que ha sido fundamental para que JSON haya sido aceptado por parte de la comunidad de desarrolladores AJAX, debido a la ubicuidad de JavaScript en casi cualquier navegador web.
  
  Otra ventaja a tener en cuenta del uso de JSON es que puede ser leído por cualquier lenguaje de programación. Por lo tanto, puede ser usado para el intercambio de información entre distintas tecnologías.
 
@@ -630,7 +630,7 @@ Ya que \emph{develop} contiene la última foto de nuestro proyecto, crearemos la 
 	
 \item \textbf{Release: }Cuando hemos decidido que el código desarrollado hasta ahora pertenece a una versión de nuestro proyecto, y tenemos actualizado la rama \emph{develop} con dicho código, crearemos una rama \emph{release}.
 		
-	\item \textbf{HotFix: }Cuando detectamos algún error en producción (rama \emph{master}), creamos una rama \emph{HotFix}, en la cual se arregla rápidamente el error (sin hacer ningún desarrollo más). Cuando tenemos el arreglo preparado integramos esta rama con la rama \emph{master} y la \emph{develop} para que todos los desarrolladores tengan el error solventado.
+	\item \textbf{HotFix: }Cuando detectamos algún error en producción (rama \emph{master}), creamos una rama \emph{HotFix}, en la que se arregla rápidamente el error (sin hacer ningún desarrollo más). Cuando tenemos el arreglo preparado integramos esta rama con la rama \emph{master} y la \emph{develop} para que todos los desarrolladores tengan el error solventado.
 \end{enumerate}
 
 
@@ -650,7 +650,7 @@ Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\r
 \begin{figure}
 	\centering
 	\includegraphics[width=150mm]{img/sourceTree2}
-	\caption{Vemos como podemos iniciar el método \texttt{GitFlow} en nuestro proyecto de manera sencilla.}
+	\caption{Inicialización del método \texttt{GitFlow} en un proyecto.}
 	\label{fig:sourcetree1}
 \end{figure}
 
@@ -662,7 +662,7 @@ Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\r
 		\includegraphics[width=0.3\textwidth]{img/sourceTree1}}
 	\subfloat[]{
 		\includegraphics[width=0.3\textwidth]{img/sourceTree3}}
-	\caption{Imágenes de ejemplo de uso de Source Tree}
+	\caption{Imágenes de ejemplo de uso de Source Tree.}
 	\label{fig:sourcetree2}
 \end{figure}
 
@@ -684,7 +684,7 @@ En el diagrama de flujo de la figura~\ref{fig:diagrama} se muestra el funcionami
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.45]{img/diagramaFlujo}
-	\caption{Diagrama de flujo del funcionamiento del estudio}
+	\caption{Diagrama de flujo del funcionamiento del estudio. FIXME: Evita el "nos recorremos"; modifícalo a "recorremos". De cada repositorio,, tiene dos comas. Si es un fichero con extensión .py. Creamos un objeto en la BBDD. A veces hablas en primera personal plural, otras veces en reflexivo.}
 	\label{fig:diagrama}
 \end{figure}
 
@@ -780,7 +780,7 @@ Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en 
 La primera comprobación que haremos es mirar si la línea es un comentario, y no estamos ante una línea de código real. Si nos encontramos ante un comentario descartaremos la línea. En el caso contrario, lo que haremos es ejecutar la instrucción \texttt{git log} a dicha línea para estudiar su pasado.
 
 
-\section{Ejecución de la instrucción \texttt{git log}.} 
+\section{Ejecución de \texttt{git log}} 
 \label{sec:ejecucion-del-comando-git-log}
 
 En primer lugar, vamos a poner un poco en contexto: lo que buscamos es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
@@ -818,7 +818,7 @@ git log -L 155,155:git-web--browse.sh
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.8]{img/salidaGitLogOpciones}
-	\caption{Salida de la instrucción \texttt{git log} con opciones}
+	\caption{Salida de la instrucción \texttt{git log} con opciones. FIXME: especificar qué opciones.}
 	\label{fig:log2}
 \end{figure}
 
@@ -868,10 +868,10 @@ Lo que hacemos en este punto es ejecutar la instrucción \texttt{git log} (con la
 
 Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando exactamente en este punto, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).\\
 
-Muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea, y para implementarlo en código, la única forma que tenemos es comprobar que en ese cambio, la línea actual y la línea en el pasado son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
+Muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea, y para implementarlo en código, la única forma que tenemos es comprobar que en ese cambio, la Línea actual y la Línea en el pasado: son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la Línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
 
 Vamos a intentar clarificar este último párrafo viendo esta cuestión con algún ejemplo. Lo que queremos decir es que la línea puede tener infinitos cambios en su pasado, de hecho puede ser que pase de la zona roja a la zona naranja, vuelva otra vez a la zona roja, pase a la verde, etc.
-Lo que queremos comprobar es que la línea actual es lo suficientemente parecida a la última versión de la línea en la que tenía más de 80 caracteres, para comprobar como ya explicamos en el párrafo anterior si el cambio se produce por nuestro motivo.
+Lo que queremos comprobar es que la Línea actual es lo suficientemente parecida a la última versión de la línea en la que tenía más de 80 caracteres, para comprobar como ya explicamos en el párrafo anterior si el cambio se produce por nuestro motivo.
 Si vemos el siguiente ejemplo sacado de nuestro propio estudio:
 
 \begin{verbatim}
@@ -882,7 +882,7 @@ settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
 La primera línea de código,es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
 Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
 
-Sin embargo, imaginemos que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual quedaría así.
+Sin embargo, imaginemos que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual quedaría así.
 
 \begin{verbatim}
 [settings, data] = {'FEED_FORMAT': None}
@@ -896,7 +896,7 @@ Como decimos, en este punto todavía no podemos saber si la línea ha sufrido ese 
 Teníamos guardadas todo el pasado de la línea, lo que haremos es comparar cada estado de la línea en su pasado, con el estado actual, y basándonos en la respuesta que nos devuelva la distancia de Levenshtein tomar una decisión.
 Si la respuesta está dentro de nuestro umbral, nos quedaremos con ``ese pasado de la línea'', en caso contrario, lo desecharemos.\\
 
-Al terminar este proceso,, tendremos un \emph{array} con todos los estados de la línea en su pasado que han sido mayores de 80 y que se parecen lo suficiente a la línea actual como para ser nuestro caso. En este \emph{array}  normalmente sólo tendremos un registro, que será el paso anterior a cómo era la línea justo antes de cómo es en la actualidad. En caso de que más estados de la línea en su pasado entren en estos criterios y se cuelen aquí, solo interesaría el último caso en que la línea ha estado en la zona roja antes de pasar a la naranja, por tanto, más adelante los filtraremos.\\
+Al terminar este proceso,, tendremos un \emph{array} con todos los estados de la línea en su pasado que han sido mayores de 80 y que se parecen lo suficiente a la Línea actual como para ser nuestro caso. En este \emph{array}  normalmente sólo tendremos un registro, que será el paso anterior a cómo era la línea justo antes de cómo es en la actualidad. En caso de que más estados de la línea en su pasado entren en estos criterios y se cuelen aquí, solo interesaría el último caso en que la línea ha estado en la zona roja antes de pasar a la naranja, por tanto, más adelante los filtraremos.\\
 
 En este punto volvemos a actualizar el objeto que tenemos para dicha línea guardado en nuestra base de datos. En este caso modificaremos el parámetro ``historia:[]'', dándole como valor el \emph{array}  que comentamos en el párrafo anterior.\\
 
@@ -914,25 +914,25 @@ Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos -
 	
 	\item La línea se diferencia por que se han eliminado 4 espacios (tabulaciones).
 	
-	\item La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, la cual se ha acortado (posible caso buscado).
+	\item La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, que se ha acortado (posible caso buscado).
 	
 	\item Resto de líneas.
 	
 \end{enumerate}
 
 En resumen, lo que hemos hecho en código para implementar esto es lo siguiente:
-Iremos pasando cada proceso que vamos a explicar a continuación a cada grupo de líneas (línea antigua con más de 80 y línea actual entre 70 y 79), si la línea cumple con algún proceso se añadirá a dicho grupo, si la línea no encaja en ningún proceso se añadirá al último grupo \textbf{Resto de líneas}.
+Iremos pasando cada proceso que vamos a explicar a continuación a cada grupo de líneas (línea antigua con más de 80 y Línea actual entre 70 y 79), si la línea cumple con algún proceso se añadirá a dicho grupo, si la línea no encaja en ningún proceso se añadirá al último grupo \textbf{Resto de líneas}.
 
 \begin{itemize}
-	\item \textbf{La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta: }Partimos tanto la línea antigua como la línea actual por espacios, de manera que nos quedamos con dos arrays los cuales guardan las palabras de cada línea. Comparamos estos dos arrays, y si sólo se diferencian en una posición, querrá decir que solo hay una palabra distinta. Esta palabra puede que sea una variable, por tanto se añade a este grupo.
+	\item \textbf{La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta: }Partimos tanto la línea antigua como la Línea actual por espacios, de manera que nos quedamos con dos arrays que guardan las palabras de cada línea. Comparamos estos dos arrays, y si sólo se diferencian en una posición, querrá decir que solo hay una palabra distinta. Esta palabra puede que sea una variable, por tanto se añade a este grupo.
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{La línea se diferencia por que se han eliminado 4 espacios: }Lo que hacemos es eliminar los 4 primeros caracteres de la línea antigua, y guardarnos el resto. Comparamos el resto de la línea antigua con la línea actual, y comprobamos si ahora son exactamente iguales, y además si los 4 caracteres que hemos eliminado de la línea antigua son 4 espacios. Si esto se cumple se añade a este grupo.
+	\item \textbf{La línea se diferencia por que se han eliminado 4 espacios: }Lo que hacemos es eliminar los 4 primeros caracteres de la línea antigua, y guardarnos el resto. Comparamos el resto de la línea antigua con la Línea actual, y comprobamos si ahora son exactamente iguales, y además si los 4 caracteres que hemos eliminado de la línea antigua son 4 espacios. Si esto se cumple se añade a este grupo.
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, la cual se ha acortado: }Lo que hacemos aquí es comparar si la línea antigua y la actual son distintas en un principio, pero luego, eliminando los espacios y tabulaciones, tienen el mismo número de palabras, de esta forma, sabremos que solo se diferencian por espacios. Después de esto comprobamos si todas las palabras son exactamente iguales menos una. Si esto ocurre, estamos ante una línea de este grupo.
+	\item \textbf{La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, que se ha acortado: }Lo que hacemos aquí es comparar si la línea antigua y la actual son distintas en un principio, pero luego, eliminando los espacios y tabulaciones, tienen el mismo número de palabras, de esta forma, sabremos que solo se diferencian por espacios. Después de esto comprobamos si todas las palabras son exactamente iguales menos una. Si esto ocurre, estamos ante una línea de este grupo.
 \end{itemize}
 
 Hemos elegido estos cuatro casos porque son los más comunes, por ejemplo, el caso de las tabulaciones, y los casos que afectan directamente a nuestro estudio, como es el 1 principalmente, y como puede ser el 3.
@@ -994,8 +994,8 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.75]{img/diagramaBarras}
-	\caption{Diagrama de barras de los resultados generales}
+	\includegraphics[scale=0.7]{img/diagramaBarras}
+	\caption{Diagrama de barras de los resultados generales. FIXME: en el diagrama pone analzadas!}
 	\label{fig:resultados_generales}
 \end{figure}
 
@@ -1017,13 +1017,13 @@ Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vam
 
 \begin{table}[H]
 \centering
-\caption{Proyectos Analizados}
+\caption{Proyectos analizados y resultados obtenidos.}
 \label{tab:proyectos}
 \begin{tabular}{|l|r|r|r|r|r|}
  \hline
 Proyecto & Verdes & Naranjas & Rojas & Rojas Comentarios  & Totales  \\ \hline \hline
-youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,058\%) &  127.737 \\ \hline
- SerpentAI & 3.396 & 130 & 282 & 0 (0\%) & 3.808\\ \hline
+youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,06\%) &  127.737 \\ \hline
+ SerpentAI & 3.396 & 130 & 282 & 0 (0,00\%) & 3.808\\ \hline
  requests & 29.164 & 1.475 & 3.235 & 79 (2,44\%) & 33.874\\ \hline 
  scrapy & 31.174 & 2.400 & 1.709 & 99 (5,79\%) & 35.283\\ \hline 
  pythondotorg & 10.609 & 380 & 601 & 3 (0,49\%) & 11.590\\ \hline 
@@ -1031,8 +1031,8 @@ youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,058\%) &  127.737 \\ \hline
  lbry & 24.832 & 1.700 & 1.885 & 59 (3,12\%) & 28.417\\ \hline 
  keras & 49.456 & 3.428 & 1.525 & 60 (3,93\%)& 54.409\\ \hline 
  flask & 13.030 & 1.307 & 99  & 11 (11,11\%) & 14.436\\ \hline 
- awesome-python & 70 & 3 & 3 & 1 (33,3\%) & 76\\ \hline 
- awesome-machine-learning & 25 & 3 & 0 & 0 (0\%) & 28\\ \hline 
+ awesome-python & 70 & 3 & 3 & 1 (33,30\%) & 76\\ \hline 
+ awesome-machine-learning & 25 & 3 & 0 & 0 (0,00\%) & 28\\ \hline 
  
  
 \end{tabular}
@@ -1067,20 +1067,20 @@ Esto nos da:
 	\item 1.96\% del total de líneas en zona naranja (20.107)
 \end{itemize}
 
-Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y las clasificamos según su motivo, de la forma que ya explicamos en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), obtenemos el siguiente resultados\footnote{Se ha omitido la indentación de las líneas para que quepan en el ancho de página.}:
+Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y las clasificamos según su motivo, de la forma que ya explicamos en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), obtenemos el siguiente resultados\footnote{En los ejemplos que se muestran \emph{verbatim} en esta memoria, se ha omitido la indentación de las líneas para que quepan en el ancho de página.}:
 
 \begin{itemize}
 	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
 	
 	Ejemplo: \\
-	Línea Actual:
+	Línea actual:
     \begin{footnotesize}
 	\begin{verbatim}  
 	 'url': 'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
 	\end{verbatim}
 	\end{footnotesize}
 
-	Línea en el Pasado:
+	Línea en el pasado:
 	\begin{footnotesize}
 	\begin{verbatim}  
      'url':'http://91porn.com/view_video.php?viewkey=7e42283b4f5ab36da134',
@@ -1093,14 +1093,14 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 		corta: }125
 	
 	Ejemplo: \\
-	Línea Actual:
+	Línea actual:
     \begin{footnotesize}
 	\begin{verbatim} 
 	'subtitles':self.extract_subtitles(video_id, subtitles_id, hl),
 	\end{verbatim}
 	\end{footnotesize}
 	
-	Línea en el Pasado:
+	Línea en el pasado:
 	\begin{footnotesize}
 	\begin{verbatim} 
 	'subtitles':self.extract_subtitles(video_id, video_subtitles_id, hl),
@@ -1111,14 +1111,14 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }3
 	
 	Ejemplo: \\
-	Línea Actual:
+	Línea actual:
 	\begin{footnotesize}
 	\begin{verbatim} 
 	'https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
 	\end{verbatim}
 	\end{footnotesize}
 	
-	Línea en el Pasado:
+	Línea en el pasado:
 	\begin{footnotesize}
 	\begin{verbatim} 
 	self.url_result('https://tv.nrk.no/program/Episodes/{series}/{season}'.format(
@@ -1129,14 +1129,14 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	\item \textbf{Resto de líneas: }267
 	
 	Ejemplo: \\
-	Línea Actual:
+	Línea actual:
 	\begin{footnotesize}
 	\begin{verbatim} 
 	'url':'http://www.chilloutzone.net/video/eine-sekunde-bevor.html',
 	\end{verbatim}
 	\end{footnotesize}
 	
-	Línea en el Pasado:
+	Línea en el pasado:
 	\begin{footnotesize}
 	\begin{verbatim} 
 	u'url':u'http://www.chilloutzone.net/video/enemene-meck-alle-katzen-weg.html',
@@ -1157,7 +1157,7 @@ como conflictivas, obtenemos:
 
 Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menor que el porcentaje que se descarta.
 
-Si comparamos este último, filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Lo cual es un \textbf{0.034\%}. Este dato es un porcentaje ínfimo, que da a entender que el debate sobre esta cuestión carece de sentido, o al menos, no debería tener la importancia que se le ha dado.
+Si comparamos este último, filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Esto supone un \textbf{0.034\%}. Este dato es un porcentaje ínfimo, que da a entender que el debate sobre esta cuestión carece de sentido, o al menos, no debería tener la importancia que se le ha dado.
 
 \subsection{Análisis (manual) de líneas particulares}
 
@@ -1168,14 +1168,14 @@ Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultad
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim} 
 _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<id>[^/]+)'
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
@@ -1189,14 +1189,14 @@ En este caso vemos que la palabra que se acorta no parece mucho una variable que
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 return self.playlist_result(entries, video_id, title, description)
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 return self.playlist_result(entries, video_id, playlist_title, description)
@@ -1212,14 +1212,14 @@ En esta línea, así a bote pronton, parece que SÍ se trata de un cambio para cump
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 'skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 '_skip': 'redirect to http://swrmediathek.de/index.htm?hinweis=swrlink',
@@ -1235,14 +1235,14 @@ En esta línea tenemos un caso en el que parece claro que la palabra que se ha ac
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 except (TimeoutError, HTTPException, SocketError, ProtocolError) as e:
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
@@ -1257,14 +1257,14 @@ En este caso, vemos que la línea cumple el patrón de nuestro análisis para estar
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
-             elif status['startup_status']['code'] == LOADING_WALLET_CODE:
+elif status['startup_status']['code'] == LOADING_WALLET_CODE:
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 elif status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
@@ -1280,14 +1280,14 @@ En esta línea podemos ver algo que también nos puede pasar. Debido a la forma en
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 `(batch, new_rows, new_cols, filters)` if data_format='channels_last'.
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 `(batch, new_rows, new_cols, nb_filter)` if data_format='channels_last'.
@@ -1302,17 +1302,18 @@ En esta línea vemos que la palabra afectada parece ser una variable. Esta variab
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 def _download_name(self, name, timeout=None, download_directory=None,
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:
+Línea en el pasado:\footnote{La línea original está en una única línea. Se muestra así para que quepa en el ancho de página de esta memoria.}:
 \begin{footnotesize}
 \begin{verbatim}
-def _download_name(self, name, timeout=conf.settings.download_timeout, download_directory=None,
+def _download_name(self, name, timeout=conf.settings.download_timeout,
+                                                     download_directory=None,
 \end{verbatim}
 \end{footnotesize}
 
@@ -1324,14 +1325,14 @@ En esta línea vuelve a parecer que efectivamente la palabra afectada parece una 
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 'lynda returned error: %s' % video['Message'], expected=True)
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:
+Línea en el pasado:
 \begin{footnotesize}
 \begin{verbatim}
 'lynda returned error: %s' % video_json['Message'], expected=True)
@@ -1346,14 +1347,14 @@ Nos encontramos ante un caso en el que la parte de la línea afectada no está cla
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 with mock.patch.object(attr, '__setattr__') as mock_setattr, \
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:	
+Línea en el pasado:	
 \begin{footnotesize}
 \begin{verbatim}
 with mock.patch.object(SettingsAttribute, '__setattr__') as mock_setattr, \
@@ -1368,14 +1369,14 @@ Nos volvemos a encontrar ante lo que parece una variable, en la que hemos pasado
 
 \textbf{Par de líneas}:
 
-Línea Actual:
+Línea actual:
 \begin{footnotesize}
 \begin{verbatim}
 log.info("Responding with %s infos", str(len(blob_infos)))
 \end{verbatim}
 \end{footnotesize}
 
-Línea en el Pasado:	
+Línea en el pasado:	
 \begin{footnotesize}
 \begin{verbatim}
 logging.info("Responding with %s infos", str(len(blob_infos)))
@@ -1411,7 +1412,7 @@ La parte afectada aquí no parece ser una variable. Se ha pasado de ``logging.inf
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
 
-En el capítulo 2 (\ref{sec:objetivo-principal}) y (\ref{sec:objetivos-secundarios}) de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, los cuales, después de desarrollar los capítulos (\ref{chap:estado-del-arte}), (\ref{chap:resultados}) y (\ref{sec:diseno}), podemos decidir y exponer si se han cumplido o no.
+En el Capítulo 2 (en las Secciones~\ref{sec:objetivo-principal} y \ref{sec:objetivos-secundarios}) de esta memoria se exponen una serie de objetivos, tanto principales como secundarios, que, después de desarrollar los Capítulos~\ref{chap:estado-del-arte}, \ref{sec:diseno} y \ref{chap:resultados}, podemos evaluar si se han cumplido o no.
 
 En primer lugar, se planteaba como gran objetivo principal ser capaces de realizar un amplio estudio sobre código Python para poder llegar a una conclusión sobre si los desarrolladores estaban realizando en líneas generales una determinada práctica.
 
@@ -1424,7 +1425,7 @@ En este punto también se plantea otro objetivo, quizás más secundario, pero sobr
 
 No se sí se puede decir que esto sea un objetivo en sí, y si lo es, que se haya cumplido como tal. Creo que este proyecto en sí no se ha centrado en expandir esta idea, quizás si algún alumno lee esta memoria sí que pueda obtenerla. Sin embargo puedo decir que este objetivo se ha cumplido con creces en mi persona. Antes de realizar este proyecto no me había planteado tanto la diferencia entre un código que funciona y un código que es bueno.
 
-En cuanto a los objetivos secundarios que comentamos también en el capítulo 2 (\ref{sec:objetivos-secundarios}):
+En cuanto a los objetivos secundarios que comentamos también en el Capítulo 2 (en la Sección~\ref{sec:objetivos-secundarios}):
 
 \begin{itemize}
 	\item \textbf{Trabajar de una forma orientada al mundo profesional: } Este objetivo se ha cumplido con el uso de GitHub, centrándonos para el desarrollo de código en GitFlow. También lo he notado en que es un trabajo en el que estás mucho más solo que en el resto de tu vida universitaria, esto te permite enfrentarte sólo a los problemas, organizarte y dividir tu proyecto de la forma que creas necesaria.
@@ -1556,7 +1557,7 @@ Cuando tengamos todas las librerías añadidas a nuestro proyecto, nuestro \texttt
 \label{sec:nuevo-proyecto}
 
 Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express, el framework de Node.js con el que vamos a realizar nuestro proyecto.\\
-Dentro de Express vamos a utilizar la librería de Express Generator, la cual nos crea una estructura base para una aplicación.\\
+Dentro de Express vamos a utilizar la librería de Express Generator, que nos crea una estructura base para una aplicación.\\
 Para ello ejecutamos en el directorio en el que queramos crear nuestro proyecto los siguientes comandos:\\\\
 
 Primero instalamos express-generator de forma global, añadiéndole el -g
