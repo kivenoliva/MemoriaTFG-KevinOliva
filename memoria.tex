@@ -285,7 +285,7 @@ Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición
 
 \section{Estructura de la memoria}
 \label{sec:estructura-de-la-memoria}
-Creemos conveniente explicar muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
+En este apartado del capítulo se explica muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
 
 \begin{enumerate}
 	\item \textbf{Introducción: }En este capítulo se explica el contexto de este proyecto, así como las razones por las que se elige el tema a tratar.
@@ -321,15 +321,15 @@ Este proyecto tiene como objetivo principal:
 El proyecto consistirá en un programa software que analizará código fuente de un programa en el lenguaje de programación Python y detectará aquellas líneas que han sido acortadas cambiando el nombre de una variable por un nombre más corto, y por tanto, menos entendible, para conseguir pasar la regla de la guía de estilo PEP8 de la máxima longitud de línea.
 
 
-Por una parte se pretende hacer un estudio bastante amplio, con un volumen de repositorios de GitHub grande, para obtener unos resultados lo suficientemente amplios como para poder llegar a una conclusión. Se busca detectar si este mal hábito se encuentra extendido entre los desarrolladores de Python.
+Por una parte, se pretende hacer un estudio bastante amplio, con un volumen de repositorios de GitHub grande, para obtener unos resultados lo suficientemente amplios como para poder llegar a una conclusión. Se busca detectar si este mal hábito se encuentra extendido entre los desarrolladores de Python.
 
 
-Por otra parte, también se pretende alcanzar otro objetivo más a largo alcance, el cual consiste en intentar interiorizar una cuestión, sobre todo a nivel de estudiantes. Dicha cuestión es la importancia de saber realmente lo que es un buen código, sobre todo, no caer en el típico error cuando eres estudiante de pensar que un buen código es algo que funciona.
+También se pretende alcanzar otro objetivo más a largo alcance, el cual consiste en intentar interiorizar una cuestión, sobre todo a nivel de estudiantes. Dicha cuestión es la importancia de saber realmente lo que es un buen código, sobre todo, no caer en el típico error cuando eres estudiante de pensar que un buen código es algo que funciona.
 
 Según está orientado en la actualidad el aprendizaje de la programación a nivel de universidad, es muy difícil darse cuenta que el código que produces no es algo que vas a escribir una vez, vas a probar que funciona, vas a entregar y no vas a volver a ver en tu vida. Este ciclo es lo que suele pasar con el código que creas como estudiante. Esto unido a ciertas circunstancias, como agobios y prisas por los plazos de entrega, o que en algunas ocasiones sólo se valore el resultado del programa, hace que generalmente se creen malos hábitos por parte de los alumnos a la hora de programar.
 
 
-El proyecto intenta llegar a este objetivo creando un ``debate'' alrededor del caso concreto que se estudia. ¿Es mejor el código que no cumple la guía de estilo PEP8 antes de realizar el cambio, pero que tiene un buen nombre de variable?, ¿o es mejor el código después del cambio que cumple la guía de estilo PEP8 pero que ha dejado la variable con un nombre sin sentido?
+Este proyecto de fin de grado intenta llegar a este objetivo creando un ``debate'' alrededor del caso concreto que se estudia. ¿Es mejor el código que no cumple la guía de estilo PEP8 antes de realizar el cambio, pero que tiene un buen nombre de variable?, ¿o es mejor el código después del cambio que cumple la guía de estilo PEP8 pero que ha dejado la variable con un nombre sin sentido?
 
 Quizás la respuesta correcta sea decir que se debe cambiar la línea de código para que cumpla la regla de máxima longitud de línea pero realizando otro cambio, y si no es posible cambiar esa línea, darle una vuelta al código para \emph{refactorizarlo} y hacer que todas las líneas cumplan de esta forma las reglas de calidad.
 
@@ -345,7 +345,7 @@ Aparte del objetivo explicado anteriormente, a la hora de realizar este proyecto
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no conozco en profundidad, ya que no se han enseñado de refilón en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos y aprovechar esto para conocer nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
+	\item \textbf{Aplicar tecnologías e ideas no vistas durante la vida universitaria: } El proyecto de fin de carrera es el broche, la guinda a nuestra vida universitaria. Debido a esto, he intentado basar este proyecto sobre tecnologías e ideas de trabajo que no conozco en profundidad, ya que o no se han enseñado, o se ha pasado por ellas de ``refilón'' en mi vida universitaria. De esta forma lo que busco es ampliar mis conocimientos y aprovechar esto para conocer nuevas herramientas que me pueden valer para mi futura vida laboral. Esta cuestión puede dividirse, sobre todo, en dos casos:
 	\begin{enumerate}
 		\item En cuanto a la aplicación de tecnologías, he usado un servidor JavaScript, Node.js con Express. Mi elección se debe a que en la universidad se ha enseñado a montar servidores en lenguajes como Java, y sobre todo, con Python y Django.
 		Para la base de datos he utilizado MongoDB, en lugar de SQL por el mismo motivo. En la universidad hemos utilizado bases de datos relacionales, y quería utilizar una no relacional, para entender mejor los \emph{pros} y \emph{contras} de cada una de ellas, y tener más conocimientos sobre cuál elegir en mis futuros desarrollos. 
@@ -370,7 +370,7 @@ En esta sección vamos a describir brevemente las tecnologías aplicadas en o rela
 
 La arquitectura \emph{cliente-servidor} es una de las más extendidas en la actualidad. Dicha estructura es un modelo de aplicación distribuida en el que las tareas se reparten entre los proveedores de recursos o servicios, llamados \textbf{servidores}, y los demandantes, llamados \textbf{clientes} (véase figura~\ref{fig:cliente-servidor}). Un cliente realiza peticiones a otro programa, y es el servidor quien atiende su petición y le da respuesta: 
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.66]{img/esquemaClienteServidor}
 	\caption{Esquema básico de la estructura cliente-servidor}
@@ -384,7 +384,7 @@ En nuestro proyecto no hemos realizado como tal una \emph{app} de cliente-servid
 \section{Python} 
 \label{sec:python}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.3]{img/python-logo}
 	\caption{Python}
@@ -399,7 +399,6 @@ Python es un lenguaje de programación de muy alto nivel, multiplataforma y multi
 Python se caracteriza por tener una sintaxis limpia y ordenada, haciendo mucho hincapié en la legibilidad del código, a pesar de ello, tiene funcionalidades muy avanzadas, propias de lenguajes como C o C++.\\
 Python es un lenguaje que ha adquirido gran popularidad en los últimos años, algunas de las razones por las que esto ha sucedido son las siguientes:
 
-\ \\  % asi se hacen 1 saltos de linea
 \begin{itemize}
 	\item Sencillez y velocidad a la hora de crear desarrollos completos, normalmente un programa en Python tendrá muchas menos líneas que sus equivalente en otros lenguajes (java, C, etc).
 	\item Ofrece una gran cantidad de librerías, con funciones incorporadas, funcionalidades o tipos de datos, que favorecen la realización de muchas tareas sin necesidad de empezar completamente de cero.
@@ -468,7 +467,7 @@ A parte del actual \texttt{pycodestyle}, existen otras herramientas parecidas qu
 \label{sec:JavaScript}
 
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{img/javascript}
 	\caption{JavaScript}
@@ -486,7 +485,7 @@ Sin embargo, existe una forma de JavaScript del lado del servidor(\emph{Server-s
 \section{Node JS} 
 \label{sec:node-js}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{img/nodejs}
 	\caption{Node.js}
@@ -510,7 +509,7 @@ Aunque JavaScript tradicionalmente ha sido relegado a realizar tareas menores en
 \section{Express} 
 \label{sec:express}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.88]{img/express}
 	\caption{Express.js}
@@ -536,7 +535,7 @@ De entre las tantas cosas que tiene este framework podemos destacar:
 \section{MongoDB} 
 \label{sec:mongodb}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{img/mongoDB}
 	\caption{MongoDB}
@@ -550,7 +549,7 @@ En lugar de guardar los datos en tablas como se hace en las base de datos relaci
 
 La arquitectura completa de las tecnologías utilizadas en este proyecto se puede ver en la figura~\ref{fig:todo}.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{img/appNodeMongoAngular}
 	\caption{Estructura de aplicación MEAN: Mongo + Express + Angular + Node}
@@ -568,7 +567,7 @@ La arquitectura completa de las tecnologías utilizadas en este proyecto se puede
  Otra ventaja a tener en cuenta del uso de JSON es que puede ser leído por cualquier lenguaje de programación. Por lo tanto, puede ser usado para el intercambio de información entre distintas tecnologías.
 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.635]{img/jsonEjemplo}
 	\caption{Ejemplo del formato JSON}
@@ -642,7 +641,7 @@ Ya que \emph{develop} contiene la última foto de nuestro proyecto, crearemos la 
 	\label{fig:gitflow}
 \end{figure}
 
-En el caso de este proyecto, es difícil usar todo el esquema explicado aquí de GITFLOW, debido a que es un proyecto pequeño, es decir, sin distintos entornos de desarrollo(desarrollo, preproducción, producción, etc). Además sólo lo ha desarrollado una persona a la vez. Sin embargo, he visto muy útil la utilización de la rama \textit{feature}, para tener siempre la última versión estable guardada en \emph{develop}, y aislar el desarrollo de nuevas funcionalidades en éstas ramas. Una vez terminada y probada la nueva funcionalidad, integraba la rama \emph{feature} con la \emph{develop} y borraba la \emph{feature}. Este ha sido el uso que he dado en mi caso a \texttt{GitFlow}.
+En el caso de este proyecto, es difícil usar todo el esquema explicado aquí de GITFLOW, debido a que es un proyecto pequeño, es decir, sin distintos entornos de desarrollo(desarrollo, preproducción, producción, etc), y no ha contado con varios desarrolladores de forma simultánea. Sin embargo, he visto muy útil la utilización de la rama \textit{feature}, para tener siempre la última versión estable guardada en \emph{develop}, y aislar el desarrollo de nuevas funcionalidades en éstas ramas. Una vez terminada y probada la nueva funcionalidad, integraba la rama \emph{feature} con la \emph{develop} y borraba la \emph{feature}. Este ha sido el uso que he dado en mi caso a \texttt{GitFlow}.
 Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\ref{fig:sourcetree1} y la figura~\ref{fig:sourcetree2}), que es una interfaz visual para utilizar Git. Es especialmente útil cuando queremos utilizar \texttt{GitFlow}, ya que es un poco lioso de entender con tantas ramas, sobre todo cuando se mantiene todo de forma manual. Con Source Tree podremos ver todo el esquema de ramas que forme nuestro proyecto de forma visual y crear las distintas ramas de forma mucho más fácil.
 
 \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ \ \\ % asi se hacen 1 saltos de linea
@@ -679,33 +678,37 @@ Para llevar esto a cabo, he encontrado \textit{Source Tree} (véanse la figura~\r
 %\section{Análisis del estudio realizado} 
 %\label{sec:esquema-del-funcionamiento-del-estudio}
 
-En el diagrama de flujo de la figura~\ref{fig:diagrama} se muestra el funcionamiento de nuestro estudio sobre el problema que estamos tratando en este proyecto. En las siguientes secciones se entrará en detalle sobre cada uno de los pases.
+En el diagrama de flujo de la figura~\ref{fig:diagrama} se muestra el funcionamiento de nuestro estudio sobre el problema que estamos tratando en este proyecto. En las siguientes secciones se entrará en detalle sobre cada uno de los pasos.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.45]{img/diagramaFlujo}
-	\caption{Diagrama de flujo del funcionamiento del estudio. FIXME: Evita el "nos recorremos"; modifícalo a "recorremos". De cada repositorio,, tiene dos comas. Si es un fichero con extensión .py. Creamos un objeto en la BBDD. A veces hablas en primera personal plural, otras veces en reflexivo.}
+	\includegraphics[scale=0.5]{img/diagramaFlujo}
+	\caption{Diagrama de flujo del funcionamiento del estudio}
 	\label{fig:diagrama}
 \end{figure}
 
 \section{Análisis de los repositorios} 
 \label{sec:analisis-de-los-repositorios}
 
-Lo primero que hacemos es analizar una serie de repositorios que tenemos preparados para realizar el estudio. Cuando nos encontremos con un fichero Python y analicemos sus líneas, las dividiremos en tres grupos, dependiendo de la longitud que poseen en la actualidad:\\
+Para la realización de este proyecto contaremos con una batería de repositorios almacenados previamente, los cuales serán la muestra de este estudio.
+
+En primer lugar se analizan dichos repositorios. Si se detecta un fichero python dentro del repositorio que se está analizando, se procesa línea por línea, y en función de la longitud que posean se dividen en tres grupos:
 
 \begin{itemize}
 	\item Grupo 1: ``Zona verde'', la línea posee menos de 70 caracteres de longitud.
 \end{itemize}
 
 \begin{itemize}
-	\item Grupo 2: ``Zona naranja'', la línea posee entre 70 y 79 caracteres de longitud. Este grupo de líneas es el que nos va a interesar, ya que tienen la posibilidad de haber estado en la ``Zona roja'' (veremos en el siguiente grupo) en algún momento de su historia, y en la actualidad estar en la zona naranja, por un cambio de una variable.
+	\item Grupo 2: ``Zona naranja'', la línea posee entre 70 y 79 caracteres de longitud.
 \end{itemize}
 
 \begin{itemize}
-	\item Grupo 3: ``Zona roja'', la línea posee 80 o más caracteres de longitud. Este grupo de líneas no cumple con las reglas de estilo PEP8.\\
+	\item Grupo 3: ``Zona roja'', la línea posee 80 o más caracteres de longitud. Este grupo de líneas no cumple con las reglas de estilo PEP8.
 \end{itemize}
 
-Cuando nos encontramos una línea que pertenece a la zona naranja, lo que haremos es crear un nuevo objeto en nuestra base de datos, en nuestro esquema Linea. El objeto que guardaremos tiene el siguiente aspecto:\\\\
+El Grupo 2: ``Zona naranja'', es el grupo determinante para el estudio. Las líneas pertenecientes a este grupo tienen la posibilidad de haber pertenecido al Grupo 3: ``Zona roja'' en algún momento de su ``pasado'', y por tanto, tienen la posibilidad de estar, en la actualidad, en la ``Zona naranja'' debido a un cambio motivado por la modificación de una variable.
+
+Como se ha explicado antes, las líneas procesadas se dividen en 3 grupos, en el momento en que se detecta una línea perteneciente al grupo ``Zona naranja'', se crea un nuevo objeto en la BBDD, en este caso, dentro del esquema Linea. El objeto guardado tiene el siguiente aspecto:
 
 \begin{verbatim}
 var lineaSchema = mongoose.Schema({
@@ -721,28 +724,30 @@ historia: []
 \end{verbatim}
 
 \ \\  % asi se hacen 1 saltos de linea
-Donde:
+Donde cada parámetro contiene:
 
 \begin{itemize}
-	\item \textbf{línea: }será la línea en sí, su contenido.
+	\item \textbf{línea: }Contenido de la línea.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{fichero: }será la ruta donde encontraremos el fichero dentro del repositorio que estemos analizando.
+	\item \textbf{fichero: }Ruta del fichero dentro del repositorio git.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{numLínea: }será el número que tiene esa línea dentro del fichero.
+	\item \textbf{numLínea: }Número de la línea dentro del fichero.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{longitudLinea: }será la longitud de la línea.
+	\item \textbf{longitudLinea: }Longitud de la línea.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{pasadoRojo: }En este punto siempre iniciaremos a \emph{False} este parámetro, ya que todavía no hemos comprobado el pasado de la línea. Lo haremos más adelante.
+	\item \textbf{pasadoRojo: }Parámetro \emph{boolean}. Este parámetro indica si la línea en cuestión ha pertenecido en algún momento de su pasado al grupo ``Zona roja''. En la creación de este objeto en este punto del análisis siempre se setea este parámetro a \emph{False}, debido a que esto todavía no se ha comprobado. Se hará más adelante.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{historia: }En este punto, siempre inicializaremos un \emph{array} vacío en este parámetro. Al igual que el anterior, realizaremos esta comprobación más adelante. Cuando lo hagamos, lo que guardaremos aquí serán las distintas versiones de la línea en las que su longitud era mayor de 80 caracteres. Más adelante veremos con más detalle las diferentes comprobaciones que hacemos para actualizar este parámetro.\\
+	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante comprobaremos como se procesa y se actualiza este parámetro.
 \end{itemize}
 
-Además de esto, llevaremos la cuenta del total de líneas que nos hemos ido encontrando de cada grupo en el análisis conjunto de todos los repositorios, para al final mostrar los datos analizados organizados, y poder sacar una buena conclusión sobre el estudio. De esta forma, al terminar de analizar todos los repositorios crearemos un nuevo objeto en nuestra base de datos, con el siguiente formato:\\
+Cuando se finaliza este primer proceso, además del objeto perteneciente al esquema Línea, que acabamos de contar, se dispone de un recuento total de las líneas analizadas, así como un resumen de toda la muestra utilizada indicando por cada repositorio, su nombre y líneas analizadas de cada tipo. De esta forma se tiene disponible, de manera organizada, toda la información de los datos analizados. De manera que resulte más fácil llegar a una conclusión en el futuro.
+Para ello se crea un nuevo objeto en la BBDD, dentro del esquema Repositorios, con el siguiente formato:
+
 
 \begin{verbatim}
 var repositorioSchema = mongoose.Schema({
@@ -755,19 +760,19 @@ var repositorioSchema = mongoose.Schema({
 });
 \end{verbatim}
 
-Donde:
+Donde cada parámetro contiene:
 
 \begin{itemize}
-	\item \textbf{nombreRepo: }Será un \emph{array}  que posea el nombre de todos los repositorios que hemos analizado.
+	\item \textbf{nombreRepo: }Parámetro \emph{array}. Contiene una serie de objetos, los cuales poseen los parámetros: nombre del repositorio, líneas verdes analizadas en dicho repositorio, líneas naranjas analizadas en dicho repositorio, líneas rojas analizadas en dicho repositorio.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{lineasVerdes: }Será el número total de líneas pertenecientes a este grupo que hemos encontrado en nuestro análisis.
+	\item \textbf{lineasVerdes: }Número de líneas pertenecientes a este grupo encontradas en el total del análisis.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{lineasRojas: }Será el número total de líneas pertenecientes a este grupo que hemos encontrado en nuestro análisis
+	\item \textbf{lineasRojas: }Número de líneas pertenecientes a este grupo encontradas en el total del análisis.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{lineasNaranjas: }Será el número total de líneas pertenecientes a este grupo que hemos encontrado en nuestro análisis.
+	\item \textbf{lineasNaranjas: }Número de líneas pertenecientes a este grupo encontradas en el total del análisis.
 \end{itemize}
 
 \ \\  % asi se hacen 1 saltos de linea
@@ -775,54 +780,55 @@ Donde:
 \section{Análisis del grupo de líneas seleccionadas para nuestro estudio} 
 \label{sec:analizar-el-grupo-de-lineas-seleccionadas-para-nuestro-estudio}
 
-Lo primero que hacemos es recorrernos todas las líneas que tenemos guardadas en la base de datos. Como hemos visto anteriormente, en este punto tendremos sólo las líneas que pertenecen al grupo de la ``zona naranja''. Por tanto, recorremos todas las líneas para analizaras.
+Cabe destacar que en este punto ya se han descartado las líneas que consideramos comentarios, en el proceso de clasificación de las líneas en los 3 grupos mencionados. De forma que en la BBDD se cuenta únicamente con las líneas que consideramos conflictivas, es decir, las pertenecientes al Grupo 2: ``Zona naranja'', y que se deben seguir analizando.
 
-La primera comprobación que haremos es mirar si la línea es un comentario, y no estamos ante una línea de código real. Si nos encontramos ante un comentario descartaremos la línea. En el caso contrario, lo que haremos es ejecutar la instrucción \texttt{git log} a dicha línea para estudiar su pasado.
-
+Se procesan una a una todas las líneas almacenadas dentro de la BBDD y se ejecuta la instrucción \texttt{git log} para cada una de ellas, para así poder estudiar su pasado.
 
 \section{Ejecución de \texttt{git log}} 
 \label{sec:ejecucion-del-comando-git-log}
 
-En primer lugar, vamos a poner un poco en contexto: lo que buscamos es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
+En primer lugar, vamos a abrir un pequeño paréntesis para poder poner algo de contexto sobre la instrucción \texttt{git log} y la información que se necesita en este caso en concreto.
+Lo que aquí se busca es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
 
-Para llevar a cabo esto, en un principio estudiamos la posibilidad de utilizar el comando \texttt{git blame}, que da información sobre la historia de una línea. \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
-Sin embargo, la información que proporciona \texttt{blame} se nos quedaba un poco escaso para nuestro propósito, por lo que, terminando de revisar otras funcionalidades de git, y también revisando las distintas librerías JavaScript que nos permitieran implementar esto mediante código en nuestro servidor, tomamos la decisión de explotar la instrucción \texttt{git log}.\\
+Para llevar a cabo esto, en un principio se estudió la posibilidad de utilizar el comando \texttt{git blame}, el cual aporta información sobre la historia de una línea. \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
+Sin embargo, la información que proporciona \texttt{blame} se nos queda un poco escasa para el propósito de este proyecto, por lo que se decide seguir investigando sobre la funcionalidad que ofrecen las distintas instrucciones de git, y revisar las distintas librerías JavaScript que nos permitan implementar esto mediante código en nuestro servidor, hasta tener conocimientos suficientes para tomar la siguiente decisión: explotar la instrucción \texttt{git log}.\\
 
-Vamos a ver en qué consiste la instrucción \texttt{git log}, y las opciones que nosotros hemos utilizado.
-Si ejecutamos la instrucción \texttt{git log} sin ningún parámetro, por defecto lo que nos devuelve es una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
+La ejecución de la instrucción \texttt{git log} sin ningún parámetro, por defecto devuelve una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
 
-\begin{figure}
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.70]{img/salidaGitLog}
 	\caption{Salida por defecto de la instrucción \texttt{git log}}
 	\label{fig:log}
 \end{figure}
 
+\ \\  % asi se hacen 1 saltos de linea
 
-Lo que nos muestra, como podemos ver, es cada \emph{commit} con su suma de comprobación SHA-1, el nombre y correo del autor, la fecha y el mensaje que el autor ha escrito para ese \emph{commit}.\\
+La salida del comando es cada \emph{commit} con su suma de comprobación SHA-1, el nombre y correo del autor, la fecha y el mensaje que el autor ha escrito para ese \emph{commit}.\\
 
-La instrucción \texttt{git log} posee múltiples opciones para ajustar la búsqueda que realmente queremos, la opción que nosotros utilizamos fue la siguiente:
+La instrucción \texttt{git log} posee múltiples opciones para ajustar la búsqueda que realmente se quiere, las opciones que se deciden utilizar en este proyecto son las siguientes:
 
 \begin{verbatim}
 git log -L numeroLinea,numeroLinea:nombreFichero
 \end{verbatim}
 
-De esta forma obtendremos la lista de todos los cambios que ha sufrido la línea que indiquemos desde su creación en el fichero hasta la actualidad.
+Con la utilización de estas opciones se obtiene una lista de todos los cambios que ha sufrido la línea indicada en el parámetro desde su creación en el fichero hasta la actualidad.
 
-Podemos ver en el siguiente ejemplo, la salida del comando que estamos tratando en nuestro código se muestra en la figura~\ref{fig:log2}.
+Podemos ver en el siguiente ejemplo, la salida del comando que estamos tratando en nuestro código, se muestra en la figura~\ref{fig:log2}.
 
 \begin{verbatim}
 git log -L 155,155:git-web--browse.sh
 \end{verbatim}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{img/salidaGitLogOpciones}
-	\caption{Salida de la instrucción \texttt{git log} con opciones. FIXME: especificar qué opciones.}
+	\caption{Salida de la instrucción \texttt{git log} con las siguientes opciones:\\ git log -L nºLínea,nºLínea:nombreFichero}
 	\label{fig:log2}
 \end{figure}
 
-Analizando esta salida, podemos ver que la línea 155 del fichero \texttt{git-web--browse.sh} ha sufrido los siguientes cambios.
+Analizando dicha salida, se observa que la línea 155 del fichero \texttt{git-web--browse.sh} ha sufrido los siguientes cambios.
 
 \begin{enumerate}
 	\item Cuando la línea se incluyó dentro del fichero por primera vez en un \texttt{commit} fue como:
@@ -844,9 +850,9 @@ Analizando esta salida, podemos ver que la línea 155 del fichero \texttt{git-web
 	\end{verbatim}
 \end{enumerate}
 
-Para poder llevar todo esto a cabo en nuestro código hemos utilizado la librería de JavaScript \texttt{simple-git}\footnote{\url{https://www.npmjs.com/package/simple-git}}.\\
+Para poder implementar toda esta idea en código dentro del proyecto,  hemos utilizado la librería de JavaScript \texttt{simple-git}\footnote{\url{https://www.npmjs.com/package/simple-git}}.\\ 
 
-Siguiendo ahora con el análisis de nuestro proceso, recordemos que tenemos guardadas en nuestra base de datos las líneas que hemos detectado como posibles conflictivas, y que queremos analizar, guardadas con el siguiente formato:
+Una vez explicado esto, podemos cerrar el paréntesis y seguir con el análisis del proceso. A modo de recordatorio diremos que este punto tenemos almacenadas las líneas del grupo 2: ``Zona naranja'' con el siguiente formato:
 
 \begin{verbatim}
 var lineaSchema = mongoose.Schema({
@@ -861,46 +867,55 @@ historia: []
 }); 
 \end{verbatim}
 
-Lo que hacemos en este punto es ejecutar la instrucción \texttt{git log} (con las opciones que acabamos de explicar), y en el caso de que nuestra línea haya tenido en algún momento de su historia una longitud mayor a 80, modificaremos su registro en la base de datos cambiando el valor del parámetro ``pasadoRojo'' a \texttt{True} y también nos guardaremos todo el pasado de la línea para analizarlo.
+Se ejecuta la instrucción \texttt{git log} con las opciones correspondientes explicadas anteriormente.
+La salida proporcionada por la instrucción se analiza para comprobar si la línea en cuestión posee algún momento de su historia con una longitud mayor a 80 caracteres.
+
+Si esto ocurre se modifica su registro en la base de datos de tal manera que su parámetro ``pasadoRojo'' pasa a tener un valor igual a \texttt{True} y en su parámetro ``historia'' se guardan todos los estados que ha tenido dicha línea en su pasado y que cumplen dicha condición.
 
 \section{Análisis del pasado de una línea} 
 \label{sec:analisis-del-pasado-de-una-linea}
 
-Como hemos ido explicando durante esta memoria, lo que nosotros estamos buscando exactamente en este punto, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).\\
+Realmente la cuestión buscada en este punto del proceso que explico en esta memoria, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).\\
 
-Muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a nuestro estudio, por tanto, debemos analizar el pasado de la línea, y para implementarlo en código, la única forma que tenemos es comprobar que en ese cambio, la Línea actual y la Línea en el pasado: son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la Línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
+Hay que entender que muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a este estudio, por tanto, se ha de analizar el pasado de la línea, y para implemetar esta idea en código, la única forma que tenemos es comprobar que en ese cambio, la línea actual y la línea en el pasado: son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la Línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
 
-Vamos a intentar clarificar este último párrafo viendo esta cuestión con algún ejemplo. Lo que queremos decir es que la línea puede tener infinitos cambios en su pasado, de hecho puede ser que pase de la zona roja a la zona naranja, vuelva otra vez a la zona roja, pase a la verde, etc.
-Lo que queremos comprobar es que la Línea actual es lo suficientemente parecida a la última versión de la línea en la que tenía más de 80 caracteres, para comprobar como ya explicamos en el párrafo anterior si el cambio se produce por nuestro motivo.
-Si vemos el siguiente ejemplo sacado de nuestro propio estudio:
+Para intentar clarificar este último párrafo mostramos esta cuestión en un ejemplo. La clave que se intenta explicar es que la línea puede tener infinitos cambios en su pasado, de hecho puede ser que pase de la zona roja a la zona naranja, vuelva otra vez a la zona roja, pase a la verde, etc.
+Lo que se intenta comprobar es que la línea actual es lo suficientemente parecida a la última versión de la línea en la que tenía más de 80 caracteres, para comprobar, como ya se explica en el párrafo anterior, si el cambio se produce por el motivo estudiado.
+A continuación tenemos el siguiente ejemplo sacado de nuestro propio estudio:
 
 \begin{verbatim}
 settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT': None}
 settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
 \end{verbatim}
 
-La primera línea de código,es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
+La primera línea de código, es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
 Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
 
-Sin embargo, imaginemos que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual quedaría así.
+Sin embargo, se puede dar el caso en que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual queda entonces así:
 
 \begin{verbatim}
 [settings, data] = {'FEED_FORMAT': None}
 settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
 \end{verbatim}
 
-Esta línea no entraría seguramente en nuestros filtros, ya que como podemos ver la línea en la actualidad no es lo suficientemte parecida a su última versión en la zona roja. Esta línea ha pasado de estar en la zona roja a la zona naranja a lo largo de su historia, sin embargo, no entraría dentro de nuestros parámetros.
+Esta línea no entra en los filtros del estudio, ya que como podemos ver la línea en la actualidad no es lo suficientemte parecida a su última versión en la zona roja. Esta línea ha pasado de estar en la zona roja a la zona naranja a lo largo de su historia, sin embargo, no entraría dentro de los parámetros de nuestro proceso.
 
-Como decimos, en este punto todavía no podemos saber si la línea ha sufrido ese cambio por nuestro motivo, sin embargo, lo que sí podemos filtrar es que la línea es suficientemente parecida a su pasado como para que pueda darse, y para ello vamos a utilizar la distancia de Levenshtein\footnote{\url{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}}.\\
+Volviendo al análisis del proceso, en este punto todavía no se puede saber si la línea ha sufrido ese cambio por el motivo del estudio que explicamos en esta memoria.
+Lo que se realiza aquí es un filtrado para comprobar que la línea actual es suficientemente parecida a su pasado como para que esta cuestión pueda llegar a darse. Para ello se utiliza la distancia de Levenshtein\footnote{\url{https://es.wikipedia.org/wiki/Distancia_de_Levenshtein}}.\\ 
 
-Teníamos guardadas todo el pasado de la línea, lo que haremos es comparar cada estado de la línea en su pasado, con el estado actual, y basándonos en la respuesta que nos devuelva la distancia de Levenshtein tomar una decisión.
-Si la respuesta está dentro de nuestro umbral, nos quedaremos con ``ese pasado de la línea'', en caso contrario, lo desecharemos.\\
+Analizando la salida que nos proporciona la distancia de Levenshtein, se fija un umbral de decisión.
 
-Al terminar este proceso,, tendremos un \emph{array} con todos los estados de la línea en su pasado que han sido mayores de 80 y que se parecen lo suficiente a la Línea actual como para ser nuestro caso. En este \emph{array}  normalmente sólo tendremos un registro, que será el paso anterior a cómo era la línea justo antes de cómo es en la actualidad. En caso de que más estados de la línea en su pasado entren en estos criterios y se cuelen aquí, solo interesaría el último caso en que la línea ha estado en la zona roja antes de pasar a la naranja, por tanto, más adelante los filtraremos.\\
+Se obtiene toda la historia de la línea en cuestión en la que su longitud fue mayor a 80 caracteres, accediendo para ello al parámetro en el que se ha guardado dicha información. En este punto se compara la línea actual con cada uno de los estados en su pasado.
 
-En este punto volvemos a actualizar el objeto que tenemos para dicha línea guardado en nuestra base de datos. En este caso modificaremos el parámetro ``historia:[]'', dándole como valor el \emph{array}  que comentamos en el párrafo anterior.\\
+En función de la respuesta que proporcione Levenshtein y en base al umbral de decisión que anteriormente se ha fijado se toma la siguiente decisión:
 
-Una vez hecho todo esto, limpiaremos la base de datos, de forma que borraremos todos los registros de las líneas que no hayan cumplido alguna de estas comprobaciones.
+Si la respuesta está dentro del umbral, se mantiene almacenado ``el estado de la línea en el pasado'' que se acaba de comprobar, en caso contrario, se desecha, actualizando el registro correspondiente el BBDD.\\
+
+Cuando se termina esta comprobación, cabe destacar el estado en el que se encuentra el proceso de análisis en este punto.
+
+Se hace una limpieza en BBDD de los registros de líneas que no cumplen todos los parámetros de los filtros expuestos anteriormente. De esta manera, se mantienen únicamente las líneas que todavía se consideran conflictivas.
+En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. (A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array tiene más de una elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)
+
 
 \section{Clasificación de líneas conflictivas} 
 \label{sec:clasificacion-de-lineas-conflictivas}
@@ -995,7 +1010,7 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.7]{img/diagramaBarras}
-	\caption{Diagrama de barras de los resultados generales. FIXME: en el diagrama pone analzadas!}
+	\caption{Diagrama de barras de los resultados generales.}
 	\label{fig:resultados_generales}
 \end{figure}
 
