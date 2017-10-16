@@ -225,7 +225,7 @@ This project does a python code analysis in github, depends on the results of th
 \section{Motivación}
 \label{sec:motivacion}
 
-Cuando terminas de estudiar y por fin empiezas a dedicarte  profesionalmente al desarrollo de software, rápidamente te das  cuenta de una cosa, 
+Cuando terminas de estudiar y por fin empiezas a dedicarte  profesionalmente al desarrollo de software, rápidamente te das cuenta de una cosa, 
 que nunca, o casi nunca, habías pensado en tu vida de estudiante: en tu trabajo pasas más tiempo leyendo código de otra(s) persona(s) que tu 
 propio código. Esto hace que, repentinamente, empiecen a cobrar sentido las frases que tanto te repetían tus profesores sobre estructurar bien tu código o elegir nombres ``inteligentes'' para las variables o funciones.
 
@@ -235,9 +235,9 @@ Dicha cuestión es la que vamos a estudiar en este TFG. Nos centraremos en un cas
 
 ``Máxima longitud de las líneas: Limita todas las líneas a un máximo de 79 caracteres'' 
 
-El caso que nos preocupa es el siguiente: un desarrollador encuentra ante una línea de código mayor a los 79 caracteres, por lo que decide cambiarla, acortando para ello el nombre de alguna variable. Al hacerlo, el nombre de la variable carece de sentido, por lo que la legibilidad del código se resiente.
+El caso que nos preocupa es el siguiente: un desarrollador se encuentra ante una línea de código mayor a los 79 caracteres, por lo que decide cambiarla, acortando para ello el nombre de alguna variable. Al hacerlo, el nombre de la variable carece de sentido, por lo que la legibilidad del código se resiente.
 
-Para entender mejor esto que explicamos, vamos a poner un pequeño ejemplo.
+Para intentar ilustrar esta cuestión, vamos a poner un pequeño ejemplo.
 Imaginemos que el desarrollador ha escrito la siguiente línea de código:
 
 
@@ -245,9 +245,9 @@ Imaginemos que el desarrollador ha escrito la siguiente línea de código:
 'subtitles': self.extract-subtitles(video_id, video_subtitles_id)
 \end{verbatim}
 
-Si estamos leyendo código y pasamos por esta línea, se entiende bastante bien, sin necesidad de contar con más contexto. Se puede suponer fácilmente que estamos obteniendo los subtítulos, que obtenemos de una función llamada ``extract-subtitles''. El nombre de la función parece que se ha elegido con sentido, al ser informativo. También sabemos que para ello le pasamos como parámetros el id del vídeo y el id de los subtítulos.
+Si nos encontramos analizando código y leemos esta línea, en principio, se entiende bastante bien, sin necesidad de contar con más contexto. Podemos suponer fácilmente que lo que estamos obteniendo en la variable ``subtitles'' son los subtítulos de un vídeo, los cuales extraemos llamando a la función ``extract-subtitles'' pasándole como parámetros el id del vídeo y el id de los subtitulos. 
 
-Si estamos analizando código y tenemos todo el contexto de nuestro programa, es posible que no haga falta ir a la documentación de la función ``extract-subtitles'', porque sabemos todo lo que nos hace falta con esta línea y podremos seguir leyendo el código que estamos analizando sin perder más tiempo.
+Con el contexto que nos daría el resto de código de este fichero, es posible que no haga falta ir a la documentación de la función ``extract-subtitles'', porque sabemos todo lo que nos hace falta con esta línea y podremos seguir leyendo el código que estamos analizando sin perder más tiempo.
 
 Esta línea en sí, no ocupa más que 69 caracteres. Pero, supongamos que por motivos de \emph{indentación}\footnote{Este término \emph{indentación} significa mover un bloque de texto hacia la derecha insertando espacios o tabuladores, para así separarlo del margen izquierdo y mejor distinguirlo del texto adyacente. Es utilizado para mejorar la legibilidad del código fuente por parte de los programadores.}, esta línea superara los 79 caracteres. El desarrollador ha intentado refactorizar su código pero no consigue quitar las \emph{indentaciones} y como le ha saltado el \emph{warning} de que no cumple la regla de estilo únicamente por la longitud de la línea, decide para no perder más tiempo, acortar el nombre de las variables, y forzando un caso extremo, también el de la función, de tal forma que la línea quedara con menos de 80 caracteres y cumplir con la regla. De forma que la línea resultante podría quedar de la siguiente forma:
 
@@ -269,7 +269,7 @@ Creo firmemente que, como estudiantes, no somos capaces de asimilar la importanc
 Desde que empezamos a escribir código y conforme progresamos, adquirimos ciertas pautas que definen la manera en que expresamos nuestras ideas en el lenguaje que manejemos, ya sea JavaScript, Python, C u otro. Esto define nuestro estilo, y tiene en cuenta la manera en la que \emph{indentamos}, definimos nombres de variables y funciones, o el proceso de realizar o no comentarios de código, entre otros.
 
 ¿Por qué es tan importante seguir un estilo cuando estamos programando?
-El principal y más importante es porque el código debe ser mantenido, ya sea por nosotros mismos o por otras personas. Y a lo largo de nuestra vida como desarrolladores, pasamos muchas más horas leyendo código que escribiéndolo.
+El principal y más importante motivo es porque el código debe ser mantenido, ya sea por nosotros mismos o por otras personas. Y a lo largo de nuestra vida como desarrolladores, pasamos muchas más horas leyendo código que escribiéndolo.
 \ \\ % asi se hacen 1 saltos de linea
 
 Para esto nacieron las guías de estilo de código. El principal objetivo de una guía de estilo es que nuestro código sea más fácil de leer, compartir y analizar. Facilita la consistencia entre el código fuente de distintos usuarios y hace que nuestro código sea mucho más mantenible.
@@ -277,9 +277,9 @@ Para esto nacieron las guías de estilo de código. El principal objetivo de una g
 Las guías de estilo son algo que está generalizado en los distintos lenguajes de programación, por ejemplo para PHP tenemos  PSR-2\footnote{http://www.php-fig.org/psr/psr-2/}, y en JavaScript una de las más notables es Crockford\footnote{http://javascript.crockford.com/code.html}. No hay una sola guía de estilo para cada lenguaje, podemos encontrar varias de distintas fuentes (es muy común que los proyectos de software libre tengan una propia). Algo muy común es consultar las guías que ha creado Google. Por ejemplo, para Java podemos encontrar la siguiente\footnote{https://google.github.io/styleguide/javaguide.html}.
 \ \\ % asi se hacen 1 saltos de linea
 
-En esta memoria nos centraremos en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la que se centra este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
+Esta memoria se centra en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la que se centra este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
 
-Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 hablaremos en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
+Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 se habla más en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
 
 
 
