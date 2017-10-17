@@ -852,7 +852,7 @@ Analizando dicha salida, se observa que la línea 155 del fichero \texttt{git-web
 
 Para poder implementar esta idea en código dentro del proyecto,  hemos utilizado la librería de JavaScript \texttt{simple-git}\footnote{\url{https://www.npmjs.com/package/simple-git}}.\\ 
 
-Una vez explicado esto, podemos cerrar el paréntesis y seguir con el análisis del proceso. A modo de recordatorio diremos que este punto tenemos almacenadas las líneas del grupo 2: ``Zona naranja'' con el siguiente formato:
+Una vez explicado esto, podemos cerrar el paréntesis y seguir con el análisis del proceso. A modo de recordatorio diremos que este punto se han almacenado las líneas del grupo ``Zona naranja'' con el siguiente formato:
 
 \begin{verbatim}
 var lineaSchema = mongoose.Schema({
@@ -920,43 +920,41 @@ En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todo
 \section{Clasificación de líneas conflictivas} 
 \label{sec:clasificacion-de-lineas-conflictivas}
 
-En este punto, tenemos en nuestra base de datos únicamente las líneas que consideramos conflictivas para nuestro caso de estudio, después de pasar por todas nuestras comprobaciones. Ahora lo que necesitamos es clasificar estas líneas según creamos que es la razón por la que esa línea se ha acortado y ha pasado de nuestra zona roja a nuestra zona naranja.\\
+En este punto, se dispone en la BBDD únicamente de las líneas que se han considerado conflictivas, y que por tanto, han superado todos los filtros del proceso de estudio. En este punto del análisis se realiza una clasificación basada en el motivo por el cual la línea a acortado su longitud.\\
 
 Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos --recordemos que siempre comparando la iteración en la que la línea pasa de tener más de 80 caracteres a tener entre 70 y 79--: 
 
 \begin{enumerate}
-	\item La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta (caso que buscamos).
+	\item La línea se diferencia por el único motivo del cambio de longitud de una sola palabra(caso a estudiar).
 	
-	\item La línea se diferencia por que se han eliminado 4 espacios (tabulaciones).
+	\item La línea se diferencia por el único motivo de la eliminación de 4 espacios iniciales (tabulaciones).
 	
-	\item La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, que se ha acortado (posible caso buscado).
+	\item La línea se diferencia por la eliminación de 4 espacios iniciales (tabulaciones), y además por el cambio de longitud de una sola palabra. (posible caso a estudiar).
 	
 	\item Resto de líneas.
 	
 \end{enumerate}
 
-En resumen, lo que hemos hecho en código para implementar esto es lo siguiente:
-Iremos pasando cada proceso que vamos a explicar a continuación a cada grupo de líneas (línea antigua con más de 80 y Línea actual entre 70 y 79), si la línea cumple con algún proceso se añadirá a dicho grupo, si la línea no encaja en ningún proceso se añadirá al último grupo \textbf{Resto de líneas}.
+Para plasmar esta clasificación en el código de nuestro proyecto se han elaborado 3 procesos distintos. Cada par de líneas a estudiar (línea antigua con más de 80 y línea actual entre 70 y 79) será analizado por cada uno de los procesos. Según los resultados obtenidos se decide si la línea encaja en algunos de los 3 grupos de los que se dispone, o en caso contrario, será descartada en el último grupo \textbf{Resto de líneas}.
 
 \begin{itemize}
-	\item \textbf{La línea se diferencia por el único cambio de una palabra que ha pasado a ser más corta: }Partimos tanto la línea antigua como la Línea actual por espacios, de manera que nos quedamos con dos arrays que guardan las palabras de cada línea. Comparamos estos dos arrays, y si sólo se diferencian en una posición, querrá decir que solo hay una palabra distinta. Esta palabra puede que sea una variable, por tanto se añade a este grupo.
+	\item \textbf{La línea se diferencia por el único motivo del cambio de longitud de una sola palabra: } Se realiza una partición, tanto de la línea antigua como de la línea actual, por espacios. De manera que dispondremos de dos arryas en los cuales tendremos guardadas cada una de las distintas palabras de cada una de las líneas.
+	A continuación se cruzan ambos arrays realizando una comparación de cada una de sus posiciones, con esta comparación se busca encontrar el caso en el que todas las posiciones de ambos arrays sean idénticas excepto una. Si esto ocurre nos encontramos ante un caso en el que las dos líneas son idénticas exceptuando una palabra. Esta palabra puede ser una posible variable, por tanto, si esto ocurre se decide añadir el par de líneas a este grupo.
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{La línea se diferencia por que se han eliminado 4 espacios: }Lo que hacemos es eliminar los 4 primeros caracteres de la línea antigua, y guardarnos el resto. Comparamos el resto de la línea antigua con la Línea actual, y comprobamos si ahora son exactamente iguales, y además si los 4 caracteres que hemos eliminado de la línea antigua son 4 espacios. Si esto se cumple se añade a este grupo.
+	\item \textbf{La línea se diferencia por el único motivo de la eliminación de los 4 caracteres iniciales: }En primer lugar se eliminan los 4 primeros espacios de la línea antigua, y se guarda en una línea auxiliar el resto de la línea. Una vez hecho esto, se realiza la siguientes comprobaciones: 
+	1 - se compara la línea actual con la línea auxiliar y se comprueba si son exactamente iguales. 2 - se comprueba que los 4 primeros caracteres que anteriormente hemos eliminado de la línea antigua, son efectivamente, 4 espacios en blanco (tabulaciones).
+	Si ambas comprobaciones se cumplen, el par de líneas será introducido en este grupo.
 \end{itemize}
 
 \begin{itemize}
-	\item \textbf{La línea se diferencia porque se han eliminado 4 espacios (tabulaciones), y además ha cambiado una sola palabra, que se ha acortado: }Lo que hacemos aquí es comparar si la línea antigua y la actual son distintas en un principio, pero luego, eliminando los espacios y tabulaciones, tienen el mismo número de palabras, de esta forma, sabremos que solo se diferencian por espacios. Después de esto comprobamos si todas las palabras son exactamente iguales menos una. Si esto ocurre, estamos ante una línea de este grupo.
+	\item \textbf{La línea se diferencia por la eliminación de 4 espacios iniciales (tabulaciones), y además por el cambio de longitud de una sola palabra: }Al igual que en el primer grupo, se realiza una partición, tanto de la línea antigua como de la línea actual, por espacios. De manera que dispondremos de dos arryas en los cuales tendremos guardadas cada una de las distintas palabras de cada una de las líneas. Una vez disponemos de estos dos arrays, se realizan 3 comprobaciones.
+	1 - se comprueba mediante ambos arrays que las dos líneas contienen el mismo número de palabras. 2 - si se cumple la comprobación uno, se comparan las dos líneas originales, para comprobar que en un principio no son iguales, de esta manera se llega a la conclusión de que lo único que diferencia a ambas líneas son espacios en blanco. 3 - si se cumplen las comprobaciones uno y dos, pasaremos a comprobar mediante los dos arrays obtenidos que las palabras de ambas líneas coinciden exactamente exceptuando una sola palabra.
+	Si las tres comprobaciones se cumplen, dicho par de líneas será introducido en este grupo.
 \end{itemize}
 
-Hemos elegido estos cuatro casos porque son los más comunes, por ejemplo, el caso de las tabulaciones, y los casos que afectan directamente a nuestro estudio, como es el 1 principalmente, y como puede ser el 3.
-De esta forma ya tenemos los resultados obtenidos por nuestro estudio.
-
-
-
-
-
+Una vez realizada esta clasificación de todas las líneas conflictivas, nos encontramos en disposición de mostrar, explotar y analizar los resultados de nuestro estudio.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -979,14 +977,13 @@ Una vez que hemos creado el software, podemos analizar un gran volumen de líneas
 %Más bien, lo que ofrecemos es un análisis de un amplio volumen de código, un estudio, para intentar llegar a una conclusión sobre un problema planteado.
 
 \ \\ % asi se hacen 1 saltos de linea.
-Cabe destacar que para realizar nuestro estudio hemos intentado recoger datos del ``mundo real'', es decir, de proyectos reales de software libre, que nos permitan sacar conclusiones reales. Por ello, analizamos repositorios de GitHub, en particular, los repositorios más famosos y de mayor tamaño de Python en dicho portal para formar nuestra base de análisis.
+Cabe destacar que para la realización de este proyecto hemos intentado recoger datos del ``mundo real'', es decir, de proyectos reales de software libre, que nos permitan sacar conclusiones reales. Por ello, se analizan repositorios de GitHub, en particular, los repositorios más famosos y de mayor tamaño de Python en dicho portal para formar la muestra de nuestro estudio.
 
-Pensando en la variedad, para obtener datos de un mayor número de desarrolladores, hemos querido coger el mayor número de repositorios posibles, en vez de un solo repositorio muy grande, pensando que quizás en un mismo proyecto se puede trabajar bajo unas mismas pautas marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos trabajarían bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
+Para dar a dicha muestra las características oportunas para este proyecto, se ha pensado en la variedad. Esto quiere decir que para obtener datos de un mayor número de desarrolladores, se ha decidido seleccionar el mayor número de repositorios posibles, en lugar de escoger un único repositorio de gran tamaño. Se ha tomado esta decisión pensando que en un mismo proyecto se suele trabajar bajo las mismas pautasy reglas de calidad marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos ellos generarán código bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
 
-\ \\ \ \\ % asi se hacen 1 saltos de linea.
 %La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiere, ya que sabemos que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
 
-\ \\ % asi se hacen 1 saltos de linea.
+\ \\ \ \\% asi se hacen 1 saltos de linea.
 Así, hemos analizado en total el siguiente número de líneas, tal y como se muestra en la figura~\ref{fig:resultados_generales}:
 
 \begin{itemize}
@@ -1014,21 +1011,20 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 	\label{fig:resultados_generales}
 \end{figure}
 
-Lo primero que nos llama la atención de estos datos es la cantidad de líneas que han salido de cada tipo, es decir, en un principio esperábamos que todo el código analizado, o casi todo, seguiría la guía de estilo PEP8 y, por tanto, apenas encontraríamos ``líneas rojas''.
+El primer punto a destacar de estos resultados son los datos obtenidos para cada grupo de líneas, se ha analizado código subido a repositorios importantes de Github  sobre Python. Esto hace pensar que dicho código sigue la guía de estilo PEP8, de manera que no se encontrarán apenas``líneas rojas''. Sin embargo, se puede observar que el número de este grupo de líneas es similar al del grupo ``líneas naranjas''.
 
-Analizando este dato, vemos que aunque el número de líneas (18.904) nos puede parecer grande en un principio, hay que pensar que tan sólo supone el 5,11\%, que es un porcentaje bastante bajo.
-Al no ser este el grupo de líneas que nos interesa, no hemos entrado demasiado en detalle, aunque sí que hemos hecho una comprobación en nuestro código. Hemos querido comprobar cuantas de estas líneas pertenecen a comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas), para comprobar si este dato está falseado y no son líneas \emph{reales} de código fuente en la zona roja.
+Para esclarecer este dato se ha realizado un análisis más en profundidad sobre el mismo. Se puede observar que el número de líneas (18.904) puede parecer grande en un principio, sin embargo, cabe destacar que esto tan sólo supone el 5,11\% del total analizado, un porcentaje bastante bajo.
+Para indagar más sobre este dato se decide en este punto añadir una comprobación en el código del proyecto. Esta nueva comprobación consiste en averiguar cuentas de esas líneas son comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas). De esta manera se sabrá si este dato está falseado y nos encontramos ante líneas que no son líneas \emph{reales} de código fuente.
 
-Este análisis nos ha dado como resultado 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas de código fuente que están en nuestra \emph{zona roja}.
+En dicho análisis obtenemos un resultado de 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas de código fuente que están en nuestra \emph{zona roja}.
 
-\ \\ \ \\% asi se hacen 1 saltos de linea.
-Si nos centramos en los grupos de líneas que tenemos menores a 80 caracteres, podemos ver
+Poniendo el foco en los grupos de líneas menores a 80 caracteres, se puede comprobar
 que la inmensa mayoría están en las llamadas ``línea verdes'' un 89,45\%.
-Esto quiere decir que el grupo conflictivo que queremos estudiar, las ``línea naranjas'', queda en un 5,43\%.
+Esto quiere decir que el grupo conflictivo que nos incumbe en este proyecto, las ``línea naranjas'', queda en un 5,43\%.
 
 %La gran mayoría de las líneas están por debajo del umbral que marca la guía de estilo PEP8, incluso, por debajo 70 caracteres, es decir, 10 menos del límite. Por otro lado, tenemos un pequeño porcentaje de líneas que han pasado de los 80 caracteres y que no están cumpliendo la guía de estilo PEP8. Por último, tenemos otro pequeño porcentaje de líneas que están en nuestro rango \emph{conflictivo}, y las cuáles debemos analizar en más profundidad para poder llegar a una conclusión.
-
-Una vez que hemos echado un vistazo a los datos totales que hemos analizado, vamos a centrarnos en los distintos repositorios que hemos utilizado para nuestro estudio. Tenemos el siguiente listado:
+Una vez procesados los datos totales del estudio, centraremos nuestro interés en los distintos repositorios que hemos utilizado.
+Tenemos el siguiente listado:
 
 \begin{table}[H]
 \centering
@@ -1053,7 +1049,7 @@ youtube-dl & 112.898 & 6.332 & 8.507 & 5 (0,06\%) &  127.737 \\ \hline
 \end{tabular}
 \end{table}
 
-Como podemos ver, hemos utilizado repositorios distintos, tanto en tamaño como en características. Lo más destacable es:
+Se puede observar que hemos tomado como muestra repositorios de muy diversas características. Cabe destacar:
 
 \begin{itemize}
 
@@ -1082,10 +1078,10 @@ Esto nos da:
 	\item 1.96\% del total de líneas en zona naranja (20.107)
 \end{itemize}
 
-Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y las clasificamos según su motivo, de la forma que ya explicamos en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), obtenemos el siguiente resultados\footnote{En los ejemplos que se muestran \emph{verbatim} en esta memoria, se ha omitido la indentación de las líneas para que quepan en el ancho de página.}:
+Se puede observar que los porcentajes que se manejan en este punto son bajísimos. Realizando sobre estas 396 líneas la clasificación que se detallada en el capítulo 4 (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}) se obtienen como resultado\footnote{En los ejemplos que se muestran \emph{verbatim} en esta memoria, se ha omitido la indentación de las líneas para que quepan en el ancho de página.}:
 
 \begin{itemize}
-	\item \textbf{La línea se acorta exclusivamente por tabulaciones: }1
+	\item \textbf{La línea se diferencia por el único motivo de la eliminación de 4 espacios iniciales (tabulaciones): }1
 	
 	Ejemplo: \\
 	Línea actual:
@@ -1102,10 +1098,8 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	\end{verbatim}
 	\end{footnotesize}
 	
-	\ \\ \ \\% asi se hacen 1 saltos de linea.
 	
-	\item \textbf{La línea se acorta exclusivamente por que una palabra pasa a ser mas
-		corta: }125
+	\item \textbf{La línea se diferencia por el único motivo del cambio de longitud de una sola palabra: }125
 	
 	Ejemplo: \\
 	Línea actual:
@@ -1123,7 +1117,7 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	\end{footnotesize}
 	
 	
-	\item \textbf{La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta: }3
+	\item \textbf{La línea se diferencia por la eliminación de 4 espacios iniciales (tabulaciones), y además por el cambio de longitud de una sola palabra: }3
 	
 	Ejemplo: \\
 	Línea actual:
@@ -1162,8 +1156,8 @@ Como podemos ver son uno porcentajes bajísimos. Si analizamos esas 396 líneas, y
 	
 \end{itemize}
 
-Como ya vimos, tenemos dos grupos que pueden entrar dentro de nuestro estudio, que son: ``La línea se acorta exclusivamente por que una palabra pasa a ser más corta'' y ``La línea se acorta por tabulaciones y aparte porque una sola palabra pasa a ser más corta''. Si los agrupamos y hablamos de porcentajes en función de las 396 líneas que ya hemos filtrado
-como conflictivas, obtenemos:
+En esta clasificación disponemos de dos grupos que entran dentro del interés de nuestro estudio, los cuales son: ``La línea se diferencia por la eliminación de 4 espacios iniciales (tabulaciones), y además por el cambio de longitud de una sola palabra'' y ``La línea se diferencia por el único motivo del cambio de longitud de una sola palabra''. Unificando estos dos grupos y estableciendo los porcentajes en función de las 396 líneas conflictivas, se obtiene que:
+
 
 \begin{itemize}
 	\item \textbf{Grupo conflictivo: }32,32\%
@@ -1172,14 +1166,15 @@ como conflictivas, obtenemos:
 
 Como podemos observar en todos los datos mostrados hasta ahora, el porcentaje de líneas que entran en nuestro estudio es mucho menor que el porcentaje que se descarta.
 
-Si comparamos este último, filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que explicamos en este proyecto a propósito. Esto supone un \textbf{0.034\%}. Este dato es un porcentaje ínfimo, que da a entender que el debate sobre esta cuestión carece de sentido, o al menos, no debería tener la importancia que se le ha dado.
+Comparando este último filtrado con los datos iniciales, tenemos que \textbf{128 líneas de 369.911} pueden haber sufrido el cambio que incumbe a este proyecto. Esto supone un \textbf{0.034\%}. Este dato es un porcentaje ínfimo, que da a entender que el debate sobre esta cuestión carece de sentido, o al menos, no debería tener la importancia que se le ha dado.
 
 \subsection{Análisis (manual) de líneas particulares}
 
-\ \\ % asi se hacen 1 saltos de linea
-Por último, cabe destacar que las 109 líneas que hemos obtenido, puede que no hayan sufrido el cambio a propósito, es decir, esa afirmación es totalmente subjetiva, quedaría el ejercicio de que un humano revisase esas líneas y decidiese si el motivo por el que la línea ha pasado de tener más de 80 caracteres a tener menos de 80 acortando una sola palabra ha sido el problema que se plantea en este proyecto.
 
-Para ilustrar esta parte, vamos a coger una pequeña muestra de nuestros resultados, y vamos a analizarlos aquí.
+Por último, cabe destacar que hemos obtenido un resultado total de 128 líneas, sin embargo, no podemos afirmar que dichas líneas hayan sufrido el cambio explicado en esta memoria a propósito esa afirmación es totalmente subjetiva.
+En este punto, queda pendiente el ejercicio de que un humano revise esas líneas y decida si la línea ha pasado de tener una longitud mayor a 80 caracteres a tener una longitud menor a 80 caracteres, reduciendo para ello la longitud de una sola variable, y por tanto, el motivo para ello ha sido el problema explicado en este proyecto.
+
+Para ilustrar esta cuestión, se recoge una pequeña muestra de nuestros resultados, y se procede a anlizarlos manualmente:
 
 \textbf{Par de líneas}:
 
@@ -1199,7 +1194,11 @@ _VALID_URL = r'https?://(?:www\.)?alpha\.com/videos/(?P<display_id>[^/]+)'
 
 \textbf{Análisis}:
 
-En este caso vemos que la palabra que se acorta no parece mucho una variable que haya creado el desarrollador. No tenemos más contexto del resto del código que tiene esta línea (las líneas colindantes), pero por el nombre de la variable inicial: ``\_VALID\_URL'' y por el contenido de esta variable, parece que la parte que se acorta no es una variable en sí (display\_id a id). Se puede pensar que depende del programa, el desarrollador esté creando la URL y decida su contenido, pensando así que lo ha podido acortar por el motivo que perseguimos en nuestro análisis. Sin embargo, en esta situación no parece que se dé el caso, ya que normalmente se trabaja con URLs que ya existen, y no parece ser que el desarrollador haya acortado una variable por el motivo que tratamos. Por tanto, creemos que en este caso no se trata de un cambio en el nombre de la variable con el fin de cumplir con la guía de estilo PEP8.
+En primer lugar intento detectar la parte que se ha modificado y analizar el porqué.
+En este caso la parte modificada no parece ser una variable, las razones que me llevan a llegar a esta conclusión son las siguientes.
+El nombre de la variable inicial (``\_VALID\_URL'') y su contenido me hace pensar claramente que estamos ante una url que se está almacenando en una variable.
+No dispongo de más contexto del resto del código que tiene esta línea (las líneas colindantes), pero basándome en mi experiencia, aunque a veces las url con las que trabajamos se conformen dinámicamente dentro del código, no me parece que la parte modificada (``display\_id'' a ``id'') sea una variable en sí. 
+Por tanto, creo que en este caso no se trata de un cambio en el nombre de la variable con el fin de cumplir con la guía de estilo PEP8.
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
@@ -1221,8 +1220,9 @@ return self.playlist_result(entries, video_id, playlist_title, description)
 
 \textbf{Análisis}:
 
-En esta línea, así a bote pronton, parece que SÍ se trata de un cambio para cumplir con la guía de estilo PEP8. Se puede ver de manera fácil que lo que ha cambiado es una variable, ya que es un parámetro que se le está pasando a una función. La variable ha pasado de ser ``playlist-title'' a simplemente ``title''. Podemos afirmar que el nombre de la variable ha perdido sentido, ya que llamar a una variable \emph{título} no es muy buena elección. Antes se sabía que era el título de una playlist, sin embargo ahora es más difícil adivinar el contenido de esa variable. A nuestro entender, el código ha quedado peor que el original.
-
+En esta línea observo que la parte que se ha modificado es un parámetro que se le está pasando a una función. Esto me hace pensar que muy probablemente me encuentro ante una variable.
+Observando la modificación en sí (``playlist\_title'' a simplemente ``title''), puedo afirmar que el nombre de la variable ha perdido sentido. No parece que el hecho de denominar a una variable con el único nombre de \emph{título} tenga demasiado sentido.
+En esta línea, por tanto, me atrevo a decir que sí se trata de un cambio para cumplir con la guía de estilo PEP8, y además, el código ha quedado peor que el original. Esto quiere decir que esta línea sufre el problema explicado en esta memoria.
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
@@ -1243,9 +1243,9 @@ Línea en el pasado:
 
 \textbf{Análisis}:
 
-En esta línea tenemos un caso en el que parece claro que la palabra que se ha acortado es una variable. Sin embargo, no parece que la variable haya perdido sentido respecto a su nombre anterior por este motivo, ya que lo único que se ha hecho ha sido quitar un guión bajo inicial. Por tanto para esta línea también la clasificaríamos como que NO.
-
-
+Observo en esta línea que me encuentro ante una asignación de su valor a una variable inicial, dicha variable inicial es la palabra modificada.
+Esto quiere decir que cumple la primera condición, sin embargo, observo la modificación (``\_skip'' a ``skip'') y no parece que el nombre de la variable haya perdido ningún sentido. 
+Puedo afirmar por tanto, que en este caso no estamos ante una línea que ha sufrido la modificación estudiada en este proyecto.
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
@@ -1266,8 +1266,9 @@ except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
 
 \textbf{Análisis}:
 
-En este caso, vemos que la línea cumple el patrón de nuestro análisis para estar aquí. Sin embargo, si la analizamos vemos que efectivamente la palabra afectada es una variable, que ha pasado de ``ConnectionError'' a ``ProtocolError''. Si nos fijamos en el nombre de la variable no parece que este cambio haya sido para acortar la misma. Más bien parece que ahora la variable se refiere a otra cosa y ha cambiado de nombre, el cual no ha perdido significado. No parece que el motivo sea mantener la misma variable pero acortando el nombre, por tanto, diríamos que NO.
-
+Observo en esta línea que la palabra modificada es un parámetro que esta recibiendo una función, y por tanto, es muy probable que nos encontremos de nuevo ante una variable.
+De nuevo me voy a analizar la modificación sufrida por esta ``ConnectionError'' a ``ProtocolError''). A simple vista puedo ver que la variable ha cambiado su nombre porque ha cambiado su sentido, y el motivo en este caso no ha sido intentar cumplir con la guía de estilo PEP8.
+Tampoco esta línea ha sufrido el cambio que se explica en esta memoria.
 \ \\ % asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
@@ -1289,7 +1290,8 @@ elif status['result']['startup_status']['code'] == LOADING_WALLET_CODE:
 
 \textbf{Análisis}:
 
-En esta línea podemos ver algo que también nos puede pasar. Debido a la forma en la que clasificamos las líneas en los grupos finales, la parte de línea que detecta que ha cambiado es ``status['result']['startup\_status']['code']'' por ``status['startup\_status']['code']''. Podemos observar que al no tener espacios, nuestra herramienta lo ha detectado como una palabra y posible variable. Claramente NO estamos ante un caso de los que buscamos.
+En esta línea observo algo que también puede ocurrir en el proceso de análisis. Debido a la forma en la que se clasifican las líneas debido a su modificación (véase la sección~\ref{sec:clasificacion-de-lineas-conflictivas}), la parte de línea que detecta que ha cambiado es ``status['result']['startup\_status']['code']'' por ``status['startup\_status']['code']''. Se observa que al no tener espacios, la herramienta lo ha detectado como una palabra y posible variable. 
+De esta forma podemos afirmar de nuevo que no estamos ante una línea que haya sufrido el cambio que nos incumbe en este proyecto.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1311,7 +1313,8 @@ Línea en el pasado:
 
 \textbf{Análisis}:
 
-En esta línea vemos que la palabra afectada parece ser una variable. Esta variable ha pasado de ser ``nb\_filter'' a ``filters'', según vemos aquí y sin tener más contexto. Como en ocasiones anterioes, podemos pensar que esta variable ha podido sufrir el ``truco'' del que hablamos aquí por parte del desarrollador.  Sin embargo, la clave aquí está en estudiar si la variable ha perdido significado con el cambio. En este caso creo que no es así. La razón es que la parte que se ha eliminado de la variable no aporta información, es decir, se entiende igual que la variable es un filtro y el hecho de tener delante ``\_nb'' no me aporta mayor información. Por lo tanto diríamos que NO.
+Observo en esta línea que de nuevo me puedo encontrar ante una variable, debido al formato de dicha línea.
+Sin embargo, analizando el cambio en sí (``nb\_filter'' a ``filters''), no veo que el nombre de la variable haya perdido sentido. Por tanto, no puedo afirmar que este cambio no se haya producido para cumplir la guía de estilo PEP8, sin embargo, sí puedo afirmar que no estoy ante una línea que ha sufrido el cambio del que se habla en esta memoria, ya que el código resultante no me parece peor que el original.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1334,9 +1337,10 @@ def _download_name(self, name, timeout=conf.settings.download_timeout,
 
 \textbf{Análisis}:
 
-En esta línea vuelve a parecer que efectivamente la palabra afectada parece una variable. Sin embargo, nos encontramos ante un caso distinto al que buscamos. El motivo es que no sólo se ve afectada una variable, sino una variable y su asignación. La expresión afectada pasa de ser ``timeout=conf.settings.download\_timeout'' a ser ``timeout=None''. Este cambio parece ser un cambio que se ha tenido que realizar en el código, ya que esa variable ahora pasa a valer otra cosa. Parece claro que no se trata de un caso que buscamos, por tanto, apuntamos otro NO.
-
-\ \\ % asi se hacen 1 saltos de linea
+Observando la parte modificada, puedo ver que no me encuentro ante el nombre de una variable. El cambio es pasar de ``timeout=conf.settings.download\_timeout'' a ser ``timeout=None''.
+La herramienta ha detectado la variable y su asignación como una sola palabra al carecer de espacios.
+Observando el cambio no me parece en absoluto que este se haya dado para cumplir la guía de estilo PEP8.
+\ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
 
@@ -1356,7 +1360,10 @@ Línea en el pasado:
 
 \textbf{Análisis}:
 
-Nos encontramos ante un caso en el que la parte de la línea afectada no está claro si es una variable, en mi opinión, lo que se ha acortado aquí puede ser el nombre de una función o método. La parte afectada ha pasado de ser ``video\_json['Message']'' a ser ``video['Message']''. En este caso, puede que no demasiado, pero me atrevería a decir que el nombre afectado ha perdido información, ya que el nombre antiguo: ``video\_json'' no es demasiado explicativo. Sin embargo, anular la parte ``\_json'' resta una información que puede ser importante, ya que habla sobre un formato. Por tanto, en esta ocasión me atrevería a decir que SÍ ha ocurrido el caso que buscamos.
+Observo esta línea y llego a la conclusión de que la parte afectada no es una variable, sin embargo, puede ser una función o método.
+El cambio es ``video\_json['Message']'' a ``video['Message']''.
+Creo que este cambio ha hecho que el nombre del método en cuestión pierda sentido, ya que se le ha quitado información sobre el formato al nombre, y por tanto el código resultante me parece peor que el original.
+Creo que esta línea si que puede entrar dentro del grupo que está afectado por el cambio que se explica en este proyecto.
 
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1378,9 +1385,9 @@ with mock.patch.object(SettingsAttribute, '__setattr__') as mock_setattr, \
 
 \textbf{Análisis}:
 
-Nos volvemos a encontrar ante lo que parece una variable, en la que hemos pasado de ``SettingsAttribute'' a ``attr''. Parece claro, como decimos, que es una variable, y además en este caso podemos decir que hemos perdido información con el cambio. En el primer nombre tenemos claramente información sobre el significado de esta variable. Sin embargo, después del cambio solo tenemos una abreviatura que no nos aportan ninguna información. El código después del cambio ha quedado peor, y parece que el cambio se ha podido dar por el caso que tratamos aquí. Por tanto, añadiríamos esta línea al SI.
-
-\ \\ % asi se hacen 1 saltos de linea
+Veo en esta línea que la palabra afectada es un parámetro que se le pasa a una función, por tanto, al igual que en ocasiones anteriores puedo afirmar que estamos ante una variable.
+Observando el cambio (``SettingsAttribute'' a ``attr''), parece bastante claro que el nombre de la variable ha perdido todo el sentido que poseía. En este caso, de nuevo el código resultante ha quedado peor que el código original. De manera que esta línea también ha sufrido el cambio estudiado en esta memoria.
+\ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
 
@@ -1400,11 +1407,11 @@ logging.info("Responding with %s infos", str(len(blob_infos)))
 
 \textbf{Análisis}:
 
-La parte afectada aquí no parece ser una variable. Se ha pasado de ``logging.info'' a ``log.info''. Claramente no estamos ante nuestro caso ya que esto son unos logs, que han cambiado. Por tanto añadiríamos otro NO.
-
+Observo en esta línea que la parte modificada (``logging.info'' a ``log.info'') no es una variable. Además puedo afirmar viendo el cambio, que no se ha producido por el motivo de cumplir la guía de estilo PEP8.
+Por tanto, se puede decir que esta línea no ha sufrido el cambio mencionado en esta memoria.
 \ \\ % asi se hacen 1 saltos de linea
 
-\textbf{Conclusión del análisis manual}: Hemos cogido una pequeña muestra de 10 líneas de nuestros resultados. Hemos obtenido 3 SÍ y 7 NO. Estos resultados son subjetivos y sólo aportan evidencia parcial y no completa. Además nos falta mucho contexto sobre el código analizado, ya que estamos tratando sobre líneas totalmente aisladas. Aun así, permiten analizar en detalle el fondo de la cuestión y ampliar la perspectiva del análisis, tanto para ver la problemática a la que nos enfrentamos como los resultados de la misma. De nuevo, hemos obtenido generalmente unos resultados negativos respecto al caso buscado.
+\textbf{Conclusión del análisis manual}: Hemos seleccionado una pequeña muestra de 10 líneas obtenida de nuestros resultados. Hemos obtenido 3 SÍ y 7 NO. Estos resultados son subjetivos y sólo aportan evidencia parcial y no completa. Además nos falta mucho contexto sobre el código analizado, ya que estamos tratando sobre líneas totalmente aisladas. Aun así, permiten analizar en detalle el fondo de la cuestión y ampliar la perspectiva del análisis, tanto para ver la problemática a la que nos enfrentamos como los resultados de la misma. De nuevo, hemos obtenido generalmente unos resultados negativos respecto al caso buscado.
 
 
 \ \\ \ \\% asi se hacen 1 saltos de linea
@@ -1433,10 +1440,10 @@ En primer lugar, se planteaba como gran objetivo principal ser capaces de realiz
 
 Para ello necesitábamos que nuestro estudio fuese lo suficientemente amplio como para que los parámetros utilizados fueran reales para poder dar una conclusión a nivel global, también necesitábamos que nuestro código tuviese los filtros suficientes, y la capacidad de acotar lo suficiente nuestro problema como para dar justo el resultado que necesitamos.
 
-Creo que este objetivo se ha cumplido completamente, ya que si bien es cierto que el estudio podría ser más amplio, o que en los resultados se podría haber acotado incluso más, los datos obtenidos después de analizar los puntos 4 y 5 de la memoria son suficientes para llegar a una conclusión sobre el estudio propuesto. Dicha conclusión es que los desarrolladores de código Python no están realizando la práctica que aquí se debate, ya que los resultados son claramente negativos.
+Creo que este objetivo se ha cumplido completamente, ya que si bien es cierto que el estudio podría ser más amplio, o que en los resultados se podría haber acotado incluso más, los datos obtenidos después de analizar los puntos 4 y 5 de la memoria son suficientes como para llegar a una conclusión sobre el estudio propuesto. Dicha conclusión es que los desarrolladores de código Python no están realizando la práctica que aquí se debate, ya que los resultados son claramente negativos.
 
 \ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
-En este punto también se plantea otro objetivo, quizás más secundario, pero sobre todo más abstracto. Planteamos la idea, sobre todo a nivel de estudiante, de plantearse que es realmente un código de calidad, y la correcta utilización de algunas reglas o guía de estilo como PEP8 o similares.
+En este punto también se plantea otro objetivo, quizás más secundario, pero sobre todo más abstracto. Planteamos la idea, sobre todo a nivel de estudiante, de plantearse que es realmente un código de calidad, y la correcta utilización de algunas reglas o guías de estilos como PEP8 o similares.
 
 No se sí se puede decir que esto sea un objetivo en sí, y si lo es, que se haya cumplido como tal. Creo que este proyecto en sí no se ha centrado en expandir esta idea, quizás si algún alumno lee esta memoria sí que pueda obtenerla. Sin embargo puedo decir que este objetivo se ha cumplido con creces en mi persona. Antes de realizar este proyecto no me había planteado tanto la diferencia entre un código que funciona y un código que es bueno.
 
@@ -1487,7 +1494,7 @@ Todo software implementado tiene margen de mejora, en este proyecto tenemos vari
 
 \begin{enumerate}
 	\item En primer lugar, y como ya hemos comentado también en algún punto, una mejora muy clara es montar la parte \emph{front-end} y hacer de este estudio una aplicación en la que quizás se puedan mostrar los resultados de forma más atractiva al usuario, y quizás añadir alguna funcionalidad o añadir algún otro estudio para dar más contenido a la aplicación.
-	\item Mejorar la rapidez de la aplicación para poder analizar un mayor volumen de código. La base del análisis esta programada con varios hilos en paralelo para cada repositorio, esto hace que si el repositorio es demasiado grande y la capacidad del ordenador no es demasiado buena, se creen muchos hilos y pueda dar problemas de rendimiento.
+	\item Mejorar la rapidez de la aplicación para poder analizar un mayor volumen de código. La base del análisis esta programada con varios hilos en paralelo para cada repositorio, esto hace que si el repositorio es demasiado grande y la capacidad del ordenador no es demasiado buena, se creen demasiados hilos y pueda dar problemas de rendimiento.
 	\item Mejorar el filtrado para quedarnos con las líneas determinadas. En este proyecto creo que hemos conseguido afinar bastante, pero aun así, siempre se cuela la llamada basura, y en los resultados finales hemos tenido que dejar un apartado de ``Resto de líneas''.
 	\item Mejorar el análisis de este mismo problema pensando otras opciones. Por ejemplo, hemos tenido en cuenta que el desarrollador cambia para ello una sola variable, o una sola variable y tabulaciones, pero ¿y si acorta dos variables en una misma línea? Ese caso no lo tenemos contemplado.
 \end{enumerate}
