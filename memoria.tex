@@ -708,7 +708,7 @@ En primer lugar se analizan dichos repositorios. Si se detecta un fichero python
 
 El Grupo 2: ``Zona naranja'', es el grupo determinante para el estudio. Las líneas pertenecientes a este grupo tienen la posibilidad de haber pertenecido al Grupo 3: ``Zona roja'' en algún momento de su ``pasado'', y por tanto, tienen la posibilidad de estar, en la actualidad, en la ``Zona naranja'' debido a un cambio motivado por la modificación de una variable.
 
-Como se ha explicado antes, las líneas procesadas se dividen en 3 grupos, en el momento en que se detecta una línea perteneciente al grupo ``Zona naranja'', se crea un nuevo objeto en la BBDD, en este caso, dentro del esquema Linea. El objeto guardado tiene el siguiente aspecto:
+Como se ha explicado antes, las líneas procesadas se dividen en 3 grupos, en el momento en que se detecta una línea perteneciente al grupo ``Zona naranja'', se crea un nuevo objeto en la BBDD, en este caso, dentro del esquema Linea. El objeto guardado tiene el siguiente formato:
 
 \begin{verbatim}
 var lineaSchema = mongoose.Schema({
@@ -739,10 +739,10 @@ Donde cada parámetro contiene:
 	\item \textbf{longitudLinea: }Longitud de la línea.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{pasadoRojo: }Parámetro \emph{boolean}. Este parámetro indica si la línea en cuestión ha pertenecido en algún momento de su pasado al grupo ``Zona roja''. En la creación de este objeto en este punto del análisis siempre se setea este parámetro a \emph{False}, debido a que esto todavía no se ha comprobado. Se hará más adelante.
+	\item \textbf{pasadoRojo: }Parámetro \emph{boolean}. Este parámetro indica si la línea en cuestión ha pertenecido en algún momento de su pasado al grupo ``Zona roja''. En la creación de este objeto en este punto del análisis siempre se setea este parámetro a \emph{False}, debido a que esta cuestión todavía no se ha comprobado. Se hará más adelante.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante comprobaremos como se procesa y se actualiza este parámetro.
+	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante se comprueba como se procesa y se actualiza este parámetro.
 \end{itemize}
 
 Cuando se finaliza este primer proceso, además del objeto perteneciente al esquema Línea, que acabamos de contar, se dispone de un recuento total de las líneas analizadas, así como un resumen de toda la muestra utilizada indicando por cada repositorio, su nombre y líneas analizadas de cada tipo. De esta forma se tiene disponible, de manera organizada, toda la información de los datos analizados. De manera que resulte más fácil llegar a una conclusión en el futuro.
@@ -782,13 +782,13 @@ Donde cada parámetro contiene:
 
 Cabe destacar que en este punto ya se han descartado las líneas que consideramos comentarios, en el proceso de clasificación de las líneas en los 3 grupos mencionados. De forma que en la BBDD se cuenta únicamente con las líneas que consideramos conflictivas, es decir, las pertenecientes al Grupo 2: ``Zona naranja'', y que se deben seguir analizando.
 
-Se procesan una a una todas las líneas almacenadas dentro de la BBDD y se ejecuta la instrucción \texttt{git log} para cada una de ellas, para así poder estudiar su pasado.
+Posteriormente, se procesan una a una todas las líneas almacenadas dentro de la BBDD y se ejecuta la instrucción \texttt{git log} para cada una de ellas, para así poder estudiar su pasado.
 
 \section{Ejecución de \texttt{git log}} 
 \label{sec:ejecucion-del-comando-git-log}
 
 En primer lugar, vamos a abrir un pequeño paréntesis para poder poner algo de contexto sobre la instrucción \texttt{git log} y la información que se necesita en este caso en concreto.
-Lo que aquí se busca es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
+Lo que se busca en este proyecto en concreto es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
 
 Para llevar a cabo esto, en un principio se estudió la posibilidad de utilizar el comando \texttt{git blame}, el cual aporta información sobre la historia de una línea. \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
 Sin embargo, la información que proporciona \texttt{blame} se nos queda un poco escasa para el propósito de este proyecto, por lo que se decide seguir investigando sobre la funcionalidad que ofrecen las distintas instrucciones de git, y revisar las distintas librerías JavaScript que nos permitan implementar esto mediante código en nuestro servidor, hasta tener conocimientos suficientes para tomar la siguiente decisión: explotar la instrucción \texttt{git log}.\\
@@ -850,7 +850,7 @@ Analizando dicha salida, se observa que la línea 155 del fichero \texttt{git-web
 	\end{verbatim}
 \end{enumerate}
 
-Para poder implementar toda esta idea en código dentro del proyecto,  hemos utilizado la librería de JavaScript \texttt{simple-git}\footnote{\url{https://www.npmjs.com/package/simple-git}}.\\ 
+Para poder implementar esta idea en código dentro del proyecto,  hemos utilizado la librería de JavaScript \texttt{simple-git}\footnote{\url{https://www.npmjs.com/package/simple-git}}.\\ 
 
 Una vez explicado esto, podemos cerrar el paréntesis y seguir con el análisis del proceso. A modo de recordatorio diremos que este punto tenemos almacenadas las líneas del grupo 2: ``Zona naranja'' con el siguiente formato:
 
@@ -867,7 +867,7 @@ historia: []
 }); 
 \end{verbatim}
 
-Se ejecuta la instrucción \texttt{git log} con las opciones correspondientes explicadas anteriormente.
+Se ejecuta la instrucción \texttt{git log} con las opciones correspondientes explicadas anteriormente, para cada una de ellas.
 La salida proporcionada por la instrucción se analiza para comprobar si la línea en cuestión posee algún momento de su historia con una longitud mayor a 80 caracteres.
 
 Si esto ocurre se modifica su registro en la base de datos de tal manera que su parámetro ``pasadoRojo'' pasa a tener un valor igual a \texttt{True} y en su parámetro ``historia'' se guardan todos los estados que ha tenido dicha línea en su pasado y que cumplen dicha condición.
@@ -877,7 +877,7 @@ Si esto ocurre se modifica su registro en la base de datos de tal manera que su 
 
 Realmente la cuestión buscada en este punto del proceso que explico en esta memoria, es la iteración en la que la línea ha pasado de estar en la zona roja (mayor de 80 caracteres) a estar en la zona naranja (entre 70 y 79 caracteres).\\
 
-Hay que entender que muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a este estudio, por tanto, se ha de analizar el pasado de la línea, y para implemetar esta idea en código, la única forma que tenemos es comprobar que en ese cambio, la línea actual y la línea en el pasado: son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la Línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar una el nombre de una variable. \\
+Hay que entender que muchas veces, se puede dar esta iteración y aun así no ser el caso que incumbe a este estudio, por tanto, se ha de analizar el pasado de la línea, y para implemetar esta idea en código, la única forma que tenemos es comprobar que en ese cambio, la línea actual y la línea en el pasado: son suficientemente parecidas como para que el cambio pueda deberse a nuestro motivo de estudio, es decir, que la Línea actual haya pasado de tener más de 80 caracteres, a tener entre 70 y 79, y que el cambio haya sido acortar el nombre de una variable. \\
 
 Para intentar clarificar este último párrafo mostramos esta cuestión en un ejemplo. La clave que se intenta explicar es que la línea puede tener infinitos cambios en su pasado, de hecho puede ser que pase de la zona roja a la zona naranja, vuelva otra vez a la zona roja, pase a la verde, etc.
 Lo que se intenta comprobar es que la línea actual es lo suficientemente parecida a la última versión de la línea en la que tenía más de 80 caracteres, para comprobar, como ya se explica en el párrafo anterior, si el cambio se produce por el motivo estudiado.
@@ -889,7 +889,7 @@ settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
 \end{verbatim}
 
 La primera línea de código, es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
-Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
+Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar que la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
 
 Sin embargo, se puede dar el caso en que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual queda entonces así:
 
@@ -907,14 +907,14 @@ Analizando la salida que nos proporciona la distancia de Levenshtein, se fija un
 
 Se obtiene toda la historia de la línea en cuestión en la que su longitud fue mayor a 80 caracteres, accediendo para ello al parámetro en el que se ha guardado dicha información. En este punto se compara la línea actual con cada uno de los estados en su pasado.
 
-En función de la respuesta que proporcione Levenshtein y en base al umbral de decisión que anteriormente se ha fijado se toma la siguiente decisión:
+En función de la respuesta que proporcione Levenshtein y en base al umbral de decisión que anteriormente se ha fijado se comprueba la siguiente cuestión:
 
-Si la respuesta está dentro del umbral, se mantiene almacenado ``el estado de la línea en el pasado'' que se acaba de comprobar, en caso contrario, se desecha, actualizando el registro correspondiente el BBDD.\\
+Si la respuesta está dentro del umbral, se mantiene almacenado ``el estado de la línea en el pasado'' que se acaba de comprobar, en caso contrario, se desecha, actualizando el registro correspondiente en BBDD.\\
 
-Cuando se termina esta comprobación, cabe destacar el estado en el que se encuentra el proceso de análisis en este punto.
+Cuando se termina esta comprobación para cada una de las líneas, cabe destacar el estado en el que se encuentra el proceso de análisis en este punto.
 
 Se hace una limpieza en BBDD de los registros de líneas que no cumplen todos los parámetros de los filtros expuestos anteriormente. De esta manera, se mantienen únicamente las líneas que todavía se consideran conflictivas.
-En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. (A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array tiene más de una elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)
+En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. (A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array contiene más de un elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea anterior, porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)
 
 
 \section{Clasificación de líneas conflictivas} 
