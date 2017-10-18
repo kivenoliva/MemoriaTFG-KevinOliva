@@ -182,13 +182,15 @@ Para realizar este estudio se ha implementado el lado del servidor con Node.js (
 %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
-This project is a study on a PEP8 rule. This rule is ``Maximum line length: Limits all lines to a maximum of 79 characters''. 
-This rule has caused a discussion in the python community. The question is ¿Is it possible to leave a worse code when using the pep8 rules?.
-This study tries to find the lines that have undergone a bad practice. This practice is change the name of a variable to a shorter one so that the line has 79.
-Now the name of the variable is worse than before and our code is unreadable, when this happens, the PEP rule has gotten the opposite of what it wanted.
-This project does a python code analysis in github, depends on the results of the analysis, we will decide if this bad practice is widespread in python developers.
- 
 
+Programming languages usually have a style guide that indicates, among other things, how to format the code. This project aims to conduct a study on the use of one of the rules contained in the Python style guide named PEP8\footnote{\url{http://pythonwiki.wikispaces.com/pep8}}.
+
+The rule in question is as follows: ``\textbf{Maximum line length:} Limit all lines to a maximum of 79 characters''.
+This rule has produced a small debate in the Python community, since --according to many developers-- following it often results in worse code. This is because, for example, there are developers who shorten the name of variables to make them unintelligible. If this occurs we face a problem, since the rule of maximum length style is producing an effect contrary to what it intended.
+
+In the study carried out in this Undergraduate Thesis we try to detect the lines of code that have suffered this malpractice. To do this, we try to identify -from an analysis of version repositories with Python code-- if a developer has changed the name of a variable, shortening it to meet that the maximum length of the line is 79 characters or less. The results obtained show that the number of occurrences in which a variable name is changed to meet the maximum line length rule is very low. A later manual analysis, besides providing a greater perspective, indicates that the incidence of this rule --from the data that we have been able to access-- in the quality of the code is very small.
+
+To perform this study, the server side has been implemented with Node.js (using Express) and the JavaScript language.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -493,7 +495,7 @@ Sin embargo, existe una forma de JavaScript del lado del servidor(\emph{Server-s
 \end{figure}
 
 
-Node.js es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8. El logo de Node.js se muestra en la figura~\ref{fig:node}.
+Node.js~\cite{Node.js} es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8. El logo de Node.js se muestra en la figura~\ref{fig:node}.
 
 Node.js ejecuta JavaScript utilizando el motor V8, desarrollado por Google. Este motor permite a Node.js proporcionar un entorno de ejecución del lado del servidor que compila y ejecuta JavaScript a velocidades increíbles. El aumento de velocidad es importante debido a que V8 compila JavaScript en código de máquina nativo, en lugar de interpretarlo o ejecutarlo como \emph{bytecode}. Node es de código abierto, y se ejecuta en Mac OS X, Windows y Linux.
 
@@ -516,7 +518,7 @@ Aunque JavaScript tradicionalmente ha sido relegado a realizar tareas menores en
 	\label{fig:express}
 \end{figure}
 
-Express es sin duda el framework más conocido de Node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc. Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
+Express~\cite{Express,Express-2} es sin duda el framework más conocido de Node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc. Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
 
 El verdadero éxito de Express se encuentra en lo sencillo que es de usar. Tienes la capacidad de crear de forma rápida y sencilla una API sólida. Además, Express abarca un sin número de aspectos que muchos desconocen pero son necesarios. El logo de Express se puede ver en la figura~\ref{fig:express}.
 
@@ -542,7 +544,7 @@ De entre las tantas cosas que tiene este framework podemos destacar:
 	\label{fig:mongodb}
 \end{figure}
 
-MongoDB forma parte de la nueva familia de sistemas de base de datos NoSQL, es la base de datos NoSQL líder y permite a las empresas ser más ágiles y escalables. El logo de MongoDB se muestra en la figura~\ref{fig:mongodb}.
+MongoDB~\cite{MongoDB} forma parte de la nueva familia de sistemas de base de datos NoSQL, es la base de datos NoSQL líder y permite a las empresas ser más ágiles y escalables. El logo de MongoDB se muestra en la figura~\ref{fig:mongodb}.
 
 En lugar de guardar los datos en tablas como se hace en las base de datos relacionales, MongoDB guarda estructuras de datos en documentos similares a JSON con un esquema dinámico (MongoDB utiliza una especificación llamada BSON). Esto hace que sea una base de datos ágil ya que permite a los esquemas cambiar rápidamente cuando las aplicaciones evolucionan, proporcionando siempre la funcionalidad que los desarrolladores esperan de las bases de datos tradicionales, tales como índices secundarios, un lenguaje completo de búsquedas y consistencia estricta.
 
@@ -1616,7 +1618,7 @@ Dentro de la carpeta \emph{routes} meteremos el código JavaScript que ejecutarem
 
 Por último añadir que se puede encontrar el código de este proyecto en el siguiente repositorio público de GitHub:
 
-https://github.com/kivenoliva/LineLength
+\url{https://github.com/kivenoliva/LineLength}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
