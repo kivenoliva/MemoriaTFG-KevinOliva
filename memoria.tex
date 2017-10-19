@@ -166,7 +166,7 @@ no sea para siempre, pero tu madre sí.
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas que contiene la guía de estilo de Python PEP8\footnote{\url{http://https://pythonwiki.wikispaces.com/pep8}}.
+Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas que contiene la guía de estilo de Python PEP8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}.
 La regla en cuestión es la siguiente: ``\textbf{Máxima longitud de las líneas:} Limita todas las líneas a un máximo de 79 caracteres''.
 Esta regla ha producido un pequeño debate en la comunidad Python, ya que --según muchos desarrolladores-- seguirla al pie de la letra muchas veces tiene como resultado un peor código. Esto es debido a que, por ejemplo, hay desarrolladores que acortan el nombre de las variables hasta hacerlas ininteligibles. Si esto ocurre nos encontramos ante un problema, ya que la regla de estilo de máxima longitud está produciendo un efecto contrario al que pretendía.
 
@@ -183,7 +183,7 @@ Para realizar este estudio se ha implementado el lado del servidor con Node.js (
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
 
-Programming languages usually have a style guide that indicates, among other things, how to format the code. This project aims to conduct a study on the use of one of the rules contained in the Python style guide named PEP8\footnote{\url{http://pythonwiki.wikispaces.com/pep8}}.
+Programming languages usually have a style guide that indicates, among other things, how to format the code. This project aims to conduct a study on the use of one of the rules contained in the Python style guide named PEP8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}.
 
 The rule in question is as follows: ``\textbf{Maximum line length:} Limit all lines to a maximum of 79 characters''.
 This rule has produced a small debate in the Python community, since --according to many developers-- following it often results in worse code. This is because, for example, there are developers who shorten the name of variables to make them unintelligible. If this occurs we face a problem, since the rule of maximum length style is producing an effect contrary to what it intended.
@@ -281,14 +281,14 @@ Las guías de estilo son algo que está generalizado en los distintos lenguajes de
 
 Esta memoria se centra en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la que se centra este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
 
-Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 se habla más en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
+Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo~\ref{chap:estado-del-arte} se habla más en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
 
 
 
 \section{Estructura de la memoria}
 \label{sec:estructura-de-la-memoria}
 En este apartado del capítulo se explica muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
-
+\ \\ \ \\ 
 \begin{enumerate}
 	\item \textbf{Introducción: }En este capítulo se explica el contexto de este proyecto, así como las razones por las que se elige el tema a tratar.
 	\item \textbf{Objetivos: }En este capítulo se detalla cada uno de los objetivos que se han planteado desde el inicio del proyecto.
@@ -411,7 +411,7 @@ Python es un lenguaje que ha adquirido gran popularidad en los últimos años, alg
 \section{\texttt{pycodestyle} (antes \texttt{pep8})} 
 \label{sec:pycodestyle}
 
-Como ya hemos dicho anteriormente cuando hablábamos de PEP8, existen herramientas con las que podemos comprobar de forma automática si nuestro código cumple las reglas que dicta el PEP8. quí vamos a hablar un poco más en profundidad de una de ellas: ``\texttt{pycodestyle}'', antes conocida como ``PEP8''. Se cambió de nombre para evitar confusiones con la propia guía de estilo.
+Como ya hemos dicho anteriormente cuando hablábamos de PEP8, existen herramientas con las que podemos comprobar de forma automática si nuestro código cumple las reglas que dicta el PEP8. Aquí vamos a hablar un poco más en profundidad de una de ellas: ``\texttt{pycodestyle}'', antes conocida como ``PEP8''. Se cambió de nombre para evitar confusiones con la propia guía de estilo.
 
 Este herramienta nos permite pasar un análisis una vez nuestro código está terminado, para ver si cumple calidad. Podemos encontrar información sobre esta herramienta en GitHub\footnote{\url{https://github.com/PyCQA/pycodestyle}}. Básicamente, la forma de utilizarla y lo que nos aporta es lo siguiente:
 
@@ -443,7 +443,7 @@ optparse.py:544:21: W601 .has_key() is deprecated, use &#39;in&#39;
 
 Como vemos, \texttt{pycodestyle} nos muestra de manera clara la línea y el sitio justo donde estamos cometiendo el error de calidad y por el cual no cumplimos la norma correspondiente de la guía PEP8.
 
-Podemos ver por ejemplo como en la siguiente línea
+Podemos ver por ejemplo como en la siguiente línea:
 \begin{verbatim}
 optparse.py:425:80: E501 line too long (82 characters)
 \end{verbatim}
@@ -495,7 +495,7 @@ Sin embargo, existe una forma de JavaScript del lado del servidor(\emph{Server-s
 \end{figure}
 
 
-Node.js~\cite{Node.js} es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8. El logo de Node.js se muestra en la figura~\ref{fig:node}.
+Node.js~\cite{Node.js, martinez2015node} es una librería y entorno de ejecución de E/S dirigida por eventos y por lo tanto, asíncrona que se ejecuta sobre el intérprete de JavaScript creado por Google V8. El logo de Node.js se muestra en la figura~\ref{fig:node}.
 
 Node.js ejecuta JavaScript utilizando el motor V8, desarrollado por Google. Este motor permite a Node.js proporcionar un entorno de ejecución del lado del servidor que compila y ejecuta JavaScript a velocidades increíbles. El aumento de velocidad es importante debido a que V8 compila JavaScript en código de máquina nativo, en lugar de interpretarlo o ejecutarlo como \emph{bytecode}. Node es de código abierto, y se ejecuta en Mac OS X, Windows y Linux.
 
@@ -518,7 +518,7 @@ Aunque JavaScript tradicionalmente ha sido relegado a realizar tareas menores en
 	\label{fig:express}
 \end{figure}
 
-Express~\cite{Express,Express-2} es sin duda el framework más conocido de Node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc. Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
+Express~\cite{Express} es sin duda el framework más conocido de Node.js, es una extensión del poderoso connect\footnote{\url{https://github.com/senchalabs/connect#readme}} y esta inspirado en sinatra\footnote{\url{http://www.sinatrarb.com/documentation.html}}, además es robusto, rápido, flexible, simple, etc. Proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
 
 El verdadero éxito de Express se encuentra en lo sencillo que es de usar. Tienes la capacidad de crear de forma rápida y sencilla una API sólida. Además, Express abarca un sin número de aspectos que muchos desconocen pero son necesarios. El logo de Express se puede ver en la figura~\ref{fig:express}.
 
@@ -562,7 +562,7 @@ La arquitectura completa de las tecnologías utilizadas en este proyecto se puede
 \section{JSON} 
 \label{sec:json}
 
- JSON (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos. JSON es un subconjunto de la notación literal de objetos de JavaScript aunque hoy, debido a su amplia adopción como alternativa a XML, se considera un formato de lenguaje independiente. JSON nació como una alternativa a XML, el fácil uso en JavaScript ha generado un gran número de seguidores de esta alternativa. Se puede ver un ejemplo de una estructura de datos en JSON en la figura~\ref{fig:json}.
+ JSON (JavaScript Object Notation)~\cite{JSON} es un formato de texto ligero para el intercambio de datos. JSON es un subconjunto de la notación literal de objetos de JavaScript aunque hoy, debido a su amplia adopción como alternativa a XML, se considera un formato de lenguaje independiente. JSON nació como una alternativa a XML, el fácil uso en JavaScript ha generado un gran número de seguidores de esta alternativa. Se puede ver un ejemplo de una estructura de datos en JSON en la figura~\ref{fig:json}.
  
  Una de las supuestas ventajas de JSON sobre XML como formato de intercambio de datos es que es mucho más sencillo escribir un analizador sintáctico (parser) de JSON, que ha sido fundamental para que JSON haya sido aceptado por parte de la comunidad de desarrolladores AJAX, debido a la ubicuidad de JavaScript en casi cualquier navegador web.
  
@@ -582,7 +582,7 @@ La arquitectura completa de las tecnologías utilizadas en este proyecto se puede
 
 Los sistemas de control de versiones (VCS) son programas que tienen como objetivo controlar los cambios en el desarrollo de cualquier tipo de software, permitiendo conocer el estado actual de un proyecto, los cambios que se le han realizado a cualquiera de sus piezas, las personas que intervinieron en ellos, etc.
 
-\texttt{git} es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran número de archivos de código fuente.
+\texttt{git}~\cite{Git} es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando éstas tienen un gran número de archivos de código fuente.
 La principal diferencia entre \texttt{git} y cualquier otro VCS es cómo \texttt{git} modela sus datos. Conceptualmente, la mayoría de los demás sistemas almacenan la información como una lista de cambios en los archivos. Estos sistemas (CVS, Subversion, Perforce, Bazaar, etc.) modelan la información que almacenan como un conjunto de archivos y las modificaciones hechas sobre cada uno de ellos a lo largo del tiempo, como se puede ver en la figura~\ref{fig:git}.
 
 \begin{figure}
@@ -606,7 +606,7 @@ Como se puede ver en la figura~\ref{fig:git2}, \texttt{git} no modela ni almacen
 \section{GitFlow} 
 \label{sec:gitflow}
 
-GitFlow es un modelo de flujo de trabajo para \texttt{git} que da muchísima importancia a las ramas y que de hecho las crea de varios tipos, de forma temática, tal que cada tipo de rama es creada con un objetivo en concreto, como se puede ver en la figura~\ref{fig:gitflow}:
+GitFlow~\cite{Gitflow} es un modelo de flujo de trabajo para \texttt{git} que da muchísima importancia a las ramas y que de hecho las crea de varios tipos, de forma temática, tal que cada tipo de rama es creada con un objetivo en concreto, como se puede ver en la figura~\ref{fig:gitflow}:
 
 \begin{enumerate}
 	\item \textbf{Master: }La rama \emph{master} es la única rama existente que nos proporciona \texttt{git} al crear un repositorio nuevo. Esta rama  tiene como objetivo ser el contenido del servidor de producción. Es decir, el HEAD de esta rama ha de apuntar en todo momento a la última versión de nuestro proyecto.
@@ -744,7 +744,7 @@ Donde cada parámetro contiene:
 	\item \textbf{pasadoRojo: }Parámetro \emph{boolean}. Este parámetro indica si la línea en cuestión ha pertenecido en algún momento de su pasado al grupo ``Zona roja''. En la creación de este objeto en este punto del análisis siempre se setea este parámetro a \emph{False}, debido a que esta cuestión todavía no se ha comprobado. Se hará más adelante.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante se comprueba como se procesa y se actualiza este parámetro.
+	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante se explica como se procesa y se actualiza este parámetro.
 \end{itemize}
 
 Cuando se finaliza este primer proceso, además del objeto perteneciente al esquema Línea, que acabamos de contar, se dispone de un recuento total de las líneas analizadas, así como un resumen de toda la muestra utilizada indicando por cada repositorio, su nombre y líneas analizadas de cada tipo. De esta forma se tiene disponible, de manera organizada, toda la información de los datos analizados. De manera que resulte más fácil llegar a una conclusión en el futuro.
@@ -789,13 +789,13 @@ Posteriormente, se procesan una a una todas las líneas almacenadas dentro de la 
 \section{Ejecución de \texttt{git log}} 
 \label{sec:ejecucion-del-comando-git-log}
 
-En primer lugar, vamos a abrir un pequeño paréntesis para poder poner algo de contexto sobre la instrucción \texttt{git log} y la información que se necesita en este caso en concreto.
-Lo que se busca en este proyecto en concreto es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
+En primer lugar, vamos a abrir un pequeño paréntesis para poder poner algo de contexto sobre la instrucción \texttt{git log} y la información que se necesita en este aquí.
+Lo que se busca en este proyecto en concreto es saber todo el historial de cambios que ha sufrido una determinada línea dentro de un fichero.\\
 
 Para llevar a cabo esto, en un principio se estudió la posibilidad de utilizar el comando \texttt{git blame}, el cual aporta información sobre la historia de una línea. \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
 Sin embargo, la información que proporciona \texttt{blame} se nos queda un poco escasa para el propósito de este proyecto, por lo que se decide seguir investigando sobre la funcionalidad que ofrecen las distintas instrucciones de git, y revisar las distintas librerías JavaScript que nos permitan implementar esto mediante código en nuestro servidor, hasta tener conocimientos suficientes para tomar la siguiente decisión: explotar la instrucción \texttt{git log}.\\
 
-La ejecución de la instrucción \texttt{git log} sin ningún parámetro, por defecto devuelve una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
+La ejecución de la instrucción \texttt{git log} sin ningún parámetro, devuelve por defecto una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
 
 
 \begin{figure}[h!]
@@ -893,7 +893,7 @@ settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
 La primera línea de código, es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
 Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar que la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
 
-Sin embargo, se puede dar el caso en que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual queda entonces así:
+Sin embargo, se puede dar el caso en que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la línea actual queda entonces así:
 
 \begin{verbatim}
 [settings, data] = {'FEED_FORMAT': None}
@@ -916,18 +916,19 @@ Si la respuesta está dentro del umbral, se mantiene almacenado ``el estado de la
 Cuando se termina esta comprobación para cada una de las líneas, cabe destacar el estado en el que se encuentra el proceso de análisis en este punto.
 
 Se hace una limpieza en BBDD de los registros de líneas que no cumplen todos los parámetros de los filtros expuestos anteriormente. De esta manera, se mantienen únicamente las líneas que todavía se consideran conflictivas.
-En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. (A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array contiene más de un elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea anterior, porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)
+En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. %(A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array contiene más de un elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea anterior, porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)%
 
+\ \\ \ \\ \ \\ \ \\ 
 
 \section{Clasificación de líneas conflictivas} 
 \label{sec:clasificacion-de-lineas-conflictivas}
 
-En este punto, se dispone en la BBDD únicamente de las líneas que se han considerado conflictivas, y que por tanto, han superado todos los filtros del proceso de estudio. En este punto del análisis se realiza una clasificación basada en el motivo por el cual la línea a acortado su longitud.\\
+En este punto, se dispone en la BBDD únicamente de las líneas que se han considerado conflictivas, y que por tanto, han superado todos los filtros del proceso de estudio. En este punto del análisis se realiza una clasificación basada en el motivo por el cual la línea ha acortado su longitud.\\
 
 Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos --recordemos que siempre comparando la iteración en la que la línea pasa de tener más de 80 caracteres a tener entre 70 y 79--: 
 
 \begin{enumerate}
-	\item La línea se diferencia por el único motivo del cambio de longitud de una sola palabra(caso a estudiar).
+	\item La línea se diferencia por el único motivo del cambio de longitud de una sola palabra (caso a estudiar).
 	
 	\item La línea se diferencia por el único motivo de la eliminación de 4 espacios iniciales (tabulaciones).
 	
@@ -981,7 +982,7 @@ Una vez que hemos creado el software, podemos analizar un gran volumen de líneas
 \ \\ % asi se hacen 1 saltos de linea.
 Cabe destacar que para la realización de este proyecto hemos intentado recoger datos del ``mundo real'', es decir, de proyectos reales de software libre, que nos permitan sacar conclusiones reales. Por ello, se analizan repositorios de GitHub, en particular, los repositorios más famosos y de mayor tamaño de Python en dicho portal para formar la muestra de nuestro estudio.
 
-Para dar a dicha muestra las características oportunas para este proyecto, se ha pensado en la variedad. Esto quiere decir que para obtener datos de un mayor número de desarrolladores, se ha decidido seleccionar el mayor número de repositorios posibles, en lugar de escoger un único repositorio de gran tamaño. Se ha tomado esta decisión pensando que en un mismo proyecto se suele trabajar bajo las mismas pautasy reglas de calidad marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos ellos generarán código bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
+Para dar a dicha muestra las características oportunas para este proyecto, se ha pensado en la variedad. Esto quiere decir que para obtener datos de un mayor número de desarrolladores, se ha decidido seleccionar el mayor número de repositorios posibles, en lugar de escoger un único repositorio de gran tamaño. Se ha tomado esta decisión pensando que en un mismo proyecto se suele trabajar bajo las mismas pautas y reglas de calidad marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos ellos generarán código bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
 
 %La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiere, ya que sabemos que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
 
@@ -1013,7 +1014,7 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 	\label{fig:resultados_generales}
 \end{figure}
 
-El primer punto a destacar de estos resultados son los datos obtenidos para cada grupo de líneas, se ha analizado código subido a repositorios importantes de Github  sobre Python. Esto hace pensar que dicho código sigue la guía de estilo PEP8, de manera que no se encontrarán apenas``líneas rojas''. Sin embargo, se puede observar que el número de este grupo de líneas es similar al del grupo ``líneas naranjas''.
+El primer punto a destacar de estos resultados son los datos obtenidos para cada grupo de líneas, se ha analizado código subido a repositorios importantes de Github  sobre Python. Esto hace pensar que dicho código sigue la guía de estilo PEP8, de manera que no se encontrarán apenas ``líneas rojas''. Sin embargo, se puede observar que el número de este grupo de líneas es similar al del grupo ``líneas naranjas''.
 
 Para esclarecer este dato se ha realizado un análisis más en profundidad sobre el mismo. Se puede observar que el número de líneas (18.904) puede parecer grande en un principio, sin embargo, cabe destacar que esto tan sólo supone el 5,11\% del total analizado, un porcentaje bastante bajo.
 Para indagar más sobre este dato se decide en este punto añadir una comprobación en el código del proyecto. Esta nueva comprobación consiste en averiguar cuentas de esas líneas son comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas). De esta manera se sabrá si este dato está falseado y nos encontramos ante líneas que no son líneas \emph{reales} de código fuente.
@@ -1173,7 +1174,7 @@ Comparando este último filtrado con los datos iniciales, tenemos que \textbf{128
 \subsection{Análisis (manual) de líneas particulares}
 
 
-Por último, cabe destacar que hemos obtenido un resultado total de 128 líneas, sin embargo, no podemos afirmar que dichas líneas hayan sufrido el cambio explicado en esta memoria a propósito esa afirmación es totalmente subjetiva.
+Por último, cabe destacar que hemos obtenido un resultado total de 128 líneas, sin embargo, no podemos afirmar que dichas líneas hayan sufrido el cambio explicado en esta memoria a propósito, esa afirmación es totalmente subjetiva.
 En este punto, queda pendiente el ejercicio de que un humano revise esas líneas y decida si la línea ha pasado de tener una longitud mayor a 80 caracteres a tener una longitud menor a 80 caracteres, reduciendo para ello la longitud de una sola variable, y por tanto, el motivo para ello ha sido el problema explicado en este proyecto.
 
 Para ilustrar esta cuestión, se recoge una pequeña muestra de nuestros resultados, y se procede a anlizarlos manualmente:
@@ -1269,7 +1270,7 @@ except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
 \textbf{Análisis}:
 
 Observo en esta línea que la palabra modificada es un parámetro que esta recibiendo una función, y por tanto, es muy probable que nos encontremos de nuevo ante una variable.
-De nuevo me voy a analizar la modificación sufrida por esta ``ConnectionError'' a ``ProtocolError''). A simple vista puedo ver que la variable ha cambiado su nombre porque ha cambiado su sentido, y el motivo en este caso no ha sido intentar cumplir con la guía de estilo PEP8.
+De nuevo me voy a analizar la modificación sufrida por esta: ``ConnectionError'' a ``ProtocolError''). A simple vista puedo ver que la variable ha cambiado su nombre porque ha cambiado su sentido, y el motivo en este caso no ha sido intentar cumplir con la guía de estilo PEP8.
 Tampoco esta línea ha sufrido el cambio que se explica en esta memoria.
 \ \\ % asi se hacen 1 saltos de linea
 
@@ -1580,8 +1581,8 @@ Cuando tengamos todas las librerías añadidas a nuestro proyecto, nuestro \texttt
 \section{Creación de un nuevo proyecto Express} 
 \label{sec:nuevo-proyecto}
 
-Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express, el framework de Node.js con el que vamos a realizar nuestro proyecto.\\
-Dentro de Express vamos a utilizar la librería de Express Generator, que nos crea una estructura base para una aplicación.\\
+Una vez tenemos el equipo listo, pasamos a crear un nuevo proyecto. En el punto 3, hemos explicado en que consiste Express (véase la sección~\ref{sec:express}), el framework de Node.js (véase la sección~\ref{sec:node-js}) con el que vamos a realizar nuestro proyecto.\\
+Dentro de Express vamos a utilizar la librería de Express Generator~\cite{ExpressGenerator}, que nos crea una estructura base para una aplicación.\\
 Para ello ejecutamos en el directorio en el que queramos crear nuestro proyecto los siguientes comandos:\\\\
 
 Primero instalamos express-generator de forma global, añadiéndole el -g
