@@ -166,7 +166,7 @@ no sea para siempre, pero tu madre sí.
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas que contiene la guía de estilo de Python PEP8\footnote{\url{http://https://pythonwiki.wikispaces.com/pep8}}.
+Los lenguajes de programación suelen tener una guía de estilo que indica, entre otras cuestiones, cómo ha de formatearse el código. Este proyecto pretende realizar un estudio sobre el uso de una de las reglas que contiene la guía de estilo de Python PEP8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}.
 La regla en cuestión es la siguiente: ``\textbf{Máxima longitud de las líneas:} Limita todas las líneas a un máximo de 79 caracteres''.
 Esta regla ha producido un pequeño debate en la comunidad Python, ya que --según muchos desarrolladores-- seguirla al pie de la letra muchas veces tiene como resultado un peor código. Esto es debido a que, por ejemplo, hay desarrolladores que acortan el nombre de las variables hasta hacerlas ininteligibles. Si esto ocurre nos encontramos ante un problema, ya que la regla de estilo de máxima longitud está produciendo un efecto contrario al que pretendía.
 
@@ -281,14 +281,14 @@ Las guías de estilo son algo que está generalizado en los distintos lenguajes de
 
 Esta memoria se centra en la guía de estilo para Python PEP8. La guía de estilo PEP8 fue realizada por Guido van Rossum, Barry Warsaw y Nick Coghlan. Está dedicada a la recopilación de los estándares seguidos por los desarrolladores de Python a la hora de escribir código Python para la librería estándar. Esta guía está conformada por varias convenciones, en las cuales no entraremos en profundidad, destacaremos una de ellas, alrededor de la que se centra este proyecto:``Limitar los tamaños de línea a 79 caracteres como máximo''.
 
-Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo 3 se habla más en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
+Para aplicar las reglas de calidad que marca PEP8, tenemos a nuestra disposición varias herramientas automáticas para pasarle a nuestro código. En el capítulo~\ref{chap:estado-del-arte} se habla más en profundidad sobre una de ellas, esta herramienta es \texttt{pycodestyle}, antes conocida como \texttt{pep8}.
 
 
 
 \section{Estructura de la memoria}
 \label{sec:estructura-de-la-memoria}
 En este apartado del capítulo se explica muy brevemente la estructura de la memoria, dando a conocer los objetivos de cada capítulo para facilitar así la lectura de la misma:  
-
+\ \\ \ \\ 
 \begin{enumerate}
 	\item \textbf{Introducción: }En este capítulo se explica el contexto de este proyecto, así como las razones por las que se elige el tema a tratar.
 	\item \textbf{Objetivos: }En este capítulo se detalla cada uno de los objetivos que se han planteado desde el inicio del proyecto.
@@ -411,7 +411,7 @@ Python es un lenguaje que ha adquirido gran popularidad en los últimos años, alg
 \section{\texttt{pycodestyle} (antes \texttt{pep8})} 
 \label{sec:pycodestyle}
 
-Como ya hemos dicho anteriormente cuando hablábamos de PEP8, existen herramientas con las que podemos comprobar de forma automática si nuestro código cumple las reglas que dicta el PEP8. quí vamos a hablar un poco más en profundidad de una de ellas: ``\texttt{pycodestyle}'', antes conocida como ``PEP8''. Se cambió de nombre para evitar confusiones con la propia guía de estilo.
+Como ya hemos dicho anteriormente cuando hablábamos de PEP8, existen herramientas con las que podemos comprobar de forma automática si nuestro código cumple las reglas que dicta el PEP8. Aquí vamos a hablar un poco más en profundidad de una de ellas: ``\texttt{pycodestyle}'', antes conocida como ``PEP8''. Se cambió de nombre para evitar confusiones con la propia guía de estilo.
 
 Este herramienta nos permite pasar un análisis una vez nuestro código está terminado, para ver si cumple calidad. Podemos encontrar información sobre esta herramienta en GitHub\footnote{\url{https://github.com/PyCQA/pycodestyle}}. Básicamente, la forma de utilizarla y lo que nos aporta es lo siguiente:
 
@@ -443,7 +443,7 @@ optparse.py:544:21: W601 .has_key() is deprecated, use &#39;in&#39;
 
 Como vemos, \texttt{pycodestyle} nos muestra de manera clara la línea y el sitio justo donde estamos cometiendo el error de calidad y por el cual no cumplimos la norma correspondiente de la guía PEP8.
 
-Podemos ver por ejemplo como en la siguiente línea
+Podemos ver por ejemplo como en la siguiente línea:
 \begin{verbatim}
 optparse.py:425:80: E501 line too long (82 characters)
 \end{verbatim}
@@ -744,7 +744,7 @@ Donde cada parámetro contiene:
 	\item \textbf{pasadoRojo: }Parámetro \emph{boolean}. Este parámetro indica si la línea en cuestión ha pertenecido en algún momento de su pasado al grupo ``Zona roja''. En la creación de este objeto en este punto del análisis siempre se setea este parámetro a \emph{False}, debido a que esta cuestión todavía no se ha comprobado. Se hará más adelante.
 \end{itemize}
 \begin{itemize}
-	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante se comprueba como se procesa y se actualiza este parámetro.
+	\item \textbf{historia: }Parámetro \emph{array}. Este parámetro almacena los diferentes estados que ha tenido la línea a lo largo de su historia. Al igual que ocurre con el parámetro anterior, en la creación del objeto en este punto, este array se inicializa y guarda vacío, debido también a que en este punto no se ha realizado todavía esta comprobación. Más adelante se explica como se procesa y se actualiza este parámetro.
 \end{itemize}
 
 Cuando se finaliza este primer proceso, además del objeto perteneciente al esquema Línea, que acabamos de contar, se dispone de un recuento total de las líneas analizadas, así como un resumen de toda la muestra utilizada indicando por cada repositorio, su nombre y líneas analizadas de cada tipo. De esta forma se tiene disponible, de manera organizada, toda la información de los datos analizados. De manera que resulte más fácil llegar a una conclusión en el futuro.
@@ -789,13 +789,13 @@ Posteriormente, se procesan una a una todas las líneas almacenadas dentro de la 
 \section{Ejecución de \texttt{git log}} 
 \label{sec:ejecucion-del-comando-git-log}
 
-En primer lugar, vamos a abrir un pequeño paréntesis para poder poner algo de contexto sobre la instrucción \texttt{git log} y la información que se necesita en este caso en concreto.
-Lo que se busca en este proyecto en concreto es saber todo el historial de cambios que ha sufrido una línea en concreto dentro de un fichero.\\
+En primer lugar, vamos a abrir un pequeño paréntesis para poder poner algo de contexto sobre la instrucción \texttt{git log} y la información que se necesita en este aquí.
+Lo que se busca en este proyecto en concreto es saber todo el historial de cambios que ha sufrido una determinada línea dentro de un fichero.\\
 
 Para llevar a cabo esto, en un principio se estudió la posibilidad de utilizar el comando \texttt{git blame}, el cual aporta información sobre la historia de una línea. \texttt{blame} se suele utilizar en \texttt{git} para depurar errores, sobre todo. Este comando nos permite filtrar por unas determinadas líneas dentro de un fichero, podemos ver el \emph{commit} que modificó por última vez cada una de las líneas.
 Sin embargo, la información que proporciona \texttt{blame} se nos queda un poco escasa para el propósito de este proyecto, por lo que se decide seguir investigando sobre la funcionalidad que ofrecen las distintas instrucciones de git, y revisar las distintas librerías JavaScript que nos permitan implementar esto mediante código en nuestro servidor, hasta tener conocimientos suficientes para tomar la siguiente decisión: explotar la instrucción \texttt{git log}.\\
 
-La ejecución de la instrucción \texttt{git log} sin ningún parámetro, por defecto devuelve una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
+La ejecución de la instrucción \texttt{git log} sin ningún parámetro, devuelve por defecto una lista de todos los \texttt{commits} realizados en ese repositorio en orden cronológico inverso. Es decir, muestra primero los \texttt{commits} más recientes. En la figura~\ref{fig:log} podemos observar el formato en que \texttt{git log} nos da información.
 
 
 \begin{figure}[h!]
@@ -893,7 +893,7 @@ settings = {'FEED_FORMAT': format, 'FEED_EXPORT_INDENT_WIDTH': None}
 La primera línea de código, es la que hay en la actualidad en el repositorio, y la segunda es la última versión que tenía más de 80 caracteres en su pasado.
 Es decir, esta línea entraría claramente en nuestro análisis, ya que podemos comprobar que la línea en la actualidad es prácticamente igual a la versión de la línea que tenía más de 80 caracteres, de hecho, podemos intuir que la línea no ha sufrido más cambios después, y que la iteración de zona roja a zona naranja es el último cambio sufrido por dicha línea.
 
-Sin embargo, se puede dar el caso en que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la líne actual queda entonces así:
+Sin embargo, se puede dar el caso en que la línea ha sufrido ese cambio, pero más adelante sufre otros, de forma que la Línea actual queda bastante cambiada, pero sigue teniendo las características de estar en la zona naranja, la comparativa entre la última versión de la línea en la zona roja y la línea actual queda entonces así:
 
 \begin{verbatim}
 [settings, data] = {'FEED_FORMAT': None}
@@ -916,8 +916,9 @@ Si la respuesta está dentro del umbral, se mantiene almacenado ``el estado de la
 Cuando se termina esta comprobación para cada una de las líneas, cabe destacar el estado en el que se encuentra el proceso de análisis en este punto.
 
 Se hace una limpieza en BBDD de los registros de líneas que no cumplen todos los parámetros de los filtros expuestos anteriormente. De esta manera, se mantienen únicamente las líneas que todavía se consideran conflictivas.
-En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. (A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array contiene más de un elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea anterior, porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)
+En el parámetro ``historia:[]'' de cada una de ellas se mantienen guardados todos los estados del pasado de dicha línea, los cuales son mayores a 80 caracteres y se parecen lo suficiente a la línea actual como para poder darse el caso que se maneja en este estudio. %(A modo de explicación diré aquí que del parámetro ``historia:[]'' sólo interesa la última iteración en que la línea ha estado en la zona roja antes de pasar a la naranja, y esto es lo que debería estar guardado. Si en algún caso este array contiene más de un elemento, y por tanto, además de esto último, hemos mantenido algún otro estado del pasado de la línea anterior, porque cumpla con los parámetros de los filtros, no importará, ya que más adelante, se ``limpiará'' esta ``basura''.)%
 
+\ \\ \ \\ \ \\ \ \\ 
 
 \section{Clasificación de líneas conflictivas} 
 \label{sec:clasificacion-de-lineas-conflictivas}
@@ -927,7 +928,7 @@ En este punto, se dispone en la BBDD únicamente de las líneas que se han conside
 Dentro de los posibles casos, hemos decidido clasificar las líneas en 4 grupos --recordemos que siempre comparando la iteración en la que la línea pasa de tener más de 80 caracteres a tener entre 70 y 79--: 
 
 \begin{enumerate}
-	\item La línea se diferencia por el único motivo del cambio de longitud de una sola palabra(caso a estudiar).
+	\item La línea se diferencia por el único motivo del cambio de longitud de una sola palabra (caso a estudiar).
 	
 	\item La línea se diferencia por el único motivo de la eliminación de 4 espacios iniciales (tabulaciones).
 	
@@ -981,7 +982,7 @@ Una vez que hemos creado el software, podemos analizar un gran volumen de líneas
 \ \\ % asi se hacen 1 saltos de linea.
 Cabe destacar que para la realización de este proyecto hemos intentado recoger datos del ``mundo real'', es decir, de proyectos reales de software libre, que nos permitan sacar conclusiones reales. Por ello, se analizan repositorios de GitHub, en particular, los repositorios más famosos y de mayor tamaño de Python en dicho portal para formar la muestra de nuestro estudio.
 
-Para dar a dicha muestra las características oportunas para este proyecto, se ha pensado en la variedad. Esto quiere decir que para obtener datos de un mayor número de desarrolladores, se ha decidido seleccionar el mayor número de repositorios posibles, en lugar de escoger un único repositorio de gran tamaño. Se ha tomado esta decisión pensando que en un mismo proyecto se suele trabajar bajo las mismas pautasy reglas de calidad marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos ellos generarán código bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
+Para dar a dicha muestra las características oportunas para este proyecto, se ha pensado en la variedad. Esto quiere decir que para obtener datos de un mayor número de desarrolladores, se ha decidido seleccionar el mayor número de repositorios posibles, en lugar de escoger un único repositorio de gran tamaño. Se ha tomado esta decisión pensando que en un mismo proyecto se suele trabajar bajo las mismas pautas y reglas de calidad marcadas de antemano. Por tanto, aunque dicho proyecto cuente con varios desarrolladores, todos ellos generarán código bajo las mismas normas y nuestro estudio quedaría reducido a ese único proyecto.
 
 %La conclusión que nosotros queremos sacar en este proyecto sobre el problema explicado es a nivel global, y aunque el volumen analizado no sea todo lo extenso que se quiere, ya que sabemos que a este nivel no podemos analizar todo GitHub por así decirlo, sí que hemos querido qué los datos tengan la variedad para que así sea.
 
@@ -1013,7 +1014,7 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 	\label{fig:resultados_generales}
 \end{figure}
 
-El primer punto a destacar de estos resultados son los datos obtenidos para cada grupo de líneas, se ha analizado código subido a repositorios importantes de Github  sobre Python. Esto hace pensar que dicho código sigue la guía de estilo PEP8, de manera que no se encontrarán apenas``líneas rojas''. Sin embargo, se puede observar que el número de este grupo de líneas es similar al del grupo ``líneas naranjas''.
+El primer punto a destacar de estos resultados son los datos obtenidos para cada grupo de líneas, se ha analizado código subido a repositorios importantes de Github  sobre Python. Esto hace pensar que dicho código sigue la guía de estilo PEP8, de manera que no se encontrarán apenas ``líneas rojas''. Sin embargo, se puede observar que el número de este grupo de líneas es similar al del grupo ``líneas naranjas''.
 
 Para esclarecer este dato se ha realizado un análisis más en profundidad sobre el mismo. Se puede observar que el número de líneas (18.904) puede parecer grande en un principio, sin embargo, cabe destacar que esto tan sólo supone el 5,11\% del total analizado, un porcentaje bastante bajo.
 Para indagar más sobre este dato se decide en este punto añadir una comprobación en el código del proyecto. Esta nueva comprobación consiste en averiguar cuentas de esas líneas son comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas). De esta manera se sabrá si este dato está falseado y nos encontramos ante líneas que no son líneas \emph{reales} de código fuente.
@@ -1173,7 +1174,7 @@ Comparando este último filtrado con los datos iniciales, tenemos que \textbf{128
 \subsection{Análisis (manual) de líneas particulares}
 
 
-Por último, cabe destacar que hemos obtenido un resultado total de 128 líneas, sin embargo, no podemos afirmar que dichas líneas hayan sufrido el cambio explicado en esta memoria a propósito esa afirmación es totalmente subjetiva.
+Por último, cabe destacar que hemos obtenido un resultado total de 128 líneas, sin embargo, no podemos afirmar que dichas líneas hayan sufrido el cambio explicado en esta memoria a propósito, esa afirmación es totalmente subjetiva.
 En este punto, queda pendiente el ejercicio de que un humano revise esas líneas y decida si la línea ha pasado de tener una longitud mayor a 80 caracteres a tener una longitud menor a 80 caracteres, reduciendo para ello la longitud de una sola variable, y por tanto, el motivo para ello ha sido el problema explicado en este proyecto.
 
 Para ilustrar esta cuestión, se recoge una pequeña muestra de nuestros resultados, y se procede a anlizarlos manualmente:
@@ -1269,7 +1270,7 @@ except (TimeoutError, HTTPException, SocketError, ConnectionError) as e:
 \textbf{Análisis}:
 
 Observo en esta línea que la palabra modificada es un parámetro que esta recibiendo una función, y por tanto, es muy probable que nos encontremos de nuevo ante una variable.
-De nuevo me voy a analizar la modificación sufrida por esta ``ConnectionError'' a ``ProtocolError''). A simple vista puedo ver que la variable ha cambiado su nombre porque ha cambiado su sentido, y el motivo en este caso no ha sido intentar cumplir con la guía de estilo PEP8.
+De nuevo me voy a analizar la modificación sufrida por esta: ``ConnectionError'' a ``ProtocolError''). A simple vista puedo ver que la variable ha cambiado su nombre porque ha cambiado su sentido, y el motivo en este caso no ha sido intentar cumplir con la guía de estilo PEP8.
 Tampoco esta línea ha sufrido el cambio que se explica en esta memoria.
 \ \\ % asi se hacen 1 saltos de linea
 
