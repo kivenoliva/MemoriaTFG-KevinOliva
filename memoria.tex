@@ -249,7 +249,7 @@ Dicha cuestión es la que vamos a estudiar en este TFG. Nos centraremos en un cas
 El caso que nos preocupa es el siguiente: un desarrollador se encuentra ante una línea de código mayor a los 79 caracteres, por lo que decide cambiarla, acortando para ello el nombre de alguna variable. Al hacerlo, el nombre de la variable carece de sentido, por lo que la legibilidad del código se resiente.
 
 Para intentar ilustrar esta cuestión, vamos a poner un pequeño ejemplo.
-Imaginemos que el desarrollador ha escrito la siguiente línea de código:
+Imaginemos que el desarrollador ha escrito la siguiente línea de código en lenguaje \textbf{Python}:
 
 
 \begin{verbatim}
@@ -1025,7 +1025,7 @@ De estas líneas, y con la nomenclatura explicada en el capítulo 4, hemos encontr
 El primer punto a destacar de estos resultados son los datos obtenidos para cada grupo de líneas, se ha analizado código subido a repositorios de Github que contienen código Python. Esto hace pensar que dicho código sigue la guía de estilo PEP8, de manera que no se encontrarán apenas ``líneas rojas''. Sin embargo, se puede observar que el número de este grupo de líneas es similar al del grupo ``líneas naranjas''.
 
 Para esclarecer este dato se ha realizado un análisis más en profundidad sobre el mismo. Se puede observar que el número de líneas (18.904) puede parecer grande en un principio, sin embargo, cabe destacar que esto tan sólo supone el 5,11\% del total analizado, un porcentaje bastante bajo.
-Para indagar más sobre este dato se decide en este punto añadir una comprobación en el código del proyecto. Esta nueva comprobación consiste en averiguar cuentas de esas líneas son comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas). De esta manera se sabrá si este dato está falseado y nos encontramos ante líneas que no son líneas \emph{reales} de código fuente.
+Para indagar más sobre este dato se decide en este punto añadir una comprobación en el código del proyecto. Esta nueva comprobación consiste en averiguar cuantas de esas líneas son comentarios (tanto comentarios \emph{in-line}, como comentarios de varias líneas). De esta manera se sabrá si este dato está falseado y nos encontramos ante líneas que no son líneas \emph{reales} de código fuente.
 
 En dicho análisis obtenemos un resultado de 1.000 líneas, es decir, un 5,28\%. Lo que quiere decir que sí hemos encontrado líneas de código fuente que están en nuestra \emph{zona roja}.
 
@@ -1451,7 +1451,7 @@ En primer lugar, se planteaba como gran objetivo principal ser capaces de realiz
 
 Para ello necesitábamos que nuestro estudio fuese lo suficientemente amplio como para que los parámetros utilizados fueran reales para poder dar una conclusión a nivel global, también necesitábamos que nuestro código tuviese los filtros suficientes, y la capacidad de acotar lo suficiente nuestro problema como para dar justo el resultado que necesitamos.
 
-Creo que este objetivo se ha cumplido completamente, ya que si bien es cierto que el estudio podría ser más amplio, o que en los resultados se podría haber acotado incluso más, los datos obtenidos después de analizar los puntos 4 y 5 de la memoria son suficientes como para llegar a una conclusión sobre el estudio propuesto. Dicha conclusión es que los desarrolladores de código Python no están realizando la práctica que aquí se debate, ya que los resultados son claramente negativos.
+Creo que este objetivo se ha cumplido completamente, ya que si bien es cierto que el estudio podría ser más amplio, o que en los resultados se podría haber acotado incluso más, los datos obtenidos después de analizar los puntos 4 y 5 de la memoria son suficientes como para llegar a una conclusión sobre el estudio propuesto. Dicha conclusión es que los desarrolladores de código Python NO están realizando la siguiente práctica: acortar el nombre de una variable para forzar que el código cumpla la regla de máxima longitud de línea de la guía de estilo PEP8, produciendo de esta forma un peor código. Ya que los resultados son claramente negativos.
 
 \ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
 En este punto también se plantea otro objetivo, quizás más secundario, pero sobre todo más abstracto. Planteamos la idea, sobre todo a nivel de estudiante, de plantearse que es realmente un código de calidad, y la correcta utilización de algunas reglas o guías de estilos como PEP8 o similares.
