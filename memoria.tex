@@ -1187,6 +1187,7 @@ En este punto, queda pendiente el ejercicio de que un humano revise esas líneas 
 
 Para ilustrar esta cuestión, se recoge una pequeña muestra de nuestros resultados, y se procede a anlizarlos manualmente:
 
+\ \\ % asi se hacen 1 saltos de linea
 \textbf{Par de líneas}:
 
 Línea actual:
@@ -1351,7 +1352,7 @@ def _download_name(self, name, timeout=conf.settings.download_timeout,
 Observando la parte modificada, puedo ver que no me encuentro ante el nombre de una variable. El cambio es pasar de ``timeout=conf.settings.download\_timeout'' a ser ``timeout=None''.
 La herramienta ha detectado la variable y su asignación como una sola palabra al carecer de espacios.
 Observando el cambio no me parece en absoluto que este se haya dado para cumplir la guía de estilo PEP8.
-\ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
+\ \\% asi se hacen 1 saltos de linea
 
 \textbf{Par de líneas}:
 
@@ -1398,7 +1399,7 @@ with mock.patch.object(SettingsAttribute, '__setattr__') as mock_setattr, \
 
 Veo en esta línea que la palabra afectada es un parámetro que se le pasa a una función, por tanto, al igual que en ocasiones anteriores puedo afirmar que estamos ante una variable.
 Observando el cambio (``SettingsAttribute'' a ``attr''), parece bastante claro que el nombre de la variable ha perdido todo el sentido que poseía. En este caso, de nuevo el código resultante ha quedado peor que el código original. De manera que esta línea también ha sufrido el cambio estudiado en esta memoria.
-\ \\ \ \\ \ \\ \ \\% asi se hacen 1 saltos de linea
+\ \\
 
 \textbf{Par de líneas}:
 
